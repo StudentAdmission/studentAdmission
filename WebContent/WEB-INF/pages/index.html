@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="author" content="Mark Crusoe"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>学生端</title>
+    <link rel="stylesheet" href="res/css/common/bootstrap.min.css">
+    <link rel="stylesheet" href="res/css/common/font-awesome.min.css">
+    <link rel="stylesheet" href="res/css/common/toastr.min.css">
+</head>
+<body ng-controller="mainCtrl">
+<a href="#test">hello</a>
+<div ng-view=""></div>
+<!--common JS-->
+<script src="res/js/common/jquery-3.2.1.min.js"></script>
+<script src="res/js/common/angular.min.js"></script>
+<script src="res/js/common/angular-route.min.js"></script>
+<script src="res/js/common/bootstrap.min.js"></script>
+<script src="res/js/common/toastr.min.js"></script>
+
+<script src="res/js/app.js"></script>
+<script src="res/js/route.js"></script>
+<script>
+    app.controller('mainCtrl', ['$location', function ($location) {
+        console.log($location);
+    }]);
+    app.controller('testCtrl', ['$scope', function ($scope) {
+        $scope.testText = 'test';
+    }]);
+</script>
+</body>
+</html>
