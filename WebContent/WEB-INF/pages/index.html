@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
+<html lang="en" ng-app="myApp" ng-controller="indexCtrl">
 <head>
     <meta charset="UTF-8"/>
-    <base href="http://localhost:8080/studentAdmission/">
+    <base href="http://localhost:8080/studentAdmission/index.html">
     <meta name="author" content="Mark Crusoe"/>
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="res/css/common/font-awesome.min.css">
     <link rel="stylesheet" href="res/css/common/toastr.min.css">
 </head>
-<body ng-controller="mainCtrl">
-<a href="test">hello</a>
+<body>
+<a href="test">test</a>
+<a href="main">main</a>
 <div ng-view=""></div>
 <!--common JS-->
 <script src="res/js/common/jquery-3.2.1.min.js"></script>
@@ -24,13 +25,6 @@
 
 <script src="res/js/app.js"></script>
 <script src="res/js/route.js"></script>
-<script>
-    app.controller('mainCtrl', ['$scope', '$location', function ($scope, $location) {
-        //console.log($location);
-    }]);
-    app.controller('testCtrl', ['$scope', function ($scope) {
-        $scope.testText = 'test';
-    }]);
-</script>
+<script src="res/js/controller/index-controller.js"></script>
 </body>
 </html>

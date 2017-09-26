@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
-	<display-name>Movie</display-name>
-	
-	
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
 
 
 
@@ -22,14 +17,12 @@
 		<load-on-startup>0</load-on-startup>
 	</servlet>
 
-	
-
 	<servlet-mapping>
 		<servlet-name>springDispatcherServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 
-	
+
 
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
@@ -54,7 +47,14 @@
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
 	</filter>
 
-	
+	<welcome-file-list>
+		<welcome-file>/WEB-INF/pages/index.html</welcome-file>
+	</welcome-file-list>
+	<!-- 由于servlet仅配置处理html文件，所以在刷新页面时需要配置404页面到index.html -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/index.html</location>
+	</error-page>
 
 	<filter-mapping>
 		<filter-name>HiddenHttpMethodFilter</filter-name>
