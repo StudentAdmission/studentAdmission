@@ -1,0 +1,34 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100vh;
+}
+
+.supreme-head {
+    height: 50px;
+    background-color: #333;
+}
+
+ul {
+    list-style: none;
+    height: 100%;
+}
+
+.supreme-head li {
+    line-height: 50px;
+    float: left;
+}
+
+.supreme-head li a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+}
+
+.supreme-head li a:hover {
+    color: rgba(255, 255, 255, .8);
+}
