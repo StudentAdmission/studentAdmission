@@ -8,13 +8,32 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>学生端</title>
+    <!--common CSS-->
     <link rel="stylesheet" href="res/css/common/bootstrap.min.css">
     <link rel="stylesheet" href="res/css/common/font-awesome.min.css">
     <link rel="stylesheet" href="res/css/common/toastr.min.css">
+    <link rel="stylesheet" href="res/css/index.css">
+
 </head>
 <body>
-<a href="test">test</a>
-<a href="main">main</a>
+<div class="container">
+    <div class="row">
+        <img src="res/img/loge.jpg" alt="">
+    </div>
+    <div class="row supreme-head">
+        <ul>
+            <li><a href="#">首页</a></li>
+            <li><a href="#">学校简介</a></li>
+            <li><a href="#">学生手册</a></li>
+            <li><a href="#">常见问题</a></li>
+            <li><a href="#">投诉建议</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <div id="pdf" style="height: 600px;">
+        </div>
+    </div>
+</div>
 <div ng-view=""></div>
 <!--common JS-->
 <script src="res/js/common/jquery-3.2.1.min.js"></script>
@@ -22,9 +41,16 @@
 <script src="res/js/common/angular-route.min.js"></script>
 <script src="res/js/common/bootstrap.min.js"></script>
 <script src="res/js/common/toastr.min.js"></script>
+<script src="res/js/common/pdfobject.min.js"></script>
 
 <script src="res/js/app.js"></script>
 <script src="res/js/route.js"></script>
 <script src="res/js/controller/index-controller.js"></script>
+<script>
+    $(function () {
+        PDFObject.embed('res/upload/123.pdf', '#pdf');
+    })
+
+</script>
 </body>
 </html>
