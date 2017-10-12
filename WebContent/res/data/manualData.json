@@ -1,9 +1,11 @@
 {
   "status": 200,
   "message": "",
-  "data": {
-    "year": 2015,
-    "fileName": "2015学生手册.pdf",
-    "filePath": "upload/manual/"
-  }
+  "data": [
+    {
+      "year": 2015,
+      "fileName": "2015学生手册.pdf",
+      "filePath": "res/upload/manual/"
+    }
+  ]
 }
