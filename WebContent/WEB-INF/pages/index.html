@@ -1,61 +1,69 @@
 <!doctype html>
 <html lang="en" ng-app="myApp" ng-controller="indexCtrl">
 <head>
-<meta charset="UTF-8" />
-<base href="http://localhost:8080/studentAdmission/index.html">
-<meta name="author" content="Mark Crusoe" />
-<meta name="viewport"
-	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-<title>学生端</title>
-<!--common CSS-->
-<link rel="stylesheet" href="res/css/common/bootstrap.min.css">
-<link rel="stylesheet" href="res/css/common/font-awesome.min.css">
-<link rel="stylesheet" href="res/css/common/toastr.min.css">
-<link rel="stylesheet" href="res/css/index.css">
+    <meta charset="UTF-8"/>
+    <base href="http://localhost:8080/studentAdmission/index.html">
+    <meta name="author" content="Mark Crusoe"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>学生端</title>
+    <!--common CSS-->
+    <link rel="stylesheet" href="res/css/common/bootstrap.min.css">
+    <link rel="stylesheet" href="res/css/common/font-awesome.min.css">
+    <link rel="stylesheet" href="res/css/common/toastr.min.css">
+    <link rel="stylesheet" href="res/css/index.css">
+
+    <link rel="stylesheet"
+          href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <style type="text/css">
+        #panel {
+            position: absolute;
+            background-color: white;
+            max-height: 80%;
+            overflow-y: auto;
+            top: 10px;
+            right: 10px;
+            width: 250px;
+            border: solid 1px silver;
+        }
+    </style>
 
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<img src="res/img/loge.jpg" alt="">
-		</div>
-		<div class="row supreme-head">
-			<ul>
-				<li><a href="#">首页</a></li>
-				<li><a href="#">学校简介</a></li>
-				<li><a href="#">学生手册</a></li>
-				<li><a href="test">常见问题</a></li>
-				<li><a href="main">投诉建议</a></li>
-			</ul>
-		</div>
-		<div class="row">
-			<!-- <div id="pdf" style="height: 600px;"> -->
-			<form method="post">
-				<input title="" name="std_id" placeholder="id" ng-model="user.id">
-				<input title="" name="std_name" placeholder="name"
-					ng-model="user.name">
-				<button ng-click="checkEdit(user);">修改</button>
-			</form>
-		</div>
-	</div>
-	</div>
-	<div ng-view=""></div>
-	<!--common JS-->
-	<script src="res/js/common/jquery-3.2.1.min.js"></script>
-	<script src="res/js/common/angular.min.js"></script>
-	<script src="res/js/common/angular-route.min.js"></script>
-	<script src="res/js/common/bootstrap.min.js"></script>
-	<script src="res/js/common/toastr.min.js"></script>
-	<script src="res/js/common/pdfobject.min.js"></script>
+<div class="container sa_container">
+    <div class="row sa_row">
+        <img src="res/img/loge.jpg" alt="">
+    </div>
+    <div class="row sa_row supreme-head">
+        <ul>
+            <li><a href="/studentAdmission">首页</a></li>
+            <li><a href="#">学校简介</a></li>
+            <li><a href="manual">学生手册</a></li>
+            <li><a href="#">常见问题</a></li>
+            <li><a href="#">投诉建议</a></li>
+        </ul>
+    </div>
+    <div class="row sa_row"></div>
 
-	<script src="res/js/app.js"></script>
-	<script src="res/js/route.js"></script>
-	<script src="res/js/controller/index-controller.js"></script>
-	<script>
-		$(function() {
-			PDFObject.embed('res/upload/123.pdf', '#pdf');
-		})
-	</script>
+    <div ng-view=""></div>
+</div>
+<!--common JS-->
+<script src="res/js/common/jquery-3.2.1.min.js"></script>
+<script src="res/js/common/angular.min.js"></script>
+<script src="res/js/common/angular-route.min.js"></script>
+<script src="res/js/common/bootstrap.min.js"></script>
+<script src="res/js/common/toastr.min.js"></script>
+<script src="res/js/common/pdfobject.min.js"></script>
+<!--谷歌地图api-->
+<!--<script src="http://webapi.amap.com/maps?v=1.4.0&key=86d7e9b2838a66942d8e3665a5049028&plugin=AMap.Transfer"></script>
+<script src="http://cache.amap.com/lbs/static/addToolbar.js"></script>-->
+
+<script src="res/js/app.js"></script>
+<script src="res/js/route.js"></script>
+<script src="res/js/controller/index-controller.js"></script>
+<script src="res/js/controller/manual-controller.js"></script>
+
+
 </body>
 </html>
