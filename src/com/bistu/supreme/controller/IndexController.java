@@ -22,17 +22,10 @@ public class IndexController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/main")
+	@RequestMapping(value = "/manual")
 	public ModelAndView main() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("main");
-		return mv;
-	}
-
-	@RequestMapping(value = "/test")
-	public ModelAndView test() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("test");
+		mv.setViewName("sa_manual");
 		return mv;
 	}
 
