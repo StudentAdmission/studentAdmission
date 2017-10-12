@@ -8,10 +8,3 @@ app.controller('indexCtrl', [ '$http', '$scope', function($http, $scope) {
 		})
 	}
 } ]);
-app.controller('mainCtrl', [ '$http', '$scope', '$route',
-		function($http, $scope, $route) {
-			
-		} ]);
-app.controller('testCtrl', [ '$http', '$scope', function($http, $scope) {
-	$scope.test = "test页面";
-} ]);
