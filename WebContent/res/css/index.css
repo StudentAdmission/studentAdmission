@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/**    index页面以及公共样式   **/
 * {
     margin: 0;
     padding: 0;
@@ -31,4 +32,12 @@ ul {
 
 .supreme-head li a:hover {
     color: rgba(255, 255, 255, .8);
+}
+
+.sa_container {
+    padding: 0;
+}
+
+.sa_row {
+    margin: 0;
 }
