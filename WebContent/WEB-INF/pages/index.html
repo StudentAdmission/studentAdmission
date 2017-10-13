@@ -13,40 +13,35 @@
     <link rel="stylesheet" href="res/css/common/font-awesome.min.css">
     <link rel="stylesheet" href="res/css/common/toastr.min.css">
     <link rel="stylesheet" href="res/css/index.css">
-
+    <link rel="stylesheet" href="res/css/sa_manual.css">
     <link rel="stylesheet"
           href="http://cache.amap.com/lbs/static/main1119.css"/>
-    <style type="text/css">
-        #panel {
-            position: absolute;
-            background-color: white;
-            max-height: 80%;
-            overflow-y: auto;
-            top: 10px;
-            right: 10px;
-            width: 250px;
-            border: solid 1px silver;
-        }
-    </style>
+
 
 </head>
 <body>
-<div class="container sa_container">
-    <div class="row sa_row">
-        <img src="res/img/loge.jpg" alt="">
+<div class="container-fluid sa_container">
+    <div class="container sa_container">
+        <div class="row sa_row">
+            <img src="res/img/loge.jpg" alt="">
+        </div>
     </div>
-    <div class="row sa_row supreme-head">
-        <ul>
-            <li><a href="/studentAdmission">首页</a></li>
-            <li><a href="#">学校简介</a></li>
-            <li><a href="manual">学生手册</a></li>
-            <li><a href="#">常见问题</a></li>
-            <li><a href="#">投诉建议</a></li>
-        </ul>
+    <div class="divide black middle"></div>
+    <div class="container sa_container">
+        <div class="row sa_row supreme-head">
+            <ul>
+                <li><a href="/studentAdmission">首页</a></li>
+                <li><a href="#">学校简介</a></li>
+                <li><a href="manual">学生手册</a></li>
+                <li><a href="#">常见问题</a></li>
+                <li><a href="#">投诉建议</a></li>
+            </ul>
+        </div>
+        <div class="row sa_row"></div>
+        <div class="row sa_row">
+            <div ng-view=""></div>
+        </div>
     </div>
-    <div class="row sa_row"></div>
-
-    <div ng-view=""></div>
 </div>
 <!--common JS-->
 <script src="res/js/common/jquery-3.2.1.min.js"></script>
