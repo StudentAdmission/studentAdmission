@@ -41,3 +41,27 @@ ul {
 .sa_row {
     margin: 0;
 }
+
+.sa_col {
+    padding: 0;
+}
+
+.divide.slim {
+    height: 1px;
+}
+
+.divide.middle {
+    height: 2px;
+}
+
+.divide.wide {
+    height: 3px;
+}
+
+.red {
+    background-color: red;
+}
+
+.black {
+    background-color: #333;
+}
