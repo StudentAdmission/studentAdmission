@@ -3,9 +3,24 @@
   "message": "",
   "data": [
     {
+      "year": 2014,
+      "manualName": "2014学生手册.pdf",
+      "manualPath": "res/upload/manual/"
+    },
+    {
       "year": 2015,
-      "fileName": "2015学生手册.pdf",
-      "filePath": "res/upload/manual/"
+      "manualName": "2015学生手册.pdf",
+      "manualPath": "res/upload/manual/"
+    },
+    {
+      "year": 2016,
+      "manualName": "2016学生手册.pdf",
+      "manualPath": "res/upload/manual/"
+    },
+    {
+      "year": 2017,
+      "manualName": "2017学生手册.pdf",
+      "manualPath": "res/upload/manual/"
     }
   ]
 }
