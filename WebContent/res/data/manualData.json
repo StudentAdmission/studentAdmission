@@ -4,22 +4,22 @@
   "data": [
     {
       "year": 2014,
-      "manualName": "2014学生手册.pdf",
+      "manualName": "2014_manual.pdf",
       "manualPath": "res/upload/manual/"
     },
     {
       "year": 2015,
-      "manualName": "2015学生手册.pdf",
+      "manualName": "2015_manual.pdf",
       "manualPath": "res/upload/manual/"
     },
     {
       "year": 2016,
-      "manualName": "2016学生手册.pdf",
+      "manualName": "2016_manual.pdf",
       "manualPath": "res/upload/manual/"
     },
     {
       "year": 2017,
-      "manualName": "2017学生手册.pdf",
+      "manualName": "2017_manual.pdf",
       "manualPath": "res/upload/manual/"
     }
   ]
