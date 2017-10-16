@@ -1,10 +1,9 @@
-app.controller('indexCtrl', [ '$http', '$scope', function($http, $scope) {
-	$scope.checkEdit = function(user) {
-		console.log(user);
-		$http.post('login.do',user).then(function(response) {
-			console.log(response);
-		}, function(response) {
-			console.log('error');
-		})
-	}
-} ]);
+app.controller('indexCtrl', ['$http', '$scope', '$location', function ($http, $scope, $location) {
+
+    $(function () {
+        $('.sa_tip').tipso({
+            useTitle: false,
+            background: 'rgba(0,154,214,.8)'
+        });
+    })
+}]);
