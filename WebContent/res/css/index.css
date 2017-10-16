@@ -34,8 +34,24 @@ ul {
     color: rgba(255, 255, 255, .8);
 }
 
+.supreme-login-form {
+    margin-top: 30px;
+}
+
+.supreme-login-form .form-group {
+    width: 150px;
+    margin: 0 3px;
+}
+
+.supreme-login-form .form-control {
+    width: 100%;
+}
+
+
+/****  公共样式  ***/
 .sa_container {
     padding: 0;
+    min-width: 1170px;
 }
 
 .sa_row {
