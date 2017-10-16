@@ -11,9 +11,11 @@ app.config(['$routeProvider', '$locationProvider',
             .when('/manual', {
                 templateUrl: 'sa_manual.html',
                 controller: 'manualCtrl'
-            }).when('/test', {
-            templateUrl: 'test.html',
-            controller: 'testCtrl'
+            })
+            //学校简介页面路由
+            .when('/introduct', {
+            templateUrl: 'sa_introduct.html',
+            controller: 'introductCtrl'
         }).otherwise({
             redirectTo: '/'
         });
