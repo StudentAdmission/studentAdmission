@@ -25,6 +25,7 @@ app.controller('manualCtrl', ['$http', '$scope', function ($http, $scope) {
         for (var i = 0; i < $scope.manuals.length; i++) {
             if ($scope.manuals[i].manualName === item) {
                 $scope.manualPath = $scope.manuals[i].manualPath;
+                $scope.name = $scope.manuals[i].name;
             }
         }
     };
