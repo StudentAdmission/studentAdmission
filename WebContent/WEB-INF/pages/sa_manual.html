@@ -1,13 +1,13 @@
 <div class="row sa_row">
     <div class="col-sm-5 sa_col">
         <p class="manualInfo">您当前查看的是：<span ng-click="mannualDownload(manualName);"
-                                            class="downloadFile">{{name}}</span></p>
+                                            class="downloadFile">{{hb_cname}}</span></p>
     </div>
     <div class="col-sm-offset-5 col-sm-2 sa_col">
         <div class="select">
-            <span class="placeholder">{{name}}</span>
+            <span class="placeholder">{{hb_cname}}</span>
             <ul>
-                <li ng-click="setManual(item.manualName);" ng-repeat="item in manuals">{{item.name}}</li>
+                <li ng-click="setHandbook(item);" ng-repeat="item in handbooks">{{item.hb_cname}}</li>
             </ul>
         </div>
     </div>
