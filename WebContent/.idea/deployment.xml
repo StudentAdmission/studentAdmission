@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="tomcat">
+  <component name="PublishConfigData" autoUpload="Always" serverName="tomcat" uploadOnCheckin="6986ee07-6370-422c-93e6-174aa71a34f9">
     <serverData>
       <paths name="tomcat">
         <serverdata>
@@ -10,6 +10,7 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="tomcat" />
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
