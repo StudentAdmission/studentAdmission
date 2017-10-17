@@ -5,40 +5,29 @@ app.controller('manualCtrl', ['$http', '$scope', function ($http, $scope) {
     //得到现在年份，默认显示今年的学生手册
     $scope.currentYear = currentTime.getFullYear();
 
+    //学生手册路径
+    $scope.hb_path='res/upload/manual/';
+
     //预存后台获取的学生手册信息
-    $scope.manuals = [];
+    $scope.handbooks = [];
 
     /**
-     * 设置当前显示的学生手册文件名
+     * 设置当前显示的学生手册文件名、中文名
      * @param {String} item 学生手册文件名（带后缀）
      * */
-    $scope.setManualName = function (item) {
-        $scope.manualName = item;
-    };
-
-    /**
-     * 设置当前显示的学生手册路径
-     * @param {String} item 学生手册文件名（带后缀）
-     * */
-    $scope.setManualPath = function (item) {
-        //对预存手册信息数组进行遍历，找到与文件名相同的对象，取出对应路径，存放在manualPath中
-        for (var i = 0; i < $scope.manuals.length; i++) {
-            if ($scope.manuals[i].manualName === item) {
-                $scope.manualPath = $scope.manuals[i].manualPath;
-                $scope.name = $scope.manuals[i].name;
-            }
-        }
+    $scope.setHandbookName = function (item) {
+        $scope.hb_ename = item.hb_ename;
+        $scope.hb_cname = item.hb_cname;
     };
 
     /**
      * 设置当前显示的学生手册
      * @param {String} item 学生手册文件名（带后缀）
      * */
-    $scope.setManual = function (item) {
-        $scope.setManualName(item);
-        $scope.setManualPath(item);
+    $scope.setHandbook = function (item) {
+        $scope.setHandbookName(item);
         //学生手册路径和文件名整合后，将文件嵌入id为pdf的标签内
-        PDFObject.embed($scope.manualPath + $scope.manualName, '#pdf');
+        PDFObject.embed($scope.hb_path + $scope.hb_ename, '#pdf');
     };
 
     /**
@@ -47,7 +36,7 @@ app.controller('manualCtrl', ['$http', '$scope', function ($http, $scope) {
      * @param {String} item 学生手册文件名（带后缀）
      * @returns {Window}
      */
-    $scope.mannualDownload = function (item) {
+    $scope.handbookDownload = function (item) {
         /*console.log('download');
         return $window.open($scope.manualPath + item);*/
     };
@@ -64,22 +53,19 @@ app.controller('manualCtrl', ['$http', '$scope', function ($http, $scope) {
         if (response.data.status === 200) {
 
             //将学生手册数据在缓存持久化
-            $scope.manuals = response.data.data;
+            $scope.handbooks = response.data.data;
 
             //对成功获取数据进行遍历
             $.each(response.data.data, function (index, item) {
 
-                //找到今年的学生手册，将默认的学生手册文件名以及路径存放在缓存里
-                if (item.year === $scope.currentYear) {
-                    $scope.manualPath = item.manualPath;
-                    $scope.manualName = item.manualName;
+                //找到今年的学生手册，设置默认显示的学生手册
+                if (item.hb_grade === $scope.currentYear) {
+                    $scope.hb_ename = item.hb_ename;
+                    $scope.setHandbook(item);
                 }
             })
         }
-        console.log($scope.manuals);
-
-        //根据缓存中的手册名设置默认显示的学生手册
-        $scope.setManual($scope.manualName);
+        console.log($scope.handbooks);
     });
 
     /**
