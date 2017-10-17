@@ -3,28 +3,24 @@
   "message": "",
   "data": [
     {
-      "year": 2014,
-      "manualName": "2014_manual.pdf",
-      "manualPath": "res/upload/manual/",
-      "name":"2014学生手册"
+      "hb_grade": 2014,
+      "hb_ename": "2014_manual.pdf",
+      "hb_cname":"2014学生手册"
     },
     {
-      "year": 2015,
-      "manualName": "2015_manual.pdf",
-      "manualPath": "res/upload/manual/",
-      "name":"2015学生手册"
+      "hb_grade": 2015,
+      "hb_ename": "2015_manual.pdf",
+      "hb_cname":"2015学生手册"
     },
     {
-      "year": 2016,
-      "manualName": "2016_manual.pdf",
-      "manualPath": "res/upload/manual/",
-      "name":"2016学生手册"
+      "hb_grade": 2016,
+      "hb_ename": "2016_manual.pdf",
+      "hb_cname":"2016学生手册"
     },
     {
-      "year": 2017,
-      "manualName": "2017_manual.pdf",
-      "manualPath": "res/upload/manual/",
-      "name":"2017学生手册"
+      "hb_grade": 2017,
+      "hb_ename": "2017_manual.pdf",
+      "hb_cname":"2017学生手册"
     }
   ]
 }
