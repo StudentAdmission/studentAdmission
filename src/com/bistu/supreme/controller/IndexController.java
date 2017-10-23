@@ -35,13 +35,13 @@ public class IndexController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public ResponseEntity<Map<String, String>> getUser(@RequestBody Student std) {
-		System.out.println(std);
-		System.out.println("ID" + std.getId());
-		System.out.println("name" + std.getName());
-		Map<String, String> result = new HashMap<>();
-		result.put("name", std.getName());
-		return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
-	}
+//	@RequestMapping(value = "/login", method = RequestMethod.POST)
+//	public ResponseEntity<Map<String, String>> getUser(@RequestBody Student std) {
+//		System.out.println(std);
+//		System.out.println("ID" + std.getId());
+//		System.out.println("name" + std.getName());
+//		Map<String, String> result = new HashMap<>();
+//		result.put("name", std.getName());
+//		return new ResponseEntity<Map<String, String>>(result, HttpStatus.OK);
+//	}
 }

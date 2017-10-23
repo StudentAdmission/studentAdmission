@@ -1,0 +1,60 @@
+package com.bistu.supreme.dao.impl;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
+
+import com.bistu.supreme.dao.ILoginDao;
+import com.bistu.supreme.domain.Login;
+/**
+ * 登录判定接口的实现类
+ * */
+@Repository
+public class LoginDaoImpl implements ILoginDao{
+	
+	private JdbcTemplate jdbcTemplate;
+	/**
+	 * 将DataSource注入到jdbcTemplate中
+	 * */
+	public void setDataSource(DataSource ds) {
+		this.jdbcTemplate = new JdbcTemplate(ds);
+	}
+
+	@Override
+	public Map<String, Integer> findLogin(String login_num, String login_pwd) {
+		// TODO Auto-generated method stub
+		String qurey_sql = "select * from sa_login where login_pwd=? and login_num=?";
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		try {
+			Login login = (Login)jdbcTemplate.queryForObject(qurey_sql, 
+					new Object[] {login_pwd, login_num}, new LoginMapper());
+			map.put("login_id", login.getLogin_id());
+			map.put("login_tag", login.getLogin_tag());
+		}
+		catch(Exception e) {
+			map.put("login_id", -1);
+			return map;
+		}
+		return map;
+	}
+	
+	protected class LoginMapper implements RowMapper<Login>{
+
+		@Override
+		public Login mapRow(ResultSet rs, int row) throws SQLException {
+			// TODO Auto-generated method stub
+			Login login = new Login();
+			login.setLogin_id(rs.getInt("login_id"));
+			login.setLogin_num(rs.getString("login_num"));
+			login.setLogin_pwd(rs.getString("login_pwd"));
+			login.setLogin_tag(rs.getInt("login_tag"));
+			return login;
+		}}
+}
