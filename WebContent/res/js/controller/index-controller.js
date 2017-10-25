@@ -1,9 +1,26 @@
 app.controller('indexCtrl', ['$http', '$scope', '$location', function ($http, $scope, $location) {
+    $scope.saLogin=function (login) {
+        $scope.login={
+            "login_num":"",
+            "login_pwd":""
+        };
+        login.login_pwd=md5(login.login_pwd);
+        $http.post('login.do',login).then(function (response) {
+            var responseData=response.data;
+            console.log(responseData);
+        },function (response) {
+            console.log(response);
+        })
+    };
 
     $(function () {
-        $('.sa_tip').tipso({
-            useTitle: false,
-            background: 'rgba(0,154,214,.8)'
+
+        //启动轮播图
+        $("#carousel").easyFader({
+            sliderDur: 5000
         });
-    })
+        $(".sa-tip").tipso({
+            useTitle: false
+        })
+    });
 }]);

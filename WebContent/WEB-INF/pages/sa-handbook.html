@@ -1,0 +1,18 @@
+<div class="row sa-row">
+    <div class="col-sm-5 sa-col">
+        <p class="manualInfo">您当前查看的是：<span ng-click="mannualDownload(manualName);"
+                                            class="downloadFile">{{hb-cname}}</span></p>
+    </div>
+    <div class="col-sm-offset-5 col-sm-2 sa-col">
+        <div class="select">
+            <span class="placeholder">{{hb-cname}}</span>
+            <ul>
+                <li ng-click="setHandbook(item);" ng-repeat="item in handbooks">{{item.hb-cname}}</li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+<div class="row sa-row">
+    <div id="pdf" style="height: 600px;width: 100%;"></div>
+</div>

@@ -9,16 +9,20 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>classpath:beans.xml</param-value>
     </context-param>
+<<<<<<< HEAD
     
+=======
+
+	<context-param>
+		<param-name>log4jConfigLoaction</param-name>
+		<param-value>classpath:log4j.xml</param-value>
+	</context-param>
+>>>>>>> deb5346df6c0d2332ec93b5e1060c1ef40fd8a61
     
     <!-- 4)启动SpringIOC容器监听 -->
 	<!-- 第一种方式为启动Spring自带的监听器 -->
 	<listener> 
 	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class> 
-	</listener>
-	<!-- 5)启动Log4j监听 -->
-	<listener>
-		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
     
 	<filter>

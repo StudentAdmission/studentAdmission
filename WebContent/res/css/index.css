@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /**    index页面以及公共样式   **/
-* {
+html,body,div,p,a {
     margin: 0;
     padding: 0;
 }
@@ -11,7 +11,6 @@ html, body {
 
 .supreme-head {
     height: 50px;
-    background-color: #333;
 }
 
 ul {
@@ -47,18 +46,43 @@ ul {
     width: 100%;
 }
 
+.supreme-head-background{
+    height: 50px;
+    width: 1920px;
+}
+
+.relative-link{
+    user-select: none;
+    text-align: center;
+}
+.relative-link div{
+    display: inline-block;
+}
+.copyright{
+    text-align: center;
+}
 
 /****  公共样式  ***/
-.sa_container {
+
+body{
+    background-color: #f5f5fa;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.sa-container {
     padding: 0;
     min-width: 1170px;
 }
 
-.sa_row {
+.sa-row {
     margin: 0;
 }
 
-.sa_col {
+.sa-col {
     padding: 0;
 }
 

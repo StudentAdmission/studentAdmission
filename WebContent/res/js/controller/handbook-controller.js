@@ -1,4 +1,4 @@
-app.controller('manualCtrl', ['$http', '$scope', function ($http, $scope) {
+app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
     //获取当前时间
     var currentTime = new Date();
 

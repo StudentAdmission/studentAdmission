@@ -17,30 +17,23 @@
     <link rel="stylesheet" href="res/css/common/tipso.min.css"/>
 
     <link rel="stylesheet" href="res/css/index.css">
-    <link rel="stylesheet" href="res/css/sa_introduct.css">
-    <link rel="stylesheet" href="res/css/sa_manual.css">
 
     <!--favicon-->
     <link rel="icon" href="res/img/favicon.ico">
 </head>
 <body>
-<div class="container-fluid sa_container">
-    <div class="container sa_container">
-        <div class="row sa_row">
-            <div class="col-sm-7 sa_col">
-                <img src="res/img/loge.jpg" alt="">
                 <img src="res/img/logo-word.png" alt="">
             </div>
-            <div class="col-sm-5 sa_col">
                 <div class="supreme-login-form">
                     <form class="form-inline">
                         <div class="form-group">
-                            <label class="sr-only" for="login-num">用户名：</label>
-                            <input placeholder="用户名" ng-model="login.num" id="login-num" class="form-control"/>
+                            <label class="sr-only" for="loginNum">用户名：</label>
+                            <input placeholder="用户名" ng-model="login.loginNum" id="loginNum" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="login-pwd">密码：</label>
-                            <input placeholder="密码" ng-model="login.pwd" type="password" id="login-pwd" class="form-control sa_tip" data-tipso="默认密码为000000"/>
+                            <label class="sr-only" for="loginPwd">密码：</label>
+                            <input placeholder="密码" ng-model="login.loginPwd" type="password" id="loginPwd"
+                                   class="form-control sa-tip" data-tipso="默认密码为000000"/>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-info" ng-click="saLogin(login)">登陆</button>
@@ -49,24 +42,38 @@
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
-    <div class="divide black middle"></div>
-    <div class="container sa_container">
-        <div class="row sa_row supreme-head">
-            <ul>
-                <li><a href="/studentAdmission">首页</a></li>
-                <li><a href="introduct">学校简介</a></li>
-                <li><a href="manual">学生手册</a></li>
-                <li><a href="#">常见问题</a></li>
-                <li><a href="#">投诉建议</a></li>
-                <li><a href="#">个人中心</a></li>
-            </ul>
+    <div class="supreme-head-background black">
+        <div class="container sa-container">
+            <div class="row sa-row supreme-head">
+                <ul>
+                    <li><a href="/studentAdmission">首页</a></li>
+                    <li><a href="introduct">学校简介</a></li>
+                    <li><a href="#">新闻公告</a></li>
+                    <li><a href="#">报道流程</a></li>
+                    <li><a href="manual">学生手册</a></li>
+                    <li><a href="#">常见问题</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="row sa_row"></div>
-        <div class="row sa_row">
+    </div>
+    <div class="container-fluid sa-container">
+        <div class="row sa-row">
             <div ng-view=""></div>
+        </div>
+    </div>
+    <div class="container sa-container">
+        <div class="row sa-row footer">
+            <div class="relative-link">
+                <div>相关链接 :</div>
+                <div><a href="javascript:">北京信息科技大学主页</a><span> |</span></div>
+                <div><a href="javascript:">北京信息科技大学教务处</a><span> |</span></div>
+                <div><a href="javascript:">北京信息科技大学学生处</a><span> |</span></div>
+            </div>
+            <div class="copyright">
+                Copyright © 2017 BISTU All Rights Reserved.
+            </div>
         </div>
     </div>
 </div>
@@ -78,6 +85,8 @@
 <script src="res/js/common/toastr.min.js"></script>
 <script src="res/js/common/pdfobject.min.js"></script>
 <script src="res/js/common/tipso.min.js"></script>
+<script src="res/js/common/md5.min.js"></script>
+<script src="res/js/common/jquery.easyfader.min.js"></script>
 <!--高德地图api-->
 <script src="http://webapi.amap.com/maps?v=1.4.0&key=86d7e9b2838a66942d8e3665a5049028"></script>
 
@@ -85,7 +94,6 @@
 <script src="res/js/route.js"></script>
 <script src="res/js/controller/index-controller.js"></script>
 <script src="res/js/controller/introduct-controller.js"></script>
-<script src="res/js/controller/manual-controller.js"></script>
 
 
 </body>
