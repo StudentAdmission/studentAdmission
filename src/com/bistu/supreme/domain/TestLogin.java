@@ -1,6 +1,4 @@
-package com.bistu.supreme.test;
-
-import static org.junit.Assert.*;
+package com.bistu.supreme.domain;
 
 import java.util.List;
 import java.util.Map;
