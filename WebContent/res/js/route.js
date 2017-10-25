@@ -5,16 +5,17 @@ app.config(['$routeProvider', '$locationProvider',
         $routeProvider
         //首页路由
             .when('/', {
+                templateUrl:'sa-main.html',
                 controller: 'indexCtrl'
             })
             //学生手册页面路由
             .when('/manual', {
-                templateUrl: 'sa_manual.html',
-                controller: 'manualCtrl'
+                templateUrl: 'sa-handbook.html',
+                controller: 'handbookCtrl'
             })
             //学校简介页面路由
             .when('/introduct', {
-            templateUrl: 'sa_introduct.html',
+            templateUrl: 'sa-introduct.html',
             controller: 'introductCtrl'
         }).otherwise({
             redirectTo: '/'
