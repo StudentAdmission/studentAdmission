@@ -3,7 +3,6 @@ package com.bistu.supreme.controller;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,15 +26,15 @@ public class LoginController {
 	public Response login(@RequestBody Login login) {
 		Response response = new Response();
 		Login login_new = null;
-		String login_num = login.getLogin_num();
-		String login_pwd = login.getLogin_pwd();
+		String login_num = login.getLoginNum();
+		String login_pwd = login.getLoginPwd();
 		Map<String, Integer> map = loginDao.findLogin(login_num, login_pwd);
 		if(map.get("login_id") == -1)
 			return response.failure("information_incorrect");
 		else {
 			login_new = new Login();
-			login_new.setLogin_id(map.get("login_id"));
-			login_new.setLogin_tag(map.get("login_tag"));
+			login_new.setLoginId(map.get("login_id"));
+			login_new.setLoginTag(map.get("login_tag"));
 			return response.success(login_new);
 		}
 	}
