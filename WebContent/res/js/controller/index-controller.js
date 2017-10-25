@@ -1,3 +1,21 @@
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+};
+
 app.controller('indexCtrl', ['$http', '$scope', '$location', function ($http, $scope, $location) {
     $scope.saLogin = function (login) {
         $scope.login = {
@@ -5,7 +23,7 @@ app.controller('indexCtrl', ['$http', '$scope', '$location', function ($http, $s
             "login_pwd": ""
         };
         login.login_pwd = md5(login.login_pwd);
-        $http.post('login.do', login).then(function (response) {
+        $http.post('', login).then(function (response) {
             var responseData = response.data;
             console.log(responseData);
         }, function (response) {
@@ -27,5 +45,7 @@ app.controller('indexCtrl', ['$http', '$scope', '$location', function ($http, $s
             'top': 0,
             'logo': 'show'
         });
+
+
     });
 }]);
