@@ -11,7 +11,6 @@ html, body {
 
 .supreme-head {
     height: 50px;
-    background-color: #333;
 }
 
 ul {
@@ -47,18 +46,28 @@ ul {
     width: 100%;
 }
 
+.supreme-head-background{
+    height: 50px;
+    width: 1920px;
+}
 
 /****  公共样式  ***/
-.sa_container {
+
+body{
+    background-color: #f5f5fa;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.sa-container {
     padding: 0;
     min-width: 1170px;
 }
 
-.sa_row {
+.sa-row {
     margin: 0;
 }
 
-.sa_col {
+.sa-col {
     padding: 0;
 }
 
