@@ -6,43 +6,42 @@ public class Login {
 	/**
 	 * 用户的登录id
 	 * */
-	private int login_id;
+	private int loginId;
 	/**
 	 * 用户的学号（或工号）
 	 * */
-	private String login_num;
+	private String loginNum;
 	/**
 	 * 用户的密码
 	 * */
-	private String login_pwd;
+	private String loginPwd;
 	/**
 	 * 用户的权限
 	 * */
-	private int login_tag;
+	private int loginTag;
 	
-	public int getLogin_id() {
-		return login_id;
+	public int getLoginId() {
+		return loginId;
 	}
-	public void setLogin_id(int login_id) {
-		this.login_id = login_id;
+	public void setLoginId(int loginId) {
+		this.loginId = loginId;
 	}
-	public String getLogin_num() {
-		return login_num;
+	public String getLoginNum() {
+		return loginNum;
 	}
-	public void setLogin_num(String login_num) {
-		this.login_num = login_num;
+	public void setLoginNum(String loginNum) {
+		this.loginNum = loginNum;
 	}
-	public String getLogin_pwd() {
-		return login_pwd;
+	public String getLoginPwd() {
+		return loginPwd;
 	}
-	public void setLogin_pwd(String login_pwd) {
-		this.login_pwd = login_pwd;
+	public void setLoginPwd(String loginPwd) {
+		this.loginPwd = loginPwd;
 	}
-	public int getLogin_tag() {
-		return login_tag;
+	public int getLoginTag() {
+		return loginTag;
 	}
-	public void setLogin_tag(int login_tag) {
-		this.login_tag = login_tag;
+	public void setLoginTag(int loginTag) {
+		this.loginTag = loginTag;
 	}
-	
 }

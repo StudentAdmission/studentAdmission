@@ -14,14 +14,14 @@ import org.springframework.stereotype.Repository;
 import com.bistu.supreme.dao.ILoginDao;
 import com.bistu.supreme.domain.Login;
 /**
- * µ«¬º≈–∂®Ω”ø⁄µƒ µœ÷¿‡
+ * ÁôªÂΩïÈ™åËØÅÊé•Âè£ÁöÑÂÆûÁé∞Á±ª 
  * */
 @Repository
 public class LoginDaoImpl implements ILoginDao{
 	
 	private JdbcTemplate jdbcTemplate;
 	/**
-	 * Ω´DataSource◊¢»ÎµΩjdbcTemplate÷–
+	 * Â∞ÜDataSourceÊ≥®ÂÖ•Âà∞jdbcTemplate‰∏≠
 	 * */
 	public void setDataSource(DataSource ds) {
 		this.jdbcTemplate = new JdbcTemplate(ds);
@@ -30,13 +30,15 @@ public class LoginDaoImpl implements ILoginDao{
 	@Override
 	public Map<String, Integer> findLogin(String login_num, String login_pwd) {
 		// TODO Auto-generated method stub
-		String qurey_sql = "select * from sa_login where login_pwd=? and login_num=?";
+		String qurey_sql = "select login_tag,login_id from sa_login where login_pwd=? and login_num=?";
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		try {
+			System.out.println("****************************");
 			Login login = (Login)jdbcTemplate.queryForObject(qurey_sql, 
 					new Object[] {login_pwd, login_num}, new LoginMapper());
-			map.put("login_id", login.getLogin_id());
-			map.put("login_tag", login.getLogin_tag());
+			System.out.println(login.getLoginId() + "    " + login.getLoginTag());
+			map.put("login_id", login.getLoginId());
+			map.put("login_tag", login.getLoginTag());
 		}
 		catch(Exception e) {
 			map.put("login_id", -1);
@@ -51,10 +53,8 @@ public class LoginDaoImpl implements ILoginDao{
 		public Login mapRow(ResultSet rs, int row) throws SQLException {
 			// TODO Auto-generated method stub
 			Login login = new Login();
-			login.setLogin_id(rs.getInt("login_id"));
-			login.setLogin_num(rs.getString("login_num"));
-			login.setLogin_pwd(rs.getString("login_pwd"));
-			login.setLogin_tag(rs.getInt("login_tag"));
+			login.setLoginId(rs.getInt("login_id"));
+			login.setLoginTag(rs.getInt("login_tag"));
 			return login;
 		}}
 }
