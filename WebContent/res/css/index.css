@@ -13,6 +13,17 @@ html, body {
     height: 50px;
 }
 
+.logo-small{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: url("../img/logo-small.png") no-repeat 0 0;
+    background-size: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: none;
+}
+
 ul {
     list-style: none;
     height: 100%;
