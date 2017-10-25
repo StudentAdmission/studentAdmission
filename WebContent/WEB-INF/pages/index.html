@@ -33,17 +33,17 @@
             </div>
             <div class="col-sm-5 sa_col">
                 <div class="supreme-login-form">
-                    <form class="form-inline" action="">
+                    <form class="form-inline">
                         <div class="form-group">
-                            <label class="sr-only" for="login-name">用户名：</label>
-                            <input placeholder="用户名" id="login-name" class="form-control"/>
+                            <label class="sr-only" for="login-num">用户名：</label>
+                            <input placeholder="用户名" ng-model="login.num" id="login-num" class="form-control"/>
                         </div>
                         <div class="form-group">
-                            <label class="sr-only" for="login-password">密码：</label>
-                            <input placeholder="密码" type="password" id="login-password" class="form-control sa_tip" data-tipso="默认密码为000000"/>
+                            <label class="sr-only" for="login-pwd">密码：</label>
+                            <input placeholder="密码" ng-model="login.pwd" type="password" id="login-pwd" class="form-control sa_tip" data-tipso="默认密码为000000"/>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-info">登陆</button>
+                            <button class="btn btn-info" ng-click="saLogin(login)">登陆</button>
                             <a href="javascript:">忘记密码？</a>
                         </div>
                     </form>
