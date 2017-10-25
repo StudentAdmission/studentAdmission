@@ -4,22 +4,22 @@
   "data": [
     {
       "hb_grade": 2014,
-      "hb_ename": "2014_manual.pdf",
+      "hb_ename": "2014handbook.pdf",
       "hb_cname":"2014学生手册"
     },
     {
       "hb_grade": 2015,
-      "hb_ename": "2015_manual.pdf",
+      "hb_ename": "2015handbook.pdf",
       "hb_cname":"2015学生手册"
     },
     {
       "hb_grade": 2016,
-      "hb_ename": "2016_manual.pdf",
+      "hb_ename": "2016handbook.pdf",
       "hb_cname":"2016学生手册"
     },
     {
       "hb_grade": 2017,
-      "hb_ename": "2017_manual.pdf",
+      "hb_ename": "2017handbook.pdf",
       "hb_cname":"2017学生手册"
     }
   ]
