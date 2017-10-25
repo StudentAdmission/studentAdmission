@@ -29,4 +29,12 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 	<bean id="loginDao" class="com.bistu.supreme.dao.impl.LoginDaoImpl">
         <property name="dataSource" ref="ds"></property>
     </bean>
+    
+    <bean id="handbookDao" class="com.bistu.supreme.dao.impl.HandbookDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
+    <!-- 发送邮件的相关配置 -->
+    <bean id="mailDao" class="com.bistu.supreme.dao.impl.AliyunMailDaoImpl"></bean>
+
 </beans>
