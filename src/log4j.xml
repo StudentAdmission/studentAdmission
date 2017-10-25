@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %p [%c] - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="total" class="org.apache.log4j.RollingFileAppender">
+		<param name="Threshold" value="ALL" />
+		<!-- levels this appender emits -->
+		<param name="file" value="log/info.log"/>
+		<param name="Append" value="true" />
+		<param name="ImmediateFlush" value="true" />
+		<param name="BufferedIO" value="true" />
+		<param name="BufferSize" value="1024" />
+		<param name="MaxBackupIndex" value="5" />
+		<param name="MaxFileSize" value="4MB" />
+		<param name="Encoding" value="UTF-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-4p] %d{yyyy-MM-dd HH:mm:ss} [%c] %n%m%n" />
+		</layout>
+	</appender>
+
+	<appender name="Async" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="total" />
+	</appender>
+ 
+	<!-- <logger name="com.file" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="total" />
+		<appender-ref ref="stdout" />
+	</logger> -->
+	<root>
+      <priority value ="INFO" />
+      <appender-ref ref="total"/>
+      <appender-ref ref="stdout"/>
+    </root>
+</log4j:configuration>
