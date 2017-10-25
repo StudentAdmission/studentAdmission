@@ -18,6 +18,9 @@ app.controller('indexCtrl', ['$http', '$scope', '$location', function ($http, $s
         //启动轮播图
         $("#carousel").easyFader({
             sliderDur: 5000
+        });
+        $(".sa-tip").tipso({
+            useTitle: false
         })
     });
 }]);
