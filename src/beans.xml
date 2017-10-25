@@ -29,4 +29,7 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 	<bean id="loginDao" class="com.bistu.supreme.dao.impl.LoginDaoImpl">
         <property name="dataSource" ref="ds"></property>
     </bean>
+    	<bean id="rollingGraphDao" class="com.bistu.supreme.dao.impl.RollingGraphDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
 </beans>
