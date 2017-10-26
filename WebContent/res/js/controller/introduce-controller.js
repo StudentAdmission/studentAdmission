@@ -124,6 +124,24 @@ app.controller('introduceCtrl', ['$scope', '$http', 'introduceService', function
             $('.zip-code').html("邮编：" + option.zipCode);
         }
 
+        $http.post('res/data/campusAddressData.json').then(function (response) {
+            //遍历得到的数据
+            $.each(response.data, function (index, item) {
+                //如果键与被点击项的campus值相同，则将值送给setSchoolMap和setAdress方法
+                if (index === "小营") {
+                    setSchoolMap(item);
+                    setAddress(item);
+                    flag = true;
+                }
+            });
+            if (!flag) {
+                toastr.warning($(self).data('campus') + "地图数据初始化有误，请联系管理员。");
+            }
+        }, function () {
+            toastr.error('地图暂无数据');
+        });
+
+
         /**
          * 学校坐标按钮绑定点击事件，点击后当前项设置current类以及btn-info类
          */
@@ -147,7 +165,7 @@ app.controller('introduceCtrl', ['$scope', '$http', 'introduceService', function
                     toastr.warning($(self).data('campus') + "地图数据有误，请联系管理员。");
                 }
             }, function () {
-                toastr.error('暂无数据');
+                toastr.error('地图暂无数据');
             })
         });
 
