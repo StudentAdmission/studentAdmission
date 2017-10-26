@@ -45,7 +45,6 @@ public class RollingGraphDaoImpl implements IRollingGraphDao{
 				}
 				
 			});
-			System.out.println(graph.get(0).getGraph_name());
 			return graph;
 		}
 		catch(Exception e) {
