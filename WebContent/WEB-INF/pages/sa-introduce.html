@@ -5,31 +5,31 @@
             <div class="col-sm-2">
                 <div id="jquery-accordion-menu" class="jquery-accordion-menu blue">
                     <ul id="demo-list">
-                        <li class="active">
+                        <li data-show-page="sa-school-intro">
                             <a href="javascript:">
                                 <i class="fa fa-graduation-cap"></i>
                                 学校简介
                             </a>
                         </li>
-                        <li>
+                        <li data-show-page="sa-school-map">
                             <a href="javascript:">
                                 <i class="fa fa-location-arrow"></i>
-                                学校坐标
+                                学校地图
                             </a>
                         </li>
-                        <li>
+                        <li data-show-page="sa-school-history">
                             <a href="javascript:">
                                 <i class="fa fa-history"></i>
                                 学校历史
                             </a>
                         </li>
-                        <li>
+                        <li data-show-page="sa-school-photos">
                             <a href="javascript:">
                                 <i class="fa fa-picture-o"></i>
                                 学校风采
                             </a>
                         </li>
-                        <li>
+                        <li data-show-page="sa-school-community">
                             <a href="javascript:">
                                 <i class="fa fa-users"></i>
                                 社团介绍
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="col-sm-10">
-                <!--<section class="sa-intro-content">
+                <section id="sa-school-intro" class="sa-intro-content">
                     <div class="sa-title">
                         学校简介
                     </div>
@@ -65,10 +65,10 @@
                         <p>
                             北京信息科技大学以其奋发图强的发展历程，诠释着自己光荣的传统和独特的骄傲。在信息时代和网络社会迅猛发展的今天，学校将秉持“勤以为学、信以立身”的校训，肩负崭新的历史使命，抢抓空前的发展机遇，朝着建设特色鲜明的高水平教学研究型大学大步迈进！</p>
                     </div>
-                </section>-->
-                <section class="sa-intro-content">
+                </section>
+                <section id="sa-school-map" class="sa-intro-content">
                     <div class="sa-title">
-                        学校坐标
+                        学校地图
                     </div>
                     <!--TODO 学校坐标内容部分样式有待调整-->
                     <div class="sa-content">
@@ -95,6 +95,9 @@
                     </div>
                 </section>
                 <!--TODO 学校历史、学校风采、社团介绍页面有待开发-->
+                <section id="sa-school-history" class="sa-intro-content"></section>
+                <section id="sa-school-photos" class="sa-intro-content"></section>
+                <section id="sa-school-community" class="sa-intro-content"></section>
             </div>
         </div>
     </div>
