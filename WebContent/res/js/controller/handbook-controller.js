@@ -6,7 +6,7 @@ app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
     $scope.currentYear = currentTime.getFullYear();
 
     //学生手册路径
-    $scope.hb_path='res/upload/manual/';
+    $scope.hbPath='res/upload/manual/';
 
     //预存后台获取的学生手册信息
     $scope.handbooks = [];
@@ -16,8 +16,8 @@ app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
      * @param {String} item 学生手册文件名（带后缀）
      * */
     $scope.setHandbookName = function (item) {
-        $scope.hb_ename = item.hb_ename;
-        $scope.hb_cname = item.hb_cname;
+        $scope.hbEname = item.hb_ename;
+        $scope.hbCname = item.hb_cname;
     };
 
     /**
@@ -27,7 +27,9 @@ app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
     $scope.setHandbook = function (item) {
         $scope.setHandbookName(item);
         //学生手册路径和文件名整合后，将文件嵌入id为pdf的标签内
-        PDFObject.embed($scope.hb_path + $scope.hb_ename, '#pdf');
+        console.log(item);
+        console.log($scope.hbPath + $scope.hbEname);
+        PDFObject.embed($scope.hbPath + $scope.hbEname, '#pdf');
     };
 
     /**
@@ -60,7 +62,7 @@ app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
 
                 //找到今年的学生手册，设置默认显示的学生手册
                 if (item.hb_grade === $scope.currentYear) {
-                    $scope.hb_ename = item.hb_ename;
+                    $scope.hbEname = item.hb_ename;
                     $scope.setHandbook(item);
                 }
             })
