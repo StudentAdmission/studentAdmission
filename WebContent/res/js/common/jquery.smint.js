@@ -40,5 +40,9 @@ $.fn.smint = function (option) {
         stickyMenu();
     });
 
+    $(window).resize(function () {
+        stickyLeft = $(self).offset().left;
+    })
+
 };
 
