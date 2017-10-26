@@ -16,21 +16,41 @@ toastr.options = {
     "hideMethod": "fadeOut"
 };
 
-app.controller('indexCtrl', ['$http', '$scope', '$location','introduceService', function ($http, $scope, $location,introduceService) {
-    $scope.saLogin = function (login) {
-        $scope.login = {
-            "login_num": "",
-            "login_pwd": ""
-        };
-        login.login_pwd = md5(login.login_pwd);
-        $http.post('', login).then(function (response) {
-            var responseData = response.data;
-            console.log(responseData);
-        }, function (response) {
-            console.log(response);
-        })
+app.controller('indexCtrl', ['$http', '$scope', '$location', 'introduceService', function ($http, $scope, $location, introduceService) {
+    $scope.login = {
+        loginNum: "",
+        loginPwd: ""
     };
-    $scope.setIntroducePage=function (current) {
+    $scope.saLogin = function () {
+        if ($scope.login.loginNum === "") {
+            toastr.error('请输入用户名');
+            $scope.login.loginPwd = "";
+        } else if ($scope.login.loginPwd === "") {
+            toastr.error('请输入密码');
+            $scope.login.loginPwd = "";
+        } else {
+            $scope.login.loginPwd = md5($scope.login.loginPwd);
+            toastr.info($scope.login.loginPwd);
+            console.log($scope.login);
+            $http.post('login.do', $scope.login).then(function (response) {
+                $scope.login.loginPwd = "";
+                var responseData = response.data;
+                if (responseData.status === 0) {
+                    toastr.error('该用户不存在，请联系管理员');
+                } else if (responseData.status === 1) {
+                    toastr.success('登录成功');
+                    $('#loginForm').hide();
+                    $('#personalCenter').show();
+                }
+            }, function (response) {
+                $scope.login.loginPwd = "";
+                toastr.error('登录验证失败，请联系管理员');
+                console.log(response);
+            })
+        }
+
+    };
+    $scope.setIntroducePage = function (current) {
         introduceService.setCurrentPage(current);
     };
 
