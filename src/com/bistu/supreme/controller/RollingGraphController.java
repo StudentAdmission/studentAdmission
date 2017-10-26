@@ -25,10 +25,9 @@ public class RollingGraphController {
 	@RequestMapping(value="/rollingGraph",method=RequestMethod.POST,
 			produces= {"application/json;charset=UTF-8"})
 	@ResponseBody
-	public Response rollingGraph(@RequestBody RollingGraph rollingGraph){
+	public Response rollingGraph(){
 		Response response=new Response();
 		RollingGraph graph_new=null;
-		
 		List<RollingGraph> list=RollingGraphDao.findAll();
 		if(list==null )
 			return response.failure("information_incorrect");
