@@ -26,10 +26,10 @@ public class IndexController {
 		mv.setViewName("sa-handbook");
 		return mv;
 	}
-	@RequestMapping(value="/sa-introduct")
+	@RequestMapping(value="/sa-introduce")
 	public ModelAndView introduct(){
 		ModelAndView mv=new ModelAndView();
-		mv.setViewName("sa-introduct");
+		mv.setViewName("sa-introduce");
 		return mv;
 	}
 
