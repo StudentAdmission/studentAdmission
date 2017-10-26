@@ -1,4 +1,4 @@
-app.controller('introductCtrl', ['$scope', '$http', function ($scope, $http) {
+app.controller('introduceCtrl', ['$scope', '$http', 'introduceService', function ($scope, $http, introduceService) {
 
 
     $(function () {
@@ -12,10 +12,38 @@ app.controller('introductCtrl', ['$scope', '$http', function ($scope, $http) {
         //左侧导航点击事件
         $('#jquery-accordion-menu').jqueryAccordionMenu();
 
+        //根据id显示页面
+        function showPage(id) {
+            $('#' + id).fadeIn();
+        }
+
+        //根据id隐藏页面
+        function hidePage(id) {
+            $('#' + id).fadeOut();
+        }
+
+        function setDefaultPage(id) {
+
+            //根据introduceService中currentPage的值，设置对应的active类
+            $("#demo-list li[data-show-page=" + id + "]").addClass('active');
+
+            //设置默认显示页面
+            showPage(id);
+        }
+
+        //从introduceService中获取currentPage的值，并传入setDefaultPage方法中
+        setDefaultPage(introduceService.getCurrentPage());
+
         //左侧导航项点击后添加active类
         $("#demo-list li").click(function () {
-            $("#demo-list li.active").removeClass("active");
-            $(this).addClass("active");
+
+            //添加判断方法，当前点击项是当前显示项时，跳过该方法
+            if ($("#demo-list li.active").data('show-page') !== $(this).data('show-page')) {
+                hidePage($("#demo-list li.active").data('show-page'));
+                $("#demo-list li.active").removeClass("active");
+                $(this).addClass("active");
+                showPage($(this).data('show-page'));
+            }
         });
 
         /**
@@ -116,7 +144,7 @@ app.controller('introductCtrl', ['$scope', '$http', function ($scope, $http) {
                     }
                 });
                 if (!flag) {
-                    toastr.warning($(self).data('campus')+"地图数据有误，请联系管理员。");
+                    toastr.warning($(self).data('campus') + "地图数据有误，请联系管理员。");
                 }
             }, function () {
                 toastr.error('暂无数据');
