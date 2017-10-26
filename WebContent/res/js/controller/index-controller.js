@@ -16,7 +16,7 @@ toastr.options = {
     "hideMethod": "fadeOut"
 };
 
-app.controller('indexCtrl', ['$http', '$scope', '$location', function ($http, $scope, $location) {
+app.controller('indexCtrl', ['$http', '$scope', '$location','introduceService', function ($http, $scope, $location,introduceService) {
     $scope.saLogin = function (login) {
         $scope.login = {
             "login_num": "",
@@ -29,6 +29,9 @@ app.controller('indexCtrl', ['$http', '$scope', '$location', function ($http, $s
         }, function (response) {
             console.log(response);
         })
+    };
+    $scope.setIntroducePage=function (current) {
+        introduceService.setCurrentPage(current);
     };
 
     $(function () {
