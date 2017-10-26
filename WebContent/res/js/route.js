@@ -14,9 +14,9 @@ app.config(['$routeProvider', '$locationProvider',
                 controller: 'handbookCtrl'
             })
             //学校简介页面路由
-            .when('/introduct', {
-            templateUrl: 'sa-introduct.html',
-            controller: 'introductCtrl'
+            .when('/introduce', {
+            templateUrl: 'sa-introduce.html',
+            controller: 'introduceCtrl'
         }).otherwise({
             redirectTo: '/'
         });
