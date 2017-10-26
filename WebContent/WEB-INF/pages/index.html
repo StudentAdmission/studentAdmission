@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="res/css/index.css">
     <link rel="stylesheet" href="res/css/sa-main.css">
-    <link rel="stylesheet" href="res/css/sa-introduct.css">
+    <link rel="stylesheet" href="res/css/sa-introduce.css">
     <link rel="stylesheet" href="res/css/sa-handbook.css">
 
     <!--favicon-->
@@ -59,7 +59,7 @@
                 <div class="logo-small"></div>
                 <ul>
                     <li><a href="/studentAdmission">首页</a></li>
-                    <li><a href="introduct">学校简介</a></li>
+                    <li><a href="introduce" ng-click="setIntroducePage('sa-school-intro')">了解BISTU</a></li>
                     <li><a href="#">新闻公告</a></li>
                     <li><a href="#">报道流程</a></li>
                     <li><a href="manual">学生手册</a></li>
@@ -84,6 +84,7 @@
             <div class="copyright">
                 Copyright © 2017 BISTU All Rights Reserved.
             </div>
+            <!--<a href="introduce" ng-click="setIntroducePage('sa-school-map');">click</a>-->
         </div>
     </div>
 </div>
@@ -104,8 +105,13 @@
 
 <script src="res/js/app.js"></script>
 <script src="res/js/route.js"></script>
+
+<!--Service-->
+<script src="res/js/service/introduce-service.js"></script>
+
+<!--Controller-->
 <script src="res/js/controller/index-controller.js"></script>
-<script src="res/js/controller/introduct-controller.js"></script>
+<script src="res/js/controller/introduce-controller.js"></script>
 <script src="res/js/controller/handbook-controller.js"></script>
 
 
