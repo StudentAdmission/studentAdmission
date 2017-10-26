@@ -18,7 +18,7 @@ $.fn.smint = function (option) {
                 'left': stickyLeft,
                 'top': 0,
                 'width': stickyWidth,
-                'zIndex': 10,
+                'zIndex': 9999,
                 'marginTop': option.marginTop
             });
             if (option.logo === 'show') {
