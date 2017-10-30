@@ -59,7 +59,6 @@ ul {
 
 .supreme-head-background{
     height: 50px;
-    width: 1920px;
 }
 
 .relative-link{
@@ -87,6 +86,7 @@ a{
 .sa-container {
     padding: 0;
     min-width: 1170px;
+    max-width: 1920px;
 }
 
 .sa-row {
