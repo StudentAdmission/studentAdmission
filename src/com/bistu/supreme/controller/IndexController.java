@@ -38,5 +38,11 @@ public class IndexController {
 		mv.setViewName("sa-news");
 		return mv;
 	}
+	@RequestMapping(value="/sa-question")
+	public ModelAndView question(){
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("sa-question");
+		return mv;
+	}
 
 }
