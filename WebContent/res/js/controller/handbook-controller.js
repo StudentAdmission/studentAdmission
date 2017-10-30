@@ -27,8 +27,6 @@ app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
     $scope.setHandbook = function (item) {
         $scope.setHandbookName(item);
         //学生手册路径和文件名整合后，将文件嵌入id为pdf的标签内
-        console.log(item);
-        console.log($scope.hbPath + $scope.hbEname);
         PDFObject.embed($scope.hbPath + $scope.hbEname, '#pdf');
     };
 
@@ -48,7 +46,6 @@ app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
      * TODO 后台接口未开发，暂时手写json文件来模拟后台传参
      */
     $http.get('res/data/manualData.json').then(function (response) {
-        console.log(response.data);
 
         //获取数据正常
         //TODO 暂时指定获取正常状态码为200，待协商
@@ -67,7 +64,6 @@ app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
                 }
             })
         }
-        console.log($scope.handbooks);
     });
 
     /**
