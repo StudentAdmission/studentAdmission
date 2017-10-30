@@ -16,7 +16,8 @@ toastr.options = {
     "hideMethod": "fadeOut"
 };
 
-app.controller('indexCtrl', ['$http', '$scope', '$location', 'introduceService', function ($http, $scope, $location, introduceService) {
+app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceService', function ($http, $scope, loginService, introduceService) {
+
     $scope.login = {
         loginNum: "",
         loginPwd: ""
@@ -30,8 +31,6 @@ app.controller('indexCtrl', ['$http', '$scope', '$location', 'introduceService',
             $scope.login.loginPwd = "";
         } else {
             $scope.login.loginPwd = md5($scope.login.loginPwd);
-            toastr.info($scope.login.loginPwd);
-            console.log($scope.login);
             $http.post('login.do', $scope.login).then(function (response) {
                 $scope.login.loginPwd = "";
                 var responseData = response.data;
@@ -39,8 +38,8 @@ app.controller('indexCtrl', ['$http', '$scope', '$location', 'introduceService',
                     toastr.error('该用户不存在，请联系管理员');
                 } else if (responseData.status === 1) {
                     toastr.success('登录成功');
-                    $('#loginForm').hide();
-                    $('#personalCenter').show();
+                    localStorage.login = 'login';
+                    loginService.setLoginSession(localStorage.login);
                 }
             }, function (response) {
                 $scope.login.loginPwd = "";
@@ -52,6 +51,14 @@ app.controller('indexCtrl', ['$http', '$scope', '$location', 'introduceService',
     };
     $scope.setIntroducePage = function (current) {
         introduceService.setCurrentPage(current);
+    };
+    $scope.getLoginSession = function () {
+        return loginService.getLoginSession();
+    };
+    $scope.logout = function () {
+        loginService.logout();
+        $scope.login.loginNum = '';
+        toastr.info("注销成功");
     };
 
     $(function () {
@@ -66,9 +73,13 @@ app.controller('indexCtrl', ['$http', '$scope', '$location', 'introduceService',
         $('.supreme-head-background').smint({
             'marginTop': 0,
             'top': 0,
-            'logo': 'show'
+            'logo': 'show',
+            'width': '100%'
         });
-
-
+        $('#personalCenter').hover(function () {
+            $(this).find('.personalCenter').removeClass('slideOutUp').addClass('rubberBand');
+        }, function () {
+            $(this).find('.personalCenter').removeClass('rubberBand').addClass('slideOutUp');
+        });
     });
 }]);
