@@ -6,7 +6,8 @@ app.controller('introduceCtrl', ['$scope', '$http', 'introduceService', function
         //左侧导航添加固定方法
         $('#intro-submenu').smint({
             'marginTop': 50,
-            'top': 100
+            'top': 50,
+            'width': $('#intro-submenu').width()
         });
 
         //左侧导航点击事件
