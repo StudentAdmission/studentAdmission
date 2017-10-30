@@ -62,3 +62,31 @@
     background: url("../img/history/W020150929666961409433.jpg") no-repeat 0 0;
     background-size: cover;
 }
+
+.sa-view {
+    display: inline-block;
+    margin: 10px 10px;
+}
+
+.view-group .sa-view:first-child {
+    margin-left: 0;
+}
+
+.view-group .sa-view:last-child {
+    margin-right: 0;
+}
+.sa-conmmunity-item{
+    float: left;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed;
+}
+.sa-conmmunity-item .item-title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.sa-conmmunity-item .item-content {
+    text-indent: 2em;
+}
