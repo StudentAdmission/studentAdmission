@@ -23,8 +23,13 @@ app.config(['$routeProvider', '$locationProvider',
                 templateUrl: 'sa-news.html',
                 controller: 'newsCtrl'
             })
+            //常见问题页面路由
+            .when('/question', {
+                templateUrl: 'sa-question.html',
+                controller: 'questionCtrl'
+            })
             //其他页面路由
             .otherwise({
-            redirectTo: '/'
-        });
+                redirectTo: '/'
+            });
     }]);
