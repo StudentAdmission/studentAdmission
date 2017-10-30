@@ -1,6 +1,10 @@
 @charset "UTF-8";
 /**    index页面以及公共样式   **/
-html,body,div,p,a {
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body, div, p, a {
     margin: 0;
     padding: 0;
 }
@@ -13,7 +17,7 @@ html, body {
     height: 50px;
 }
 
-.logo-small{
+.logo-small {
     width: 30px;
     height: 30px;
     position: absolute;
@@ -57,29 +61,78 @@ ul {
     width: 100%;
 }
 
-.supreme-head-background{
-    height: 50px;
+#personalCenter {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background: green;
+    display: none;
+    margin-top: 5px;
+    float: right;
+    cursor: pointer;
 }
 
-.relative-link{
+.personalCenter {
+    width: 80px;
+    background-color: #fff;
+    top: 90px;
+    right: 0;
+    position: absolute;
+    border: 1px solid;
+    z-index: 10;
+}
+
+.personalCenter div {
+    cursor: pointer;
+    text-align: center;
+    margin: 3px 0;
+    padding: 3px 0;
+    user-select: none;
+}
+
+.personalCenter div:first-child {
+    margin-top: 0;
+}
+
+.personalCenter div:last-child {
+    margin-bottom: 0;
+}
+
+.personalCenter div:hover {
+    background-color: #3e82da;
+    color: white;
+}
+
+.sa-show {
+    display: block !important;
+}
+
+.supreme-head-background {
+    height: 50px;
+    width: 100%;
+}
+
+.relative-link {
     user-select: none;
     text-align: center;
 }
-.relative-link div{
+
+.relative-link div {
     display: inline-block;
 }
-.copyright{
+
+.copyright {
     text-align: center;
 }
 
 /****  公共样式  ***/
 
-body{
+body {
     background-color: #f5f5fa;
     font-family: 'Open Sans', sans-serif;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
