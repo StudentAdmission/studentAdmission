@@ -4,13 +4,13 @@ app.controller('introduceCtrl', ['$scope', '$http', 'introduceService', function
     $(function () {
 
         //左侧导航添加固定方法
-        $('#jquery-accordion-menu').smint({
+        $('#intro-submenu').smint({
             'marginTop': 50,
-            'top': 50
+            'top': 100
         });
 
         //左侧导航点击事件
-        $('#jquery-accordion-menu').jqueryAccordionMenu();
+        $('#intro-submenu').jqueryAccordionMenu();
 
         //根据id显示页面
         function showPage(id) {
