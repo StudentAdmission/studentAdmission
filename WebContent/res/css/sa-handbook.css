@@ -1,3 +1,14 @@
+.sa-handbook-background {
+    height: 400px;
+    background: url("../img/background/6.jpg") no-repeat 0 0;
+}
+
+.sa-handbook-main {
+    position: relative;
+    top: -150px;
+    margin-bottom: -100px;
+}
+
 .select {
     position: relative;
     display: block;
@@ -93,4 +104,12 @@
 
 .manualInfo {
     margin-top: 2.4rem;
+    color: #fff;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+#pdf{
+    width: 100%;
+    height: 1150px;
 }

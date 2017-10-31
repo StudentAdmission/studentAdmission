@@ -67,7 +67,7 @@ public class AliyunMailDaoImpl implements IMailDao{
         InternetAddress to = new InternetAddress(toAddress);
         message.setRecipient(MimeMessage.RecipientType.TO, to);
         // 设置邮件标题
-        message.setSubject("密码找回");
+        message.setSubject("BISTU-学生管理系统-密码找回");
         // 设置邮件的内容体
         message.setContent("您的验证码为：" + vCode, "text/html;charset=UTF-8");
         // 发送邮件

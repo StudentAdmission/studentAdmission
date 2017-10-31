@@ -1,6 +1,10 @@
 @charset "UTF-8";
 /**    index页面以及公共样式   **/
-* {
+::-webkit-scrollbar {
+    display: none;
+}
+
+html, body, div, p, a {
     margin: 0;
     padding: 0;
 }
@@ -11,7 +15,17 @@ html, body {
 
 .supreme-head {
     height: 50px;
-    background-color: #333;
+}
+
+.logo-small {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background: url("../img/logo-small.png") no-repeat 0 0;
+    background-size: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+    display: none;
 }
 
 ul {
@@ -47,18 +61,92 @@ ul {
     width: 100%;
 }
 
-
-/****  公共样式  ***/
-.sa_container {
-    padding: 0;
-    min-width: 1170px;
+#personalCenter {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background: green;
+    display: none;
+    margin-top: 5px;
+    float: right;
+    cursor: pointer;
 }
 
-.sa_row {
+.personalCenter {
+    width: 80px;
+    background-color: #fff;
+    top: 90px;
+    right: 0;
+    position: absolute;
+    border: 1px solid;
+    z-index: 10;
+}
+
+.personalCenter div {
+    cursor: pointer;
+    text-align: center;
+    margin: 3px 0;
+    padding: 3px 0;
+    user-select: none;
+}
+
+.personalCenter div:first-child {
+    margin-top: 0;
+}
+
+.personalCenter div:last-child {
+    margin-bottom: 0;
+}
+
+.personalCenter div:hover {
+    background-color: #3e82da;
+    color: white;
+}
+
+.sa-show {
+    display: block !important;
+}
+
+.supreme-head-background {
+    height: 50px;
+    width: 100%;
+}
+
+.relative-link {
+    user-select: none;
+    text-align: center;
+}
+
+.relative-link div {
+    display: inline-block;
+}
+
+.copyright {
+    text-align: center;
+}
+
+/****  公共样式  ***/
+
+body {
+    background-color: #f5f5fa;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.sa-container {
+    padding: 0;
+    min-width: 1170px;
+    max-width: 1920px;
+}
+
+.sa-row {
     margin: 0;
 }
 
-.sa_col {
+.sa-col {
     padding: 0;
 }
 

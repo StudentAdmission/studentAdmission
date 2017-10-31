@@ -5,18 +5,31 @@ app.config(['$routeProvider', '$locationProvider',
         $routeProvider
         //首页路由
             .when('/', {
+                templateUrl: 'sa-main.html',
                 controller: 'indexCtrl'
             })
             //学生手册页面路由
             .when('/manual', {
-                templateUrl: 'sa_manual.html',
-                controller: 'manualCtrl'
+                templateUrl: 'sa-handbook.html',
+                controller: 'handbookCtrl'
             })
             //学校简介页面路由
-            .when('/introduct', {
-            templateUrl: 'sa_introduct.html',
-            controller: 'introductCtrl'
-        }).otherwise({
-            redirectTo: '/'
-        });
+            .when('/introduce', {
+                templateUrl: 'sa-introduce.html',
+                controller: 'introduceCtrl'
+            })
+            //新闻公告页面路由
+            .when('/news', {
+                templateUrl: 'sa-news.html',
+                controller: 'newsCtrl'
+            })
+            //常见问题页面路由
+            .when('/question', {
+                templateUrl: 'sa-question.html',
+                controller: 'questionCtrl'
+            })
+            //其他页面路由
+            .otherwise({
+                redirectTo: '/'
+            });
     }]);
