@@ -32,7 +32,6 @@ public class TestHomepageNews {
 				System.out.println("id:" + homepageNews.getHomepageNewsId() + "   title:" + homepageNews.getHomepageNewTitle() + "   time:" + homepageNews.getHomepageNewsTime() + "   link:" + homepageNews.getHomepageNewsLink());
 			}
 		}
-		fail("Not yet implemented");
 	}
 
 }
