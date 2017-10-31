@@ -19,6 +19,10 @@ public class Login {
 	 * 用户的权限
 	 * */
 	private int loginTag;
+	/**
+	 * 登录20分钟后的时间
+	 * */
+	private String loginTime;
 	
 	public int getLoginId() {
 		return loginId;
@@ -43,5 +47,11 @@ public class Login {
 	}
 	public void setLoginTag(int loginTag) {
 		this.loginTag = loginTag;
+	}
+	public String getLoginTime() {
+		return loginTime;
+	}
+	public void setLoginTime(String loginTime) {
+		this.loginTime = loginTime;
 	}
 }

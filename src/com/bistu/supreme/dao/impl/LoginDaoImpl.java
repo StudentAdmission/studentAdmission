@@ -1,5 +1,6 @@
 package com.bistu.supreme.dao.impl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -7,7 +8,9 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -53,8 +56,48 @@ public class LoginDaoImpl implements ILoginDao{
 		public Login mapRow(ResultSet rs, int row) throws SQLException {
 			// TODO Auto-generated method stub
 			Login login = new Login();
+//			login.setLoginNum(rs.getString("login_num"));
+//			login.setLoginPwd(rs.getString("login_pwd"));
 			login.setLoginId(rs.getInt("login_id"));
 			login.setLoginTag(rs.getInt("login_tag"));
 			return login;
 		}}
+
+	@Override
+	public String getLoginTime(String num) {
+		// TODO Auto-generated method stub
+		String query_sql = "select login_time from sa_login where login_num=?";
+		String loginTime = "";
+		try {
+			loginTime = (String)jdbcTemplate.queryForObject(query_sql, new Object[] {num},
+					java.lang.String.class);
+		}
+		catch(Exception e) {
+			return "-1";
+		}
+		System.out.println(loginTime);
+		return loginTime;
+	}
+
+	@Override
+	public boolean updateLoginTime(String num, String time) {
+		// TODO Auto-generated method stub
+		String update_sql = "update sa_login set login_time=? where login_num=?";
+		try {
+			jdbcTemplate.update(update_sql, 
+					new PreparedStatementSetter() {
+
+				@Override
+				public void setValues(PreparedStatement ps) throws SQLException {
+					// TODO Auto-generated method stub
+					ps.setString(1, time);
+					ps.setString(2, num);
+				}
+	        });
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
 }

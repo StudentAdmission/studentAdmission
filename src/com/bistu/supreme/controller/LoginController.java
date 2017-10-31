@@ -1,5 +1,6 @@
 package com.bistu.supreme.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,38 @@ public class LoginController {
 			login_new.setLoginId(map.get("login_id"));
 			login_new.setLoginTag(map.get("login_tag"));
 			return response.success(login_new);
+		}
+	}
+	
+	@RequestMapping(value="/login/gettime",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response getTime(@RequestBody Login login) {
+		Response response = new Response();
+		Map<String, String> map = new HashMap<String, String>();
+		String num = login.getLoginNum();
+		String time = loginDao.getLoginTime(num);
+		if(time.equals("-1")){
+			return response.failure("db_connect_exception");	
+		}
+		else {
+			map.put("loginTime", time);
+			return response.success(map);
+		}
+	}
+	
+	@RequestMapping(value="/login/time",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response updateTime(@RequestBody Login login) {
+		Response response = new Response();
+		String num = login.getLoginNum();
+		String time = login.getLoginTime();
+		if(!loginDao.updateLoginTime(num, time)){
+			return response.failure("db_connect_exception");	
+		}
+		else {
+			return response.success();
 		}
 	}
 }
