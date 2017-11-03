@@ -46,7 +46,7 @@ public class CommonProblemDaoImpl implements ICommonProblemDao{
 			CommonProblem g=new CommonProblem();
 			g.setCPid(rs.getInt("cp_id"));
 			g.setCPquestion(rs.getString("cp_question"));
-			g.setCPanswer(rs.getString("cp_anwser"));
+			g.setCPanswer(rs.getString("cp_answer"));
 			g.setCPWebLinks(rs.getString("cp_web_links"));
 			System.out.println(g.getCPanswer());
 			return g;
