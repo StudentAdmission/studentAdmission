@@ -16,6 +16,16 @@ toastr.options = {
     "hideMethod": "fadeOut"
 };
 
+/**
+ * 设置延迟时间
+ * @param delay 分钟为单位
+ * @returns {number} 当前时间减去delay时间的毫秒数
+ */
+function setTime(delay) {
+    var date = new Date();
+    return date.getTime() + delay * 60000;
+}
+
 app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceService', function ($http, $scope, loginService, introduceService) {
 
     $scope.login = {
@@ -37,17 +47,24 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
                 if (responseData.status === 0) {
                     toastr.error('该用户不存在，请联系管理员');
                 } else if (responseData.status === 1) {
-                    toastr.success('登录成功');
-                    localStorage.login = 'login';
-                    loginService.setLoginSession(localStorage.login);
+                    var validateTime = setTime(20);
+                    $http.post('login/time.do', {
+                        loginNum: $scope.login.loginNum,
+                        loginTime: validateTime
+                    }).then(function (response) {
+                        if (response.data.status === 1) {
+                            loginService.setLoginSession($scope.login.loginNum);
+                            toastr.success('登录成功');
+                        }
+                    }, function () {
+                        toastr.error('设置登录时间失败，请联系管理员');
+                    });
                 }
-            }, function (response) {
+            }, function () {
                 $scope.login.loginPwd = "";
                 toastr.error('登录验证失败，请联系管理员');
-                console.log(response);
             })
         }
-
     };
     $scope.setIntroducePage = function (current) {
         introduceService.setCurrentPage(current);
@@ -63,6 +80,20 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
 
     $(function () {
 
+        if (localStorage.login !== '') {
+            $http.post('login/gettime.do', {loginNum: localStorage.login}).then(function (response) {
+                var currentTime = setTime(0);
+                if (currentTime >= response.data.data.loginTime) {
+                    loginService.logout();
+                }
+            });
+        }
+
+        function goTop() {
+            $("html,body").animate({scrollTop: 0}, 500);
+        }
+
+        $('a').click(goTop);
         //启动轮播图
         $("#carousel").easyFader({
             sliderDur: 3000
@@ -75,11 +106,6 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
             'top': 0,
             'logo': 'show',
             'width': '100%'
-        });
-        $('#personalCenter').hover(function () {
-            $(this).find('.personalCenter').removeClass('slideOutUp').addClass('rubberBand');
-        }, function () {
-            $(this).find('.personalCenter').removeClass('rubberBand').addClass('slideOutUp');
         });
     });
 }]);
