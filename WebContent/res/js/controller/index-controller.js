@@ -70,7 +70,7 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
         introduceService.setCurrentPage(current);
     };
     $scope.getLoginSession = function () {
-        return loginService.getLoginSession();
+        return loginService.getLoginSession() ? loginService.getLoginSession : '';
     };
     $scope.logout = function () {
         loginService.logout();
@@ -79,8 +79,7 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
     };
 
     $(function () {
-
-        if (localStorage.login !== '') {
+        if (localStorage.login) {
             $http.post('login/gettime.do', {loginNum: localStorage.login}).then(function (response) {
                 var currentTime = setTime(0);
                 if (currentTime >= response.data.data.loginTime) {
@@ -106,6 +105,11 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
             'top': 0,
             'logo': 'show',
             'width': '100%'
+        });
+        $('#forgotten').showDetail({
+            opacity: 1,
+            showSpeed: 1500,
+            hideSpeed: 1500
         });
     });
 }]);
