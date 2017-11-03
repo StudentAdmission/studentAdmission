@@ -49,7 +49,37 @@
                         </div>
                         <div class="form-group">
                             <button class="btn btn-info" ng-click="saLogin()">登陆</button>
-                            <a href="javascript:">忘记密码？</a>
+                            <div class="btn-link" id="forgotten">忘记密码？
+                                <div class="forgotten-dialogue vin-detail">
+                                    <div class="content">
+                                        <div class="row sa-row">
+                                            <input placeholder="请输入学号/工号" class="input-area form-control" title=""
+                                                   ng-model="forgotten.num"/>
+                                        </div>
+                                        <div class="row sa-row">
+                                            <input placeholder="请输入密保邮箱" class="input-area form-control" title=""
+                                                   ng-model="forgotten.email"/>
+                                        </div>
+                                        <div class="row sa-row">
+                                            <input placeholder="请输入验证码" class="input-area form-control validate"
+                                                   title="" ng-model="forgotten.validate"/>
+                                            <a href="javascript:" style="font-size: 1rem">点击获取验证码</a>
+                                        </div>
+                                        <div class="row sa-row">
+                                            <input placeholder="请输入新密码" class="input-area form-control" title=""
+                                                   ng-model="forgotten.pwd"/>
+                                        </div>
+                                        <div class="row sa-row">
+                                            <input placeholder="请再次输入新密码" class="input-area form-control" title=""
+                                                   ng-model="forgotten.newPwd"/>
+                                        </div>
+                                        <div class="row sa-row">
+                                            <div class="btn btn-primary" ng-click="forgetPwd()">提交</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </form>
                 </div>
@@ -120,6 +150,7 @@
 
 <script src="res/js/app.js"></script>
 <script src="res/js/route.js"></script>
+<script src="res/js/vin-showdetail.js"></script>
 
 <!--Service-->
 <script src="res/js/service/introduce-service.js"></script>
