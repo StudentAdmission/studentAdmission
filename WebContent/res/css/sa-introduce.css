@@ -15,6 +15,7 @@
     margin-bottom: -100px;
     padding: 50px;
     display: none;
+    float: left;
 }
 
 .sa-intro-content .sa-title {
