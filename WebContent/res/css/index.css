@@ -125,6 +125,43 @@ ul {
     text-align: center;
 }
 
+#forgotten {
+    display: inline-block;
+    text-align: center;
+}
+
+#forgotten:hover {
+    text-decoration: none;
+}
+
+.vin-detail{
+    position: absolute;
+    display: none;
+}
+
+.forgotten-dialogue {
+    display: none;
+    width: 15vw;
+    background-color: #fff;
+}
+
+.forgotten-dialogue .content {
+    font-size: 1.8rem;
+    padding: 5px 30px;
+}
+
+.forgotten-dialogue .content > div {
+    margin: 10px auto;
+}
+
+.validate{
+    width: 60%!important;
+}
+
+.forgotten-dialogue .content > div:last-child {
+    text-align: center;
+}
+
 /****  公共样式  ***/
 
 body {
@@ -133,6 +170,10 @@ body {
 }
 
 a {
+    text-decoration: none;
+}
+
+a:hover {
     text-decoration: none;
 }
 
