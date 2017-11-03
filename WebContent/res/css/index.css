@@ -67,7 +67,7 @@ ul {
     border-radius: 100%;
     background: green;
     display: none;
-    margin-top: 5px;
+    margin-top: 10px;
     float: right;
     cursor: pointer;
 }
