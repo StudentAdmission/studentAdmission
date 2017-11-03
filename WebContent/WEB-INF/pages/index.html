@@ -53,12 +53,13 @@
                         </div>
                     </form>
                 </div>
-                <div ng-class="getLoginSession()?'sa-show':'';" id="personalCenter">
-                    <div class=" personalCenter">
+                <div ng-init="centerHover=false" ng-mouseover="centerHover=true" ng-mouseleave="centerHover=false">
+                    <div ng-class="getLoginSession()?'sa-show':'';" id="personalCenter"></div>
+                    <div ng-class="centerHover?'sa-show':'';" class="personalCenter" style="display: none;">
                         <div>个人中心</div>
                         <div>常见问题</div>
                         <div>帐号设置</div>
-                        <div ng-click="logout()">退出登录</div>
+                        <div ng-click="logout();centerHover=false;">退出登录</div>
                     </div>
                 </div>
             </div>
