@@ -30,7 +30,13 @@ public class HomepageReportingProcessDaoImpl implements IHomepageReportingProces
 		// TODO Auto-generated method stub
 		String querySql = "select * from sa_homepage_reporting_process";
 		List<HomepageReportingProcess> homepageReportingProcessList = new ArrayList<HomepageReportingProcess>();
-		homepageReportingProcessList = (List<HomepageReportingProcess>)jdbcTemplate.query(querySql, new HomepageReportingProcessMapper());
+		try{
+			homepageReportingProcessList = (List<HomepageReportingProcess>)jdbcTemplate.query(querySql, new HomepageReportingProcessMapper());
+		}catch(Exception e){
+			HomepageReportingProcess homepageReportingProcess = new HomepageReportingProcess();
+			homepageReportingProcess.setProcessId(-1);
+			homepageReportingProcessList.add(homepageReportingProcess);
+		}
 		return homepageReportingProcessList;
 	}
 	

@@ -27,7 +27,13 @@ public class HomepageNewsDaoImpl implements IHomepageNewsDao {
 		// TODO Auto-generated method stub
 		String querySql = "select * from sa_homepage_news";
 		List<HomepageNews> homepageNewsList = new ArrayList<HomepageNews>();
-		homepageNewsList = (List<HomepageNews>)jdbcTemplate.query(querySql, new HomepageNewsMapper());
+		try{
+			homepageNewsList = (List<HomepageNews>)jdbcTemplate.query(querySql, new HomepageNewsMapper());
+		}catch(Exception e){
+			HomepageNews homepage = new HomepageNews();
+			homepage.setHomepageNewsId(-1);
+			homepageNewsList.add(homepage);
+		}
 		return homepageNewsList;
 	}
 	

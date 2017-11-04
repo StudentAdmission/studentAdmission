@@ -2,10 +2,18 @@ package com.bistu.supreme.domain;
 
 import java.sql.Date;
 
+/**
+ * @author LIZHIWEI
+ *首页报到流程的基本类
+ */
 public class HomepageReportingProcess {
+	/*首页报到流程的ID*/
 	private int processId;
+	/*首页报到流程的标题*/
 	private String processItem;
+	/*首页报到流程的时间*/
 	private Date processTime;
+	/*首页报到流程的链接*/
 	private String processLink;
 	public int getProcessId() {
 		return processId;

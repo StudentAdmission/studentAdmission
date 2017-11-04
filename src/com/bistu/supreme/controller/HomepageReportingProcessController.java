@@ -26,10 +26,10 @@ public class HomepageReportingProcessController {
 	public Response getHomepageReportingProcessInfo(){
 		Response response = new Response();
 		List<HomepageReportingProcess> homepageReportingProcessList = homepageReportingProcessDao.getAll();
-		if(homepageReportingProcessList!=null){
+		if(homepageReportingProcessList!=null&&homepageReportingProcessList.get(0).getProcessId()!=-1){
 			return response.success(homepageReportingProcessList);
 		}
 		else
-			return response.failure("no_such_info");
+			return response.failure("SQL connect fail");
 	}
 }

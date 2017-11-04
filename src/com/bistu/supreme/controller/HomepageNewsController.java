@@ -26,11 +26,11 @@ public class HomepageNewsController {
 		Response response = new Response();
 		List<HomepageNews> homepageNewsList = homepageNewsDao.getAll();
 		
-		if(homepageNewsList!=null){
+		if(homepageNewsList!=null&&homepageNewsList.get(0).getHomepageNewsId()!=-1){
 			return response.success(homepageNewsList);
 		}
 		else
-			return response.failure("no_such_info");
+			return response.failure("SQL connect fail");
 	}
 	
 }
