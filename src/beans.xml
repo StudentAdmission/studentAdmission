@@ -13,9 +13,9 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
     <bean id="ds"
         class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="url"
-            value="jdbc:mysql://59.188.69.138:3306/a0328132211?useUnicode=true&amp;characterEncoding=UTF-8"/>
-        <property name="username" value="a0328132211"/>
-        <property name="password" value="4b8c8d2b"/>
+            value="jdbc:mysql://qdm114473470.my3w.com:3306/qdm114473470_db?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <property name="username" value="qdm114473470"/>
+        <property name="password" value="supreme123456"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
      </bean>
      <!-- 事务管理：DataSourceTransactionManager -->
@@ -46,6 +46,11 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
      <bean id="commonProblemDao" class="com.bistu.supreme.dao.impl.CommonProblemDaoImpl">
     	<property name="dataSource" ref="ds"></property>
     </bean>
+    
+    <bean id="studentDao" class="com.bistu.supreme.dao.impl.StudentDaoImpl">
+    	<property name="dataSource" ref="ds"></property>
+    </bean>
+    
     <!-- 发送邮件的相关配置 -->
     <bean id="mailDao" class="com.bistu.supreme.dao.impl.AliyunMailDaoImpl"></bean>
 

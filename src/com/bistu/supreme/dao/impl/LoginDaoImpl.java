@@ -100,4 +100,21 @@ public class LoginDaoImpl implements ILoginDao{
 			return false;
 		}
 	}
+
+	@Override
+	public String getEmailbyNum(String num) {
+		// TODO Auto-generated method stub
+		String query_sql = "select login_email from sa_login where login_num=?";
+		try {
+			String email = (String)jdbcTemplate.queryForObject(query_sql,new Object[] {num},java.lang.String.class);
+//			System.out.println("Impl中的邮箱为：" + email);
+			return email;
+		}
+		catch(EmptyResultDataAccessException e) {
+			return "empty";
+		}
+		catch(Exception e) {
+			return "exception";
+		}
+	}
 }

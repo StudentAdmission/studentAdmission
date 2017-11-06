@@ -23,6 +23,14 @@ public class Login {
 	 * 登录20分钟后的时间
 	 * */
 	private String loginTime;
+	/**
+	 * 登录邮箱
+	 * */
+	private String loginEmail;
+	/**
+	 * 登录头像
+	 * */
+	private String loginPortrait;
 	
 	public int getLoginId() {
 		return loginId;
@@ -53,5 +61,17 @@ public class Login {
 	}
 	public void setLoginTime(String loginTime) {
 		this.loginTime = loginTime;
+	}
+	public String getLoginEmail() {
+		return loginEmail;
+	}
+	public void setLoginEmail(String loginEmail) {
+		this.loginEmail = loginEmail;
+	}
+	public String getLoginPortrait() {
+		return loginPortrait;
+	}
+	public void setLoginPortrait(String loginPortrait) {
+		this.loginPortrait = loginPortrait;
 	}
 }
