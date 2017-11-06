@@ -113,7 +113,9 @@ $.fn.showDetail = function (option) {
             .animate({
                     height: detail.start.height,
                     opacity: detail.start.opacity
-                }, entry.option.hideSpeed
+                }, entry.option.hideSpeed, function () {
+                    $(target).css('display', 'none');
+                }
             );
     }
 };
