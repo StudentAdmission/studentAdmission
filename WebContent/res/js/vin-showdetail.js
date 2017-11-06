@@ -21,7 +21,8 @@ $.fn.showDetail = function (option) {
         height: 0,
         opacity: 0,
         zIndex: 900,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        cursor: 'auto'
     };
 
     //存放显示效果终点
@@ -62,7 +63,7 @@ $.fn.showDetail = function (option) {
         //显示内容样式的初始化，样式设置为动画起点
         $(detail).css(detail.start);
 
-        $(entry).css('cursor','pointer');
+        $(entry).css('cursor', 'pointer');
     }
 
     /**
