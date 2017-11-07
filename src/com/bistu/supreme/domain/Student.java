@@ -122,7 +122,7 @@ public class Student {
 	private String stdAccountMigration;
 	
 	/**
-	 * 学生照片
+	 * 学生的照片
 	 * */
 	private String stdIdPhoto;
 	
