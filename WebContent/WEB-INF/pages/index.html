@@ -86,10 +86,10 @@
                 <div ng-init="centerHover=false" ng-mouseover="centerHover=true" ng-mouseleave="centerHover=false">
                     <div ng-class="getLoginSession()?'sa-show':'';" id="personalCenter"></div>
                     <div ng-class="centerHover?'sa-show':'';" class="personalCenter" style="display: none;">
-                        <div>个人中心</div>
-                        <div>常见问题</div>
-                        <div>帐号设置</div>
-                        <div ng-click="logout();centerHover=false;">退出登录</div>
+                        <div><a href="/personalCenter" target="_blank">个人中心</a></div>
+                        <div><a href="question">常见问题</a></div>
+                        <div><a href="">帐号设置</a></div>
+                        <div ng-click="logout();centerHover=false;"><a href="javascript:">退出登录</a></div>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                     <li><a href="#">报道流程</a></li>
                     <li><a href="manual">学生手册</a></li>
                     <li><a href="question">常见问题</a></li>
-                    <li ng-class="getLoginSession()?'sa-show':'';" style="display: none;"><a href="javascript:">个人中心</a>
+                    <li ng-class="getLoginSession()?'sa-show':'';" style="display: none;"><a href="/personalCenter" target="_blank">个人中心</a>
                     </li>
                 </ul>
             </div>
