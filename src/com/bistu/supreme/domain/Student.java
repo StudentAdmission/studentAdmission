@@ -1,6 +1,5 @@
 package com.bistu.supreme.domain;
 
-import java.sql.Date;
 
 /**
  * 对应数据库中的sa_student表
@@ -89,7 +88,23 @@ public class Student {
 	/**
 	 * 学生生日
 	 * */
-	private Date stdBirth;
+	private String stdBirth;
+	/**
+	 * 学生的QQ号
+	 * */
+	private int stdQQ;
+	/**
+	 * 学生的微信号
+	 * */
+	private String stdWechat;
+	/**
+	 * 学生的户口迁移情况
+	 * */
+	private String stdAccountMigration;
+	/**
+	 * 学生的照片
+	 * */
+	private String stdIdPhoto;
 	
 	public String getStdNum() {
 		return stdNum;
@@ -211,11 +226,35 @@ public class Student {
 	public void setStdPoliticalStatus(String stdPoliticalStatus) {
 		this.stdPoliticalStatus = stdPoliticalStatus;
 	}
-	public Date getStdBirth() {
+	public String getStdBirth() {
 		return stdBirth;
 	}
-	public void setStdBirth(Date stdBirth) {
+	public void setStdBirth(String stdBirth) {
 		this.stdBirth = stdBirth;
+	}
+	public int getStdQQ() {
+		return stdQQ;
+	}
+	public void setStdQQ(int stdQQ) {
+		this.stdQQ = stdQQ;
+	}
+	public String getStdWechat() {
+		return stdWechat;
+	}
+	public void setStdWechat(String stdWechat) {
+		this.stdWechat = stdWechat;
+	}
+	public String getStdAccountMigration() {
+		return stdAccountMigration;
+	}
+	public void setStdAccountMigration(String stdAccountMigration) {
+		this.stdAccountMigration = stdAccountMigration;
+	}
+	public String getStdIdPhoto() {
+		return stdIdPhoto;
+	}
+	public void setStdIdPhoto(String stdIdPhoto) {
+		this.stdIdPhoto = stdIdPhoto;
 	}
 	
 }
