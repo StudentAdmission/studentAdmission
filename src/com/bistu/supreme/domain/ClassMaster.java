@@ -6,63 +6,72 @@ public class ClassMaster {
 	/**
 	 * 班主任的工号
 	 * */
-	private String master_num;
+	private String masterNum;
 	/**
 	 * 班主任的姓名
 	 * */
-	private String master_name;
+	private String masterName;
 	/**
 	 * 班主任的性别
 	 * */
-	private String master_gender;
+	private String masterGender;
 	/**
 	 * 班主任所在学院
 	 * */
-	private String master_college;
+	private String masterCollege;
 	/**
 	 * 班主任管理的班级
 	 * */
-	private String master_class_num;
+	private String masterClassNum;
 	/**
 	 * 班主任的联系电话
 	 * */
-	private String master_tele;
+	private int masterTele;
+	/**
+	 * 班主任邮箱
+	 * */
+	private String masterEmail;
 	
-	public String getMaster_num() {
-		return master_num;
+	public String getMasterNum() {
+		return masterNum;
 	}
-	public void setMaster_num(String master_num) {
-		this.master_num = master_num;
+	public void setMasterNum(String masterNum) {
+		this.masterNum = masterNum;
 	}
-	public String getMaster_name() {
-		return master_name;
+	public String getMasterName() {
+		return masterName;
 	}
-	public void setMaster_name(String master_name) {
-		this.master_name = master_name;
+	public void setMasterName(String masterName) {
+		this.masterName = masterName;
 	}
-	public String getMaster_gender() {
-		return master_gender;
+	public String getMasterGender() {
+		return masterGender;
 	}
-	public void setMaster_gender(String master_gender) {
-		this.master_gender = master_gender;
+	public void setMasterGender(String masterGender) {
+		this.masterGender = masterGender;
 	}
-	public String getMaster_college() {
-		return master_college;
+	public String getMasterCollege() {
+		return masterCollege;
 	}
-	public void setMaster_college(String master_college) {
-		this.master_college = master_college;
+	public void setMasterCollege(String masterCollege) {
+		this.masterCollege = masterCollege;
 	}
-	public String getMaster_class_num() {
-		return master_class_num;
+	public String getMasterClassNum() {
+		return masterClassNum;
 	}
-	public void setMaster_class_num(String master_class_num) {
-		this.master_class_num = master_class_num;
+	public void setMasterClassNum(String masterClassNum) {
+		this.masterClassNum = masterClassNum;
 	}
-	public String getMaster_tele() {
-		return master_tele;
+	public int getMasterTele() {
+		return masterTele;
 	}
-	public void setMaster_tele(String master_tele) {
-		this.master_tele = master_tele;
+	public void setMasterTele(int masterTele) {
+		this.masterTele = masterTele;
 	}
-	
+	public String getMasterEmail() {
+		return masterEmail;
+	}
+	public void setMasterEmail(String masterEmail) {
+		this.masterEmail = masterEmail;
+	}
 }
