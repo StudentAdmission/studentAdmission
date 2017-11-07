@@ -89,6 +89,9 @@ ul {
     padding: 3px 0;
     user-select: none;
 }
+.personalCenter div a{
+    color: #333;
+}
 
 .personalCenter div:first-child {
     margin-top: 0;
