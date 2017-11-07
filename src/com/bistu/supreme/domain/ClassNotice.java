@@ -9,72 +9,100 @@ public class ClassNotice {
 	/**
 	 * 课程通知条目的id
 	 * */
-	private int note_id;
+	private int noteId;
 	/**
 	 * 课程通知条目的标题
 	 * */
-	private String note_title;
+	private String noteTitle;
 	/**
 	 * 发布通知的班主任的工号
 	 * */
-	private String note_master_num;
+	private String noteTeachweNum;
 	/**
 	 * 通知的内容
 	 * */
-	private String note_content;
+	private String noteContent;
 	/**
 	 * 
 	 * */
-	private String note_efile;
+	private String noteEfile;
 	/**
 	 * 发布通知的时间
 	 * */
-	private Date note_time;
+	private Date noteTime;
 	/**
 	 * 
 	 * */
-	private String note_cfile;
-	public int getNote_id() {
-		return note_id;
+	private String noteCfile;
+	
+	/**
+	 * 接收通知的班级
+	 * */
+	private String noteTargetClass;
+
+	public int getNoteId() {
+		return noteId;
 	}
-	public void setNote_id(int note_id) {
-		this.note_id = note_id;
+
+	public void setNoteId(int noteId) {
+		this.noteId = noteId;
 	}
-	public String getNote_title() {
-		return note_title;
+
+	public String getNoteTitle() {
+		return noteTitle;
 	}
-	public void setNote_title(String note_title) {
-		this.note_title = note_title;
+
+	public void setNoteTitle(String noteTitle) {
+		this.noteTitle = noteTitle;
 	}
-	public String getNote_master_num() {
-		return note_master_num;
+
+	public String getNoteTeachweNum() {
+		return noteTeachweNum;
 	}
-	public void setNote_master_num(String note_master_num) {
-		this.note_master_num = note_master_num;
+
+	public void setNoteTeachweNum(String noteTeachweNum) {
+		this.noteTeachweNum = noteTeachweNum;
 	}
-	public String getNote_content() {
-		return note_content;
+
+	public String getNoteContent() {
+		return noteContent;
 	}
-	public void setNote_content(String note_content) {
-		this.note_content = note_content;
+
+	public void setNoteContent(String noteContent) {
+		this.noteContent = noteContent;
 	}
-	public String getNote_efile() {
-		return note_efile;
+
+	public String getNoteEfile() {
+		return noteEfile;
 	}
-	public void setNote_efile(String note_efile) {
-		this.note_efile = note_efile;
+
+	public void setNoteEfile(String noteEfile) {
+		this.noteEfile = noteEfile;
 	}
-	public Date getNote_time() {
-		return note_time;
+
+	public Date getNoteTime() {
+		return noteTime;
 	}
-	public void setNote_time(Date note_time) {
-		this.note_time = note_time;
+
+	public void setNoteTime(Date noteTime) {
+		this.noteTime = noteTime;
 	}
-	public String getNote_cfile() {
-		return note_cfile;
+
+	public String getNoteCfile() {
+		return noteCfile;
 	}
-	public void setNote_cfile(String note_cfile) {
-		this.note_cfile = note_cfile;
+
+	public void setNoteCfile(String noteCfile) {
+		this.noteCfile = noteCfile;
 	}
+
+	public String getNoteTargetClass() {
+		return noteTargetClass;
+	}
+
+	public void setNoteTargetClass(String noteTargetClass) {
+		this.noteTargetClass = noteTargetClass;
+	}
+	
 	
 }

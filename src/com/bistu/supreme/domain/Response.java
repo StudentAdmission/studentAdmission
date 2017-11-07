@@ -5,7 +5,7 @@ import java.io.Serializable;
 import org.springframework.http.HttpStatus;
 
 /**
- * HttpResponseµÄÀàÄ£ÐÍ
+ * HttpResponseï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
  * */
 public class Response implements Serializable{
 	
@@ -14,7 +14,7 @@ public class Response implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * ÓÃ0ºÍ1±íÊ¾£¬0±íÊ¾Ê§°Ü£¬1±íÊ¾³É¹¦
+	 * ï¿½ï¿½0ï¿½ï¿½1ï¿½ï¿½Ê¾ï¿½ï¿½0ï¿½ï¿½Ê¾Ê§ï¿½Ü£ï¿½1ï¿½ï¿½Ê¾ï¿½É¹ï¿½
 	 * */
 	private int status;
 	private String message;
@@ -46,6 +46,11 @@ public class Response implements Serializable{
 		this.status = 1;
 		this.data = data;
 		this.message = message;
+		return this;
+	}
+	
+	public Response failure() {
+		this.status = 0;
 		return this;
 	}
 	

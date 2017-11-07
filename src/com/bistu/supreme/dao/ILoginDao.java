@@ -15,7 +15,11 @@ public interface ILoginDao {
 	 * */
 	public String getLoginTime(String num);
 	/**
-	 * 
+	 * 更新登录时间
 	 * */
 	public boolean updateLoginTime(String num, String time);
+	/**
+	 * 根据学号（或工号）获取邮箱
+	 * */
+	public String getEmailbyNum(String num);
 }

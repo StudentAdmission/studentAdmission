@@ -46,10 +46,15 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
      <bean id="commonProblemDao" class="com.bistu.supreme.dao.impl.CommonProblemDaoImpl">
     	<property name="dataSource" ref="ds"></property>
     </bean>
-    <!-- 获取学院电话的相关配置 -->
-    <bean id="SchoolPhoneDao" class="com.bistu.supreme.dao.impl.SchoolPhoneDaoImpl">
+    
+    <bean id="schoolPhoneDao" class="com.bistu.supreme.dao.impl.SchoolPhoneDaoImpl">
     	<property name="dataSource" ref="ds"></property>
     </bean>
+    <!-- 班主任发布公告功能的相关配置 -->
+	<bean id="classNoticeDao" class="com.bistu.supreme.dao.impl.ClassNoticeDaoImpl">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
     <!-- 发送邮件的相关配置 -->
     <bean id="mailDao" class="com.bistu.supreme.dao.impl.AliyunMailDaoImpl"></bean>
+
 </beans>
