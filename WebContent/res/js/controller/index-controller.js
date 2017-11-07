@@ -53,7 +53,8 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
                         loginTime: validateTime
                     }).then(function (response) {
                         if (response.data.status === 1) {
-                            loginService.setLoginSession($scope.login.loginNum);
+                            loginService.setLoginSession(responseData.data.loginNum);
+                            loginService.setLoginSessionTag(responseData.data.loginTag);
                             toastr.success('登录成功');
                         }
                     }, function () {
@@ -79,8 +80,8 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
     };
 
     $(function () {
-        if (localStorage.login) {
-            $http.post('login/gettime.do', {loginNum: localStorage.login}).then(function (response) {
+        if (localStorage.saLogin) {
+            $http.post('login/gettime.do', {loginNum: localStorage.saLogin}).then(function (response) {
                 var currentTime = setTime(0);
                 if (currentTime >= response.data.data.loginTime) {
                     loginService.logout();
