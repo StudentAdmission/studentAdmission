@@ -90,11 +90,11 @@ public class Student {
 	 * */
 	private String stdBirth;
 	/**
-	 * 学生的QQ号
+	 * 学生的QQ
 	 * */
 	private int stdQQ;
 	/**
-	 * 学生的微信号
+	 * 学生的微信
 	 * */
 	private String stdWechat;
 	/**
@@ -106,50 +106,6 @@ public class Student {
 	 * */
 	private String stdIdPhoto;
 	
-	/**
-	 * 学生的qq
-	 * */
-	private String stdQq;
-	
-	/**
-	 * 学生的微信
-	 * */
-	private String stdWechat;
-	
-	/**
-	 * 户口迁移情况
-	 * */
-	private String stdAccountMigration;
-	
-	/**
-	 * 学生的照片
-	 * */
-	private String stdIdPhoto;
-	
-	public String getStdQq() {
-		return stdQq;
-	}
-	public void setStdQq(String stdQq) {
-		this.stdQq = stdQq;
-	}
-	public String getStdWechat() {
-		return stdWechat;
-	}
-	public void setStdWechat(String stdWechat) {
-		this.stdWechat = stdWechat;
-	}
-	public String getStdAccountMigration() {
-		return stdAccountMigration;
-	}
-	public void setStdAccountMigration(String stdAccountMigration) {
-		this.stdAccountMigration = stdAccountMigration;
-	}
-	public String getStdIdPhoto() {
-		return stdIdPhoto;
-	}
-	public void setStdIdPhoto(String stdIdPhoto) {
-		this.stdIdPhoto = stdIdPhoto;
-	}
 	public String getStdNum() {
 		return stdNum;
 	}
