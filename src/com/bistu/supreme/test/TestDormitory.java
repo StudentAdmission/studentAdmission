@@ -33,7 +33,7 @@ public class TestDormitory {
 
 	
 	/**
-	 * 测试获取室友的信息（姓名，学号，电话，籍贯）
+	 * 测试获取室友的信息（姓名，学号，电话，籍贯 ）
 	 * */
 	@Test
 	public void testGetAllDormMessage(){

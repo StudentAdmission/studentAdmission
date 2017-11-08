@@ -14,7 +14,7 @@ public class Dormitory {
 	 * */
 	private int dormNumberOfStudent;
 	/**
-	 * 宿舍所属的班级
+	 * 宿舍所属的班级 
 	 * */
 	private String dormClassNum;
 	public String getDormNum() {

@@ -17,7 +17,7 @@ import com.bistu.supreme.domain.Student;
 @Controller
 public class DormitoryController {
 	/**
-	 * 获取所有室友的信息(宿舍名，室友名，室友学号，室友电话，室友籍贯)
+	 * 获取所有室友的信息(宿舍名， 室友名，室友学号，室友电话，室友籍贯 )
 	 * */
 	@Autowired
 	IDormitoryDao dormitoryDao;

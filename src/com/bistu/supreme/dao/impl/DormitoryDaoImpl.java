@@ -21,7 +21,7 @@ public class DormitoryDaoImpl implements IDormitoryDao {
 		this.jdbcTemplate = new JdbcTemplate(ds);
 	}
 	/**
-	 * 获取同宿舍舍友的信息
+	 * 获取同宿舍舍友的信息 
 	 * */
 	@Override
 	public List<Student> getAllDormMessage(String studentId) {

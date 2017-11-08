@@ -61,7 +61,7 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
     <!-- 发送邮件的相关配置 -->
     <bean id="mailDao" class="com.bistu.supreme.dao.impl.AliyunMailDaoImpl"></bean>
     
-    <!-- 宿舍信息相关的配置 -->
+    <!-- 宿舍信息相关的配置  -->
     <bean id="DormitoryDao" class="com.bistu.supreme.dao.impl.DormitoryDaoImpl">
     	<property name="dataSource" ref="ds"></property>
     </bean>

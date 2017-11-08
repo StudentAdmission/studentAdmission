@@ -8,7 +8,7 @@ import java.util.List;
 import com.bistu.supreme.domain.Student;
 
 /**
- * @author LIZHIWEI
+ * @author LIZHIWEI 
  *宿舍有关的接口
  */
 public interface IDormitoryDao {
