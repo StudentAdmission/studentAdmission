@@ -24,4 +24,20 @@ public class TestLogin {
 	public void Test() {
 		System.out.println(loginDao.getEmailbyNum("456"));
 	}
+	
+	/**
+	 * 测试修改密码的方法
+	 * */
+	@Test
+	public void testRevisePwd(){
+		String loginNum = "admin";
+		String loginEmail = "11111111";
+		String pwd = "11111111";
+		String loginPortrait = "11111111";
+		if(loginDao.revisePwd(loginNum, loginEmail, pwd, loginPortrait)){
+			System.out.println("修改密码成功");
+		}
+		else
+			System.out.println("修改密码失败");
+	}
 }
