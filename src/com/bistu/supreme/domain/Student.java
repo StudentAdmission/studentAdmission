@@ -90,11 +90,11 @@ public class Student {
 	 * */
 	private String stdBirth;
 	/**
-	 * 学生的QQ号
+	 * 学生的QQ
 	 * */
 	private int stdQQ;
 	/**
-	 * 学生的微信号
+	 * 学生的微信
 	 * */
 	private String stdWechat;
 	/**
