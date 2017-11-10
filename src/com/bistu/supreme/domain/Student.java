@@ -105,7 +105,37 @@ public class Student {
 	 * 学生的照片
 	 * */
 	private String stdIdPhoto;
+	/**
+	 * 学历
+	 * */
+	private String stdEducation;
 	
+	/**
+	 * 准考证号
+	 * */
+	private int stdTicketNumber;
+	/**
+	 * 生源地
+	 * */
+	private String stdSourceOfHealth;
+	public String getStdEducation() {
+		return stdEducation;
+	}
+	public void setStdEducation(String stdEducation) {
+		this.stdEducation = stdEducation;
+	}
+	public int getStdTicketNumber() {
+		return stdTicketNumber;
+	}
+	public void setStdTicketNumber(int stdTicketNumber) {
+		this.stdTicketNumber = stdTicketNumber;
+	}
+	public String getStdSourceOfHealth() {
+		return stdSourceOfHealth;
+	}
+	public void setStdSourceOfHealth(String stdSourceOfHealth) {
+		this.stdSourceOfHealth = stdSourceOfHealth;
+	}
 	public String getStdNum() {
 		return stdNum;
 	}

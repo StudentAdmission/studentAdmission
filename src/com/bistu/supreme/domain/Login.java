@@ -31,7 +31,17 @@ public class Login {
 	 * 登录头像
 	 * */
 	private String loginPortrait;
+	/**
+	 * 用户昵称
+	 * */
+	private String loginNickname;
 	
+	public String getLoginNickname() {
+		return loginNickname;
+	}
+	public void setLoginNickname(String loginNickname) {
+		this.loginNickname = loginNickname;
+	}
 	public int getLoginId() {
 		return loginId;
 	}
