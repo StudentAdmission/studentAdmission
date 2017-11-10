@@ -71,4 +71,8 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
     	<property name="dataSource" ref="ds"></property>
     </bean>
 
+	<!-- 辅导员相关的配置 -->
+	<bean id="InstructorDao" class="com.bistu.supreme.dao.impl.InstructorDaoImpl">
+    	<property name="dataSource" ref="ds"></property>
+    </bean>
 </beans>
