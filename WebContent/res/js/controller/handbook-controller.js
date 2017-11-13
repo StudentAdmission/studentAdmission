@@ -43,13 +43,8 @@ app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
 
     /**
      * 通过angualrJS内置http方法，实现异步请求学生手册信息，并对信息进行简单处理
-     * TODO 后台接口未开发，暂时手写json文件来模拟后台传参
      */
     $http.get('res/data/manualData.json').then(function (response) {
-
-        //获取数据正常
-        //TODO 暂时指定获取正常状态码为200，待协商
-        if (response.data.status === 200) {
 
             //将学生手册数据在缓存持久化
             $scope.handbooks = response.data.data;
@@ -63,7 +58,6 @@ app.controller('handbookCtrl', ['$http', '$scope', function ($http, $scope) {
                     $scope.setHandbook(item);
                 }
             })
-        }
     });
 
     /**

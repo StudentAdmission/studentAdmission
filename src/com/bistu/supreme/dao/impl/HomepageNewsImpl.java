@@ -36,8 +36,8 @@ public class HomepageNewsImpl implements IHomepageNewsDao {
 			// TODO Auto-generated method stub
 			HomepageNews homepageNews = new HomepageNews();
 			homepageNews.setHomepageNewsId(rs.getInt("homepage_news_id"));
-			homepageNews.setHomepageNewTitle(rs.getString("homepage_news_title"));
-			homepageNews.setHomepageNewsTime(rs.getDate("homepage_news_time"));
+			homepageNews.setHomepageNewsTitle(rs.getString("homepage_news_title"));
+			homepageNews.setHomepageNewsTime(rs.getString("homepage_news_time"));
 			homepageNews.setHomepageNewsLink(rs.getString("homapage_news_link"));
 			return homepageNews;
 		}
