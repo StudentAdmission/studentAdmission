@@ -29,12 +29,18 @@ public class HomepageNewsDaoImpl implements IHomepageNewsDao {
 		List<HomepageNews> homepageNewsList = new ArrayList<HomepageNews>();
 		try{
 			homepageNewsList = (List<HomepageNews>)jdbcTemplate.query(querySql, new HomepageNewsMapper());
+			if(homepageNewsList!=null){
+				return homepageNewsList;
+			}
+			else
+				return null;
 		}catch(Exception e){
 			HomepageNews homepage = new HomepageNews();
 			homepage.setHomepageNewsId(-1);
 			homepageNewsList.add(homepage);
+			return homepageNewsList;
 		}
-		return homepageNewsList;
+		
 	}
 	
 	protected class HomepageNewsMapper implements RowMapper<HomepageNews>{
@@ -42,8 +48,8 @@ public class HomepageNewsDaoImpl implements IHomepageNewsDao {
 			// TODO Auto-generated method stub
 			HomepageNews homepageNews = new HomepageNews();
 			homepageNews.setHomepageNewsId(rs.getInt("homepage_news_id"));
-			homepageNews.setHomepageNewTitle(rs.getString("homepage_news_title"));
-			homepageNews.setHomepageNewsTime(rs.getDate("homepage_news_time"));
+			homepageNews.setHomepageNewsTitle(rs.getString("homepage_news_title"));
+			homepageNews.setHomepageNewsTime(rs.getString("homepage_news_time"));
 			homepageNews.setHomepageNewsLink(rs.getString("homapage_news_link"));
 			return homepageNews;
 		}

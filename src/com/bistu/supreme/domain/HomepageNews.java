@@ -1,6 +1,5 @@
 package com.bistu.supreme.domain;
 
-import java.sql.Date;
 
 /**
  * @author LIZHIWEI
@@ -22,10 +21,10 @@ public class HomepageNews {
 	public void setHomepageNewsId(int homepageNewsId) {
 		this.homepageNewsId = homepageNewsId;
 	}
-	public String getHomepageNewTitle() {
-		return getHomepageNewTitle();
+	public String getHomepageNewsTitle() {
+		return homepageNewsTitle;
 	}
-	public void setHomepageNewTitle(String homepageNewsTitle) {
+	public void setHomepageNewsTitle(String homepageNewsTitle) {
 		this.homepageNewsTitle = homepageNewsTitle;
 	}
 	public String getHomepageNewsTime() {
@@ -40,6 +39,5 @@ public class HomepageNews {
 	public void setHomepageNewsLink(String homepageNewsLink) {
 		this.homepageNewsLink = homepageNewsLink;
 	}
-	
 	
 }

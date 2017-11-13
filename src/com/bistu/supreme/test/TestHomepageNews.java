@@ -29,7 +29,7 @@ public class TestHomepageNews {
 		if(homepageNewsLists!=null){
 			for(int i=0;i<homepageNewsLists.size();i++){
 				HomepageNews homepageNews = homepageNewsLists.get(i);
-				System.out.println("id:" + homepageNews.getHomepageNewsId() + "   title:" + homepageNews.getHomepageNewTitle() + "   time:" + homepageNews.getHomepageNewsTime() + "   link:" + homepageNews.getHomepageNewsLink());
+				System.out.println("id:" + homepageNews.getHomepageNewsId() + "   title:" + homepageNews.getHomepageNewsTitle() + "   time:" + homepageNews.getHomepageNewsTime() + "   link:" + homepageNews.getHomepageNewsLink());
 			}
 		}
 	}
