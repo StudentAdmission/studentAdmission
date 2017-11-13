@@ -50,7 +50,7 @@ public class HomepageNewsDaoImpl implements IHomepageNewsDao {
 			homepageNews.setHomepageNewsId(rs.getInt("homepage_news_id"));
 			homepageNews.setHomepageNewsTitle(rs.getString("homepage_news_title"));
 			homepageNews.setHomepageNewsTime(rs.getString("homepage_news_time"));
-			homepageNews.setHomepageNewsLink(rs.getString("homapage_news_link"));
+			homepageNews.setHomepageNewsLink(rs.getString("homepage_news_link"));
 			return homepageNews;
 		}
 	}
