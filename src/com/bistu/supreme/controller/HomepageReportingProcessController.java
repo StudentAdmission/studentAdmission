@@ -26,10 +26,14 @@ public class HomepageReportingProcessController {
 	public Response getHomepageReportingProcessInfo(){
 		Response response = new Response();
 		List<HomepageReportingProcess> homepageReportingProcessList = homepageReportingProcessDao.getAll();
-		if(homepageReportingProcessList!=null&&homepageReportingProcessList.get(0).getProcessId()!=-1){
-			return response.success(homepageReportingProcessList);
+		if(homepageReportingProcessList!=null){
+			if(homepageReportingProcessList.get(0).getProcessId()!=-1){
+				return response.success(homepageReportingProcessList);
+			}
+			else
+				return response.failure("数据库连接出错");
 		}
 		else
-			return response.failure("SQL connect fail");
+			return response.success("数据库中没有相应的数据");
 	}
 }
