@@ -2,7 +2,7 @@ app.controller('questionCtrl', ['$http', '$scope', function ($http, $scope) {
     $http.post('commonProblem.do').then(function (response) {
         if (response.status !== 200) {
             $('.sa-question-item').after('' +
-                '<div style="text-align: center; font-size: 3rem; font-weight: bold">网络异常，请检查网络链接。</div>'
+                '<div class="connect-error">网络异常，请检查网络链接。</div>'
             )
         } else {
             var problemData = response.data;
@@ -24,7 +24,7 @@ app.controller('questionCtrl', ['$http', '$scope', function ($http, $scope) {
                 $('.sa-question-title').after(content);
             } else {
                 $('.sa-question-item').after('' +
-                    '<div style="text-align: center; font-size: 3rem; font-weight: bold">数据库异常，请联系管理员</div>'
+                    '<div class="connect-error">数据库异常，请联系管理员</div>'
                 )
             }
         }
