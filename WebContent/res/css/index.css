@@ -89,7 +89,8 @@ ul {
     padding: 3px 0;
     user-select: none;
 }
-.personalCenter div a{
+
+.personalCenter div a {
     color: #333;
 }
 
@@ -137,7 +138,7 @@ ul {
     text-decoration: none;
 }
 
-.vin-detail{
+.vin-detail {
     position: absolute;
     display: none;
 }
@@ -157,8 +158,8 @@ ul {
     margin: 10px auto;
 }
 
-.validate{
-    width: 60%!important;
+.validate {
+    width: 60% !important;
 }
 
 .forgotten-dialogue .content > div:last-child {
@@ -173,11 +174,11 @@ body {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none!important;
 }
 
 a:hover {
-    text-decoration: none;
+    text-decoration: none!important;
 }
 
 .sa-container {
@@ -212,4 +213,11 @@ a:hover {
 
 .black {
     background-color: #333;
+}
+
+.connect-error {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: red;
 }
