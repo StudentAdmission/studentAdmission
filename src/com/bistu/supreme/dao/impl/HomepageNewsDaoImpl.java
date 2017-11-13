@@ -25,7 +25,7 @@ public class HomepageNewsDaoImpl implements IHomepageNewsDao {
 	@Override
 	public List<HomepageNews> getAll() {
 		// TODO Auto-generated method stub
-		String querySql = "select * from sa_homepage_news";
+		String querySql = "select * from sa_homepage_news order by homepage_news_priority asc LIMIT 5 ";
 		List<HomepageNews> homepageNewsList = new ArrayList<HomepageNews>();
 		try{
 			homepageNewsList = (List<HomepageNews>)jdbcTemplate.query(querySql, new HomepageNewsMapper());
