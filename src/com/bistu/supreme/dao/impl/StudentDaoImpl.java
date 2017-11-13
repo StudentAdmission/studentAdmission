@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
@@ -145,6 +146,71 @@ public class StudentDaoImpl implements IStudentDao {
 			return student;
 		}
 		return student;
+	}
+
+	@Override
+	public boolean updateReadTag(String num) {
+		// TODO Auto-generated method stub
+		String update_sql = "update sa_student_massege_box set smb_read_tag=1 where smb_student_num=?";
+		try {
+			jdbcTemplate.update(update_sql,
+					new PreparedStatementSetter() {
+						@Override
+						public void setValues(java.sql.PreparedStatement ps) throws SQLException {
+							// TODO Auto-generated method stub
+							ps.setString(1, num);
+						}
+
+			});
+			return true;
+		}
+		
+		catch(Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public int calculateNumbyClassNum(String classNum) {
+		// TODO Auto-generated method stub
+		String query_sql = "select count(*) from sa_student where std_class_num=?";
+		try {
+			return (int)jdbcTemplate.queryForObject(query_sql, new Object[] {classNum}, java.lang.Integer.class);
+		}
+		catch(Exception e) {
+			return -1;
+		}
+	}
+
+	@Override
+	public List<String> getStudentNumbyClassNum(String classNum) {
+		// TODO Auto-generated method stub
+		String query_sql = "select std_num from sa_student where std_class_num=?";
+		try {
+			List<String> list = jdbcTemplate.queryForList(query_sql, new Object[] {classNum}, java.lang.String.class);
+			return list;
+		}
+		catch(Exception e) {
+			List<String> list = new ArrayList<String>();
+			list.add("-1");
+			return list;
+		}
+	}
+
+	@Override
+	public String getStudentNumbyName(String name) {
+		// TODO Auto-generated method stub
+		String query_sql = "select std_num from sa_student where std_name=?";
+		try {
+			String num = jdbcTemplate.queryForObject(query_sql, new Object[] {name}, java.lang.String.class);
+			return num;
+		}
+		catch(EmptyResultDataAccessException e) {
+			return "empty";
+		}
+		catch(Exception e) {
+			return "exception";
+		}
 	}
 
 }
