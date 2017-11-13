@@ -75,4 +75,8 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 	<bean id="InstructorDao" class="com.bistu.supreme.dao.impl.InstructorDaoImpl">
     	<property name="dataSource" ref="ds"></property>
     </bean>
+    <!-- 新闻公告的相关配置 -->
+    <bean id="NewsItemDao" class="com.bistu.supreme.dao.impl.NewsItemDaoImpl">
+    	<property name="dataSource" ref="ds"></property>
+    </bean>
 </beans>
