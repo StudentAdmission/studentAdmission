@@ -25,12 +25,16 @@ public class HomepageNewsController {
 	public Response getHomepageNewsInfo(){
 		Response response = new Response();
 		List<HomepageNews> homepageNewsList = homepageNewsDao.getAll();
-		
-		if(homepageNewsList!=null&&homepageNewsList.get(0).getHomepageNewsId()!=-1){
-			return response.success(homepageNewsList);
+		if(homepageNewsList!=null){
+			if(homepageNewsList.get(0).getHomepageNewsId()!=-1){
+				return response.success(homepageNewsList);
+			}
+			else
+				return response.failure("SQL connect fail");
 		}
 		else
-			return response.failure("SQL connect fail");
+			return response.success("数据库中没有通知");
+			
 	}
 	
 }

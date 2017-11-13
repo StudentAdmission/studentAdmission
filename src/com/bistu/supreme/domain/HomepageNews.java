@@ -1,6 +1,5 @@
 package com.bistu.supreme.domain;
 
-import java.sql.Date;
 
 /**
  * @author LIZHIWEI
@@ -11,9 +10,9 @@ public class HomepageNews {
 	/*首页新闻的ID*/
 	private int homepageNewsId;
 	/*首页新闻的标题*/
-	private String homepageNewTitle;
+	private String homepageNewsTitle;
 	/*首页新闻的时间*/
-	private Date homepageNewsTime;
+	private String homepageNewsTime;
 	/*首页新闻的链接*/
 	private String homepageNewsLink;
 	public int getHomepageNewsId() {
@@ -22,16 +21,16 @@ public class HomepageNews {
 	public void setHomepageNewsId(int homepageNewsId) {
 		this.homepageNewsId = homepageNewsId;
 	}
-	public String getHomepageNewTitle() {
-		return homepageNewTitle;
+	public String getHomepageNewsTitle() {
+		return homepageNewsTitle;
 	}
-	public void setHomepageNewTitle(String homepageNewTitle) {
-		this.homepageNewTitle = homepageNewTitle;
+	public void setHomepageNewsTitle(String homepageNewsTitle) {
+		this.homepageNewsTitle = homepageNewsTitle;
 	}
-	public Date getHomepageNewsTime() {
+	public String getHomepageNewsTime() {
 		return homepageNewsTime;
 	}
-	public void setHomepageNewsTime(Date homepageNewsTime) {
+	public void setHomepageNewsTime(String homepageNewsTime) {
 		this.homepageNewsTime = homepageNewsTime;
 	}
 	public String getHomepageNewsLink() {
@@ -40,6 +39,5 @@ public class HomepageNews {
 	public void setHomepageNewsLink(String homepageNewsLink) {
 		this.homepageNewsLink = homepageNewsLink;
 	}
-	
 	
 }
