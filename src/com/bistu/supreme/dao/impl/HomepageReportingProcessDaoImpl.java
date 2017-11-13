@@ -32,12 +32,19 @@ public class HomepageReportingProcessDaoImpl implements IHomepageReportingProces
 		List<HomepageReportingProcess> homepageReportingProcessList = new ArrayList<HomepageReportingProcess>();
 		try{
 			homepageReportingProcessList = (List<HomepageReportingProcess>)jdbcTemplate.query(querySql, new HomepageReportingProcessMapper());
+			if(homepageReportingProcessList!=null){
+				return homepageReportingProcessList;
+			}
+			else
+				return null;
 		}catch(Exception e){
+			System.out.println(e.getClass());
 			HomepageReportingProcess homepageReportingProcess = new HomepageReportingProcess();
 			homepageReportingProcess.setProcessId(-1);
 			homepageReportingProcessList.add(homepageReportingProcess);
+			return homepageReportingProcessList;
 		}
-		return homepageReportingProcessList;
+		
 	}
 	
 	protected class HomepageReportingProcessMapper implements RowMapper<HomepageReportingProcess>{
@@ -46,7 +53,7 @@ public class HomepageReportingProcessDaoImpl implements IHomepageReportingProces
 			HomepageReportingProcess homepageReportingProcess = new HomepageReportingProcess();
 			homepageReportingProcess.setProcessId(rs.getInt("process_id"));
 			homepageReportingProcess.setProcessItem(rs.getString("process_item"));
-			homepageReportingProcess.setProcessTime(rs.getDate("process_time"));
+			homepageReportingProcess.setProcessTime(rs.getString("process_time"));
 			homepageReportingProcess.setProcessLink(rs.getString("process_link"));
 			return homepageReportingProcess;
 		}

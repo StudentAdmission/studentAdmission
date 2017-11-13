@@ -117,4 +117,36 @@ public class LoginDaoImpl implements ILoginDao{
 			return "exception";
 		}
 	}
+
+	/**
+	 * 修改密码
+	 * */
+	@Override
+	public boolean revisePwd(String loginNum, String loginEmail, String pwd, String loginPortrait) {
+		// TODO Auto-generated method stub
+		String updateSql = "update sa_login set login_email = ?,login_pwd = ?,login_portrait = ? where login_num = ?";
+		int result;
+		try{
+			result = jdbcTemplate.update(updateSql, new PreparedStatementSetter(){
+				public void setValues(PreparedStatement ps) throws SQLException {
+					// TODO Auto-generated method stub
+					System.out.println("开始给问号赋值");
+					ps.setString(1, loginEmail);
+					ps.setString(2, pwd);
+					ps.setString(3, loginPortrait);
+					ps.setString(4, loginNum);
+				}
+			});
+			System.out.println("result" + result);
+		}catch(Exception e){
+			result = -1;
+			System.out.println("修改失败");
+		}
+		if(result==1){
+			return true;
+		}
+		else
+			return false;
+		
+	}
 }

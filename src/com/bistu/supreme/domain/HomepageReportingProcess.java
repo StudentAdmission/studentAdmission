@@ -12,7 +12,7 @@ public class HomepageReportingProcess {
 	/*首页报到流程的标题*/
 	private String processItem;
 	/*首页报到流程的时间*/
-	private Date processTime;
+	private String processTime;
 	/*首页报到流程的链接*/
 	private String processLink;
 	public int getProcessId() {
@@ -27,10 +27,10 @@ public class HomepageReportingProcess {
 	public void setProcessItem(String processItem) {
 		this.processItem = processItem;
 	}
-	public Date getProcessTime() {
+	public String getProcessTime() {
 		return processTime;
 	}
-	public void setProcessTime(Date processTime) {
+	public void setProcessTime(String processTime) {
 		this.processTime = processTime;
 	}
 	public String getProcessLink() {
@@ -39,4 +39,5 @@ public class HomepageReportingProcess {
 	public void setProcessLink(String processLink) {
 		this.processLink = processLink;
 	}
+	
 }

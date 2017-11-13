@@ -22,4 +22,9 @@ public interface ILoginDao {
 	 * 根据学号（或工号）获取邮箱
 	 * */
 	public String getEmailbyNum(String num);
+	
+	/**
+	 * 根据ID，邮箱，密码，头像来修改密码
+	 * */
+	public boolean revisePwd(String loginNum,String loginEmail,String pwd,String loginPortrait);
 }

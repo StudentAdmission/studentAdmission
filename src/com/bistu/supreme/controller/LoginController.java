@@ -70,4 +70,18 @@ public class LoginController {
 			return response.success();
 		}
 	}
+	
+	/**
+	 * 修改密码的控制器
+	 * */
+	@RequestMapping(value="/revisePwd",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public int revisePwd(@RequestBody String loginNum, String loginEmail, String pwd, String loginPortrait){
+		if(loginDao.revisePwd(loginNum, loginEmail, pwd, loginPortrait)){
+			return 1;
+		}
+		else
+			return 0;
+	}
 }
