@@ -59,5 +59,10 @@ public class NewsItem {
 		this.itemPriority = itemPriority;
 	}
 	
-	
+	public static void main(String[] ars){
+		NewsItem news = new NewsItem();
+		news.setItemTime("2017-11-13 15:43:26.0");
+		System.out.println(news.getItemTime());
+		System.out.println(news.getItemTime());
+	}
 }
