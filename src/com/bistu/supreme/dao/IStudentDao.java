@@ -24,4 +24,20 @@ public interface IStudentDao {
 	 * 获取学生的个人信息
 	 * */
 	public Student getStudentInfobyNum(String num);
+	/**
+	 * 更改学生消息盒子的标志为已读
+	 * */
+	public boolean updateReadTag(String num);
+	/**
+	 * 计算班级人数
+	 * */
+	public int calculateNumbyClassNum(String classNum);
+	/**
+	 * 通过班级号获得学生的学号
+	 * */
+	public List<String> getStudentNumbyClassNum(String classNum);
+	/**
+	 * 通过学生的姓名获得学生的学号
+	 * */
+	public String getStudentNumbyName(String name);
 }
