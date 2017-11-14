@@ -31,7 +31,16 @@ public class ClassMaster {
 	 * 班主任邮箱
 	 * */
 	private String masterEmail;
-	
+	/**
+	 * 负责的年级
+	 * */
+	private int masterGrade;
+	public int getMasterGrade() {
+		return masterGrade;
+	}
+	public void setMasterGrade(int masterGrade) {
+		this.masterGrade = masterGrade;
+	}
 	public String getMasterNum() {
 		return masterNum;
 	}
