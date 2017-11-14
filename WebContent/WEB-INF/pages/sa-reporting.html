@@ -1,0 +1,105 @@
+<div class="sa-reporting-background"></div>
+<div class="container sa-container">
+    <div class="sa-reporting-main">
+        <div class="row sa-row">
+            <div class="col-sm-3 sa-col">
+                <div class="sa-reporting-aside row sa-row">
+                    <div id="reporting-submenu" class="jquery-accordion-menu blue">
+                        <ul id="reporting-submenu-list">
+                            <li data-show-page="sa-reporting-route" id="reporting-route-search">
+                                <a href="javascript:">
+                                    <i class="fa fa-graduation-cap"></i>
+                                    交通路线
+                                </a>
+                                <ul class="submenu">
+                                    <li ng-click="setMapStart('beijing');"><a href="javascript:">北京站</a></li>
+                                    <li ng-click="setMapStart('west');"><a href="javascript:">北京西站</a></li>
+                                    <li ng-click="setMapStart('south');"><a href="javascript:">北京南站</a></li>
+                                    <li ng-click="setMapStart('north');"><a href="javascript:">北京北站</a></li>
+                                    <li ng-click="setMapStart('internationalAirport');"><a href="javascript:">国际机场</a>
+                                    </li>
+                                    <li ng-click="setMapStart('nanyuanAirport');"><a href="javascript:">南苑机场</a></li>
+                                </ul>
+                            </li>
+                            <li data-show-page="sa-reporting-process">
+                                <a href="javascript:">
+                                    <i class="fa fa-graduation-cap"></i>
+                                    报道流程
+                                </a>
+                            </li>
+                            <li data-show-page="sa-reporting-tele">
+                                <a href="javascript:">
+                                    <i class="fa fa-location-arrow"></i>
+                                    校内电话
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 sa-col">
+                <div id="sa-reporting-route" class="sa-reporting-content">
+                    <div class="reporting-route">
+                        <div class="reporting-route-title">
+                            交通路线
+                        </div>
+                        <div class="reporting-route-content">
+                            <div class="campus-select">
+                                <div class="campus-select-button btn btn-default" ng-click="setMapEnd('健翔桥')">健翔桥</div>
+                                <div class="campus-select-button btn btn-default" ng-click="setMapEnd('清河')">清河</div>
+                                <div class="campus-select-button btn btn-info current" ng-click="setMapEnd('小营')">小营
+                                </div>
+                            </div>
+                            <div id="reporting-route-map"></div>
+                            <div id="reporting-route-panel"></div>
+                            <div class="reporting-route-note">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sa-reporting-process" class="sa-reporting-content">
+                    <div class="reporting-process">
+                        <div class="reporting-process-title">
+                            报道流程
+                        </div>
+                        <div class="reporting-process-content">
+                            <div class="campus-select">
+                                <div class="campus-select-button btn btn-default" ng-click="setProcessImg('jxq')">健翔桥
+                                </div>
+                                <div class="campus-select-button btn btn-default" ng-click="setProcessImg('qh')">清河
+                                </div>
+                                <div class="campus-select-button btn btn-info current" ng-click="setProcessImg('xy')">
+                                    小营
+                                </div>
+                            </div>
+                            <div class="reporting-process-img">
+                                <img src="res/img/reporting/xy.png" alt="小营校区报道流程">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sa-reporting-tele" class="sa-reporting-content">
+                    <div class="reporting-tele">
+                        <div class="reporting-tele-title">
+                            校内电话
+                        </div>
+                        <div class="reporting-tele-content">
+                            <div class="reporting-tele-table row sa-row">
+                                <div class="tele-table-title">test</div>
+                                <div class="tele-table-content">test</div>
+                                <div class="tele-table-title">test</div>
+                                <div class="tele-table-content">test</div>
+                                <div class="tele-table-title">test</div>
+                                <div class="tele-table-content">test</div>
+                                <div class="tele-table-title">test</div>
+                                <div class="tele-table-content">test</div>
+                                <div class="tele-table-title">test</div>
+                                <div class="tele-table-content">test</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

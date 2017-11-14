@@ -166,6 +166,15 @@ ul {
     text-align: center;
 }
 
+.go-top {
+    position: fixed;
+    right: 5px;
+    bottom: 10px;
+    color: dodgerblue;
+    display: none;
+    cursor: pointer;
+}
+
 /****  公共样式  ***/
 
 body {

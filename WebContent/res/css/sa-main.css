@@ -127,4 +127,8 @@
 
 .sa-home-info .sa-item a {
     float: left;
+    width: 300px;
+    text-align: left;
+    height: 1.4em;
+    overflow: hidden;
 }
