@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="res/css/sa-handbook.css">
     <link rel="stylesheet" href="res/css/sa-news.css">
     <link rel="stylesheet" href="res/css/sa-news-detail.css">
+    <link rel="stylesheet" href="res/css/sa-reporting.css">
     <link rel="stylesheet" href="res/css/sa-question.css">
 
     <!--favicon-->
@@ -80,7 +81,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -104,7 +104,7 @@
                     <li><a href="/studentAdmission">首页</a></li>
                     <li><a href="introduce" ng-click="setIntroducePage('sa-school-intro')">了解BISTU</a></li>
                     <li><a href="news">新闻公告</a></li>
-                    <li><a href="#">报道流程</a></li>
+                    <li><a href="reporting" ng-click="setReportingPage('sa-reporting-route')">报道流程</a></li>
                     <li><a href="manual">学生手册</a></li>
                     <li><a href="question">常见问题</a></li>
                     <li ng-class="getLoginSession()?'sa-show':'';" style="display: none;"><a href="/personalCenter" target="_blank">个人中心</a>
@@ -129,6 +129,9 @@
             <div class="copyright">
                 Copyright © 2017 BISTU All Rights Reserved.
             </div>
+            <div class="go-top">
+                <i class="fa fa-chevron-up fa-3x"></i>
+            </div>
             <!--<a href="introduce" ng-click="setIntroducePage('sa-school-map');">click</a>-->
         </div>
     </div>
@@ -147,15 +150,16 @@
 <script src="res/js/common/jquery-accordion-menu.js"></script>
 <script src="res/js/common/jquery.dotdotdot.js"></script>
 <!--高德地图api-->
-<script src="http://webapi.amap.com/maps?v=1.4.0&key=86d7e9b2838a66942d8e3665a5049028"></script>
+<script src="http://webapi.amap.com/maps?v=1.4.0&key=86d7e9b2838a66942d8e3665a5049028&plugin=AMap.Transfer"></script>
 
 <script src="res/js/app.js"></script>
 <script src="res/js/route.js"></script>
 <script src="res/js/vin-showdetail.js"></script>
 
 <!--Service-->
-<script src="res/js/service/introduce-service.js"></script>
 <script src="res/js/service/login-service.js"></script>
+<script src="res/js/service/introduce-service.js"></script>
+<script src="res/js/service/reporting-service.js"></script>
 
 <!--Controller-->
 <script src="res/js/controller/index-controller.js"></script>
@@ -163,6 +167,7 @@
 <script src="res/js/controller/introduce-controller.js"></script>
 <script src="res/js/controller/news-controller.js"></script>
 <script src="res/js/controller/news-detail-controller.js"></script>
+<script src="res/js/controller/reporting-controller.js"></script>
 <script src="res/js/controller/handbook-controller.js"></script>
 <script src="res/js/controller/question-controller.js"></script>
 
