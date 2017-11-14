@@ -38,6 +38,18 @@ public class IndexController {
 		mv.setViewName("sa-news");
 		return mv;
 	}
+	@RequestMapping(value="/sa-news-detail")
+	public ModelAndView newsDetail(){
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("sa-news-detail");
+		return mv;
+	}
+	@RequestMapping(value="/sa-reporting")
+	public ModelAndView reporting(){
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("sa-reporting");
+		return mv;
+	}
 	@RequestMapping(value="/sa-question")
 	public ModelAndView question(){
 		ModelAndView mv=new ModelAndView();

@@ -40,4 +40,8 @@ public interface IStudentDao {
 	 * 通过学生的姓名获得学生的学号
 	 * */
 	public String getStudentNumbyName(String name);
+	/**
+	 * 通过学生的学号获取同班同学到信息
+	 * */
+	public List<Student> getClassMateInfo(String studentNum);
 }

@@ -1,5 +1,8 @@
 package com.bistu.supreme.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -7,7 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bistu.supreme.dao.IClassMasterDao;
+import com.bistu.supreme.dao.IInstructorDao;
 import com.bistu.supreme.dao.IStudentDao;
+import com.bistu.supreme.domain.ClassMaster;
+import com.bistu.supreme.domain.Instructor;
 import com.bistu.supreme.domain.Response;
 import com.bistu.supreme.domain.Student;
 /**
@@ -17,6 +24,10 @@ import com.bistu.supreme.domain.Student;
 public class StudentController {
 	@Autowired
 	private IStudentDao studentDao;
+	@Autowired
+	private IClassMasterDao classmasterDao;
+	@Autowired
+	private IInstructorDao instructorDao;
 	/**
 	 * 获取学生的个人信息
 	 * */
@@ -52,5 +63,32 @@ public class StudentController {
 		else {
 			return response.failure("sql_exception");
 		}
+	}
+	
+	/**
+	 * 获取同班同学的基本信息，辅导员的详细信息，班主任的详细信息
+	 * */
+	
+	@RequestMapping(value="/getClass",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response getClass(@RequestBody String studentNum) {
+		Response response = new Response();
+		List<Object> classAll = new ArrayList<Object>();
+		List<Student> studentList = studentDao.getClassMateInfo(studentNum);
+		ClassMaster classmaster = classmasterDao.getClassMasterByStudent(studentNum);
+		Instructor instructor = instructorDao.getInstructorByStudent(studentNum);
+		if(studentList!=null&&studentList.size()!=0) {
+			for(int i=0;i<studentList.size();i++) {
+				classAll.add(studentList.get(i));
+			}
+		}
+		if(classmaster!=null) {
+			classAll.add(classmaster);
+		}
+		if(instructor!=null) {
+			classAll.add(instructor);
+		}
+		return response.success(classAll);
 	}
 }
