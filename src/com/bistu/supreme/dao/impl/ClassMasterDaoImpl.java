@@ -87,4 +87,43 @@ public class ClassMasterDaoImpl implements IClassMasterDao {
 		}
 		
 	}
+
+	@Override
+	public ClassMaster getClassMasterByStudent(String studentNum) {
+		// TODO Auto-generated method stub
+		ClassMaster classMaster = new ClassMaster();
+		String queryMasterByStudent = "select * from sa_classmaster where master_class_num = (select std_class_num from sa_student where std_num=?)";
+		try {
+			classMaster = jdbcTemplate.queryForObject(queryMasterByStudent, new Object[]{studentNum},new ClassMasterMapper());
+			if(classMaster!=null) {
+				return classMaster;
+			}
+			else
+				return null;
+		}catch(Exception e) {
+			System.out.println(e.getClass());
+			classMaster.setMasterNum("-1");
+			return classMaster;
+		}
+		
+	}
+	
+	protected class ClassMasterMapper implements RowMapper<ClassMaster>{
+
+		@Override
+		public ClassMaster mapRow(ResultSet rs, int row) throws SQLException {
+			// TODO Auto-generated method stub
+			ClassMaster classMaster = new ClassMaster();
+			classMaster.setMasterNum(rs.getString("master_num"));
+			classMaster.setMasterName(rs.getString("master_name"));
+			classMaster.setMasterGender(rs.getString("master_gender"));
+			classMaster.setMasterCollege(rs.getString("master_college"));
+			classMaster.setMasterClassNum(rs.getString("master_class_num"));
+			classMaster.setMasterTele(rs.getInt("master_tele"));
+			classMaster.setMasterEmail(rs.getString("master_email"));
+			classMaster.setMasterGrade(rs.getInt("master_grade"));;
+			return classMaster;
+		}
+		
+	}
 }
