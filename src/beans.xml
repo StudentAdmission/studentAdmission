@@ -59,6 +59,14 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
     	<property name="dataSource" ref="ds"></property>
     </bean>
     
+    <bean id="studentMessageBoxDao" class="com.bistu.supreme.dao.impl.StudentMessageDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
+    <bean id="studentTalkRecordDao" class="com.bistu.supreme.dao.impl.StudentTalkRecordDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
     <!-- 通知有关的相关配置 -->
     <bean id="noticeDao" class="com.bistu.supreme.dao.impl.NoticeDaoImpl">
     	<property name="dataSource" ref="ds"></property>

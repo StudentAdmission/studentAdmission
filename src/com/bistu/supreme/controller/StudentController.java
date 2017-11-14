@@ -1,7 +1,5 @@
 package com.bistu.supreme.controller;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +17,9 @@ import com.bistu.supreme.domain.Student;
 public class StudentController {
 	@Autowired
 	private IStudentDao studentDao;
-	
+	/**
+	 * 获取学生的个人信息
+	 * */
 	@RequestMapping(value="/getPersonalInfo",method=RequestMethod.POST,
 			produces= {"application/json;charset=UTF-8"})
 	@ResponseBody
@@ -36,5 +36,21 @@ public class StudentController {
 			else {
 				return response.success(student);
 			}
+	}
+	
+	/**
+	 * 当学生阅读通知时，修改学生的阅读标志为已读
+	 * */
+	@RequestMapping(value="/updateReadTag",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response updateReadTag(@RequestBody String num) {
+		Response response = new Response();
+		if(studentDao.updateReadTag(num)) {
+			return response.success();
+		}
+		else {
+			return response.failure("sql_exception");
+		}
 	}
 }

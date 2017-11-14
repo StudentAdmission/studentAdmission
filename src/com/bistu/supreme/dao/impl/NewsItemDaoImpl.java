@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -16,6 +17,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.bistu.supreme.dao.INewsItemDao;
 import com.bistu.supreme.domain.NewsItem;
 
+import com.bistu.supreme.util.Date2StringUtil;
 /**
  * @author LIZHIWEI
  *
@@ -57,7 +59,13 @@ public class NewsItemDaoImpl implements INewsItemDao {
 			NewsItem newsItem = new NewsItem();
 			newsItem.setItemId(rs.getInt("item_id"));
 			newsItem.setItemTitle(rs.getString("item_title"));
-			newsItem.setItemTime(rs.getString("item_time"));
+			try{
+				Map<String,String> map = Date2StringUtil.getMandD(rs.getString("item_time"));
+				newsItem.setItemTime(map.get("year") + "-" +map.get("month") + "-" + map.get("day"));
+			}catch(Exception e){
+				newsItem.setItemTitle(null);
+			}
+			
 			newsItem.setItemContent(rs.getString("item_content"));
 			newsItem.setItemPriority(rs.getInt("item_priority"));
 			return newsItem;

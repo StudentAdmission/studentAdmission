@@ -1,6 +1,6 @@
 package com.bistu.supreme.domain;
 
-import java.sql.Date;
+import java.util.List;
 
 /**
  * 对应数据库中的sa_notice表
@@ -50,6 +50,15 @@ public class Notice {
 	 * 接收班级
 	 * */
 	private String noticeReceiveClassNum;
+	/**
+	 * 消息已读名单
+	 * */
+	private List<String> noticeReadList;
+	/**
+	 * 消息未读名单
+	 * */
+	private List<String> noticeUnReadList;
+	
 	public int getNoticeId() {
 		return noticeId;
 	}
@@ -115,5 +124,17 @@ public class Notice {
 	}
 	public void setNoticeReceiveClassNum(String noticeReceiveClassNum) {
 		this.noticeReceiveClassNum = noticeReceiveClassNum;
+	}
+	public List<String> getNoticeReadList() {
+		return noticeReadList;
+	}
+	public void setNoticeReadList(List<String> noticeReadList) {
+		this.noticeReadList = noticeReadList;
+	}
+	public List<String> getNoticeUnReadList() {
+		return noticeUnReadList;
+	}
+	public void setNoticeUnReadList(List<String> noticeUnReadList) {
+		this.noticeUnReadList = noticeUnReadList;
 	}
 }

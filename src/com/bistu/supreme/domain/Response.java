@@ -2,10 +2,9 @@ package com.bistu.supreme.domain;
 
 import java.io.Serializable;
 
-import org.springframework.http.HttpStatus;
 
 /**
- * HttpResponse����ģ��
+ * HttpResponse的类模型
  * */
 public class Response implements Serializable{
 	
@@ -14,7 +13,7 @@ public class Response implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	/**
-	 * ��0��1��ʾ��0��ʾʧ�ܣ�1��ʾ�ɹ�
+	 * 状态码，成功返回1，失败返回0
 	 * */
 	private int status;
 	private String message;

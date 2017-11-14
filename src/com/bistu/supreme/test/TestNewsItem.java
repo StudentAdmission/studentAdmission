@@ -29,7 +29,7 @@ public class TestNewsItem {
 		if(newsItemList!=null){
 			for(int i=0;i<newsItemList.size();i++){
 				NewsItem newsItem = newsItemList.get(i);
-				System.out.println("新闻公告id：" + newsItem.getItemId() + "   新闻公告标题：" + newsItem.getItemTitle() + "   新闻公告优先级：" + newsItem.getItemPriority());
+				System.out.println("新闻公告id：" + newsItem.getItemId() + "   新闻公告时间：" + newsItem.getItemTime() + "   新闻公告优先级：" + newsItem.getItemPriority());
 			}
 		}
 		else
