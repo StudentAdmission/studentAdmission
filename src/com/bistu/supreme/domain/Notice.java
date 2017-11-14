@@ -35,10 +35,6 @@ public class Notice {
 	 * */
 	private String noticeAnnouncerNum;
 	/**
-	 * 通知发布者的姓名
-	 * */
-	private String noticeAnnouncerName;
-	/**
 	 * 通知文件中文名
 	 * */
 	private String noticeFileCName;
@@ -100,12 +96,6 @@ public class Notice {
 	}
 	public void setNoticeAnnouncerNum(String noticeAnnouncerNum) {
 		this.noticeAnnouncerNum = noticeAnnouncerNum;
-	}
-	public String getNoticeAnnouncerName() {
-		return noticeAnnouncerName;
-	}
-	public void setNoticeAnnouncerName(String noticeAnnouncerName) {
-		this.noticeAnnouncerName = noticeAnnouncerName;
 	}
 	public String getNoticeFileCName() {
 		return noticeFileCName;

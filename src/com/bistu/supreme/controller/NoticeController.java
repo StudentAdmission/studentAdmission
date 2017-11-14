@@ -19,9 +19,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.bistu.supreme.dao.IClassDao;
 import com.bistu.supreme.dao.INoticeDao;
-import com.bistu.supreme.dao.IStudentDao;
 import com.bistu.supreme.dao.IStudentMessageBoxDao;
+import com.bistu.supreme.dao.ITeacherDao;
 import com.bistu.supreme.domain.Notice;
 import com.bistu.supreme.domain.Response;
 import com.bistu.supreme.util.File_Utils;
@@ -33,7 +34,9 @@ public class NoticeController {
 	@Autowired
 	private IStudentMessageBoxDao sMBoxDao;
 	@Autowired
-	private IStudentDao studentDao;
+	private IClassDao classDao;
+	@Autowired
+	private ITeacherDao teacherDao;
 	
 	@RequestMapping(value="/getAllNotice",method=RequestMethod.POST,
 			produces= {"application/json;charset=UTF-8"})
@@ -54,26 +57,57 @@ public class NoticeController {
 	/**
 	 * 添加通知信息及附件
 	 * */
-	@RequestMapping(value = "/setNotice")
+	@RequestMapping(value = "/setNotice",method=RequestMethod.POST)
     @ResponseBody
-	public Response setNotice(HttpServletRequest request,@RequestParam("noticeFile") MultipartFile file) {
-		Notice notice = new Notice();
+	public Response setNotice(HttpServletRequest request,@RequestParam("notice_file") MultipartFile file,
+			@RequestParam("notice_title")String title, @RequestParam("notice_content")String content, @RequestParam("notice_num")String num) {
 		Response response = new Response();
+		Notice notice = new Notice();
+		String file_c_name = "";
+		String file_e_name = "";
+		notice.setNoticeAnnouncerNum(num);
+		notice.setNoticeContent(content);
+		notice.setNoticeTitle(title);
+		notice.setNoticeFileCName(file_c_name);
+		notice.setNoticeFileEName(file_e_name);
+		List<String> class_num = new ArrayList<String>();
+		Map<String, Object> map = teacherDao.getTeacherInfobyNum(num);
+		if((int)map.get("grade") == 0) {
+			response.failure("teacher_not_found");
+		}
+		else
+			if((int)map.get("grade")==-1) {
+				response.failure("sql_exception");
+			}
+			else {
+				switch((String)map.get("identity")) {
+				//班主任
+				case "1":
+					class_num.add(classDao.getClassNumbyNum(num));
+					break;
+				//辅导员
+				case "2":
+					class_num = classDao.getClassNumsbyCollegeandGrade(
+							(String)map.get("college"), (int)map.get("grade"));
+					break;
+				default:
+					return response.failure("have_no_permission");
+				}
+			}
+		for(int i=0;i<class_num.size();i++) {
+			notice.setNoticeReceiveClassNum(class_num.get(i));
+			if(noticeDao.setNewNotice(notice)) {
+				sMBoxDao.createStudentMessagebyClassNum(notice.getNoticeId(), 
+						notice.getNoticeReceiveClassNum());
+			}
+			else {
+				return response.failure("sql_exception");
+			}
+		}
 		if(request instanceof MultipartHttpServletRequest) {
-        	File_Utils.checkDir("/files/upload");
+			File_Utils.checkDir("/files/upload");
         	String filePath= File_Utils.FilesUpload_stream(request,file,"/files/upload");
-        	System.out.println("****"+notice.getNoticeReceiveClassNum()+"****");
-    		notice.setNoticePushTheNumber(studentDao.calculateNumbyClassNum(
-    				notice.getNoticeReceiveClassNum()));
-    		System.out.println(studentDao.calculateNumbyClassNum(
-    				notice.getNoticeReceiveClassNum()));
-        	if(noticeDao.setNewNotice(notice)) {
-        		sMBoxDao.createStudentMessagebyClassNum(notice.getNoticeId(), notice.getNoticeReceiveClassNum());
-        		return response.success(filePath);
-        	}
-        	else {
-        		return response.failure("sql_exception");
-        	}
+        	return response.success(filePath);
         }
         else {
         	return response.failure("bad_request");
