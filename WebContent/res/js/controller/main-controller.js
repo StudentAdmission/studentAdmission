@@ -17,7 +17,7 @@ app.controller('mainCtrl',['$http','$scope',function ($http, $scope) {
                 })
             }
         }
-        $('.sa-home-info .sa-news-content').after(content);
+        $('.sa-home-info .sa-homepage-news-content').after(content);
     });
 
     $http.post('homepageReportingProcess.do').then(function (response) {
@@ -39,7 +39,7 @@ app.controller('mainCtrl',['$http','$scope',function ($http, $scope) {
                 })
             }
         }
-        $('.sa-home-info .sa-reporting-content').after(content);
+        $('.sa-home-info .sa-homepage-reporting-content').after(content);
     });
 
     $(function () {
