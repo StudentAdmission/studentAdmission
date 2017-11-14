@@ -3,7 +3,7 @@ package com.bistu.supreme.util;
 import java.util.HashMap;
 import java.util.Map;
 /**
- * 将Date的time转换成String的time
+ * 将Date的time转换成String的time 
  * */
 public final class Date2StringUtil {
 	public static Map<String, String> getMandD(String str){
