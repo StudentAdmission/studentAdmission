@@ -26,7 +26,7 @@ function setTime(delay) {
     return date.getTime() + delay * 60000;
 }
 
-app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceService', function ($http, $scope, loginService, introduceService) {
+app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceService', 'reportingService', function ($http, $scope, loginService, introduceService, reportingService) {
 
     $scope.login = {
         loginNum: "",
@@ -70,6 +70,9 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
     $scope.setIntroducePage = function (current) {
         introduceService.setCurrentPage(current);
     };
+    $scope.setReportingPage = function (current) {
+        reportingService.setCurrentPage(current);
+    };
     $scope.getLoginSession = function () {
         return loginService.getLoginSession() ? loginService.getLoginSession : '';
     };
@@ -93,7 +96,17 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
             $("html,body").animate({scrollTop: 0}, 500);
         }
 
-        $('a').click(goTop);
+        $(window).on('scroll', function () {
+            var scrollTop = $(this).scrollTop();
+            if (scrollTop > 0) {
+                $('.go-top').fadeIn();
+            } else {
+                $('.go-top').fadeOut();
+            }
+        });
+        $('.go-top').on('click', function () {
+            goTop();
+        });
         $(".sa-tip").tipso({
             useTitle: false
         });
