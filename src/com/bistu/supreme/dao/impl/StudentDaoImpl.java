@@ -103,6 +103,9 @@ public class StudentDaoImpl implements IStudentDao {
 			student.setStdWechat(rs.getString("std_wechat"));
 			student.setStdAccountMigration(rs.getString("std_account_migration"));
 			student.setStdIdPhoto(rs.getString("std_id_photo"));
+			student.setStdEducation(rs.getString("std_education"));
+			student.setStdTicketNumber(rs.getInt("std_ticket_number"));
+			student.setStdSourceOfHealth(rs.getString("std_source_of_ealth"));
 			return student;
 		}
 		
@@ -213,4 +216,40 @@ public class StudentDaoImpl implements IStudentDao {
 		}
 	}
 
+	@Override
+	public List<Student> getClassMateInfo(String studentNum) {
+		// TODO Auto-generated method stub
+		String queryClassMate = "select * from sa_student where std_class_num = (select std_class_num from sa_student where std_num = ?) and std_num!=?";
+		List<Student> classmateList = new ArrayList<Student>();
+		try {
+			classmateList = jdbcTemplate.query(queryClassMate,new Object[] {studentNum,studentNum},new ClassMateLittleMapper());
+			if(classmateList!=null&&classmateList.size()!=0) {
+				return classmateList;
+			}
+			else
+				return null;
+		}catch(Exception e) {
+			Student student = new Student();
+			student.setStdNum("-1");
+			classmateList.add(student);
+			return classmateList;
+		}
+	}
+
+	protected class ClassMateLittleMapper implements RowMapper<Student>{
+
+		@Override
+		public Student mapRow(ResultSet rs, int row) throws SQLException {
+			// TODO Auto-generated method stub
+			Student student = new Student();
+			student.setStdNum(rs.getString("std_num"));
+			student.setStdName(rs.getString("std_name"));
+			student.setStdGender(rs.getString("std_gender"));
+			student.setStdEmail(rs.getString("std_email"));
+			student.setStdQQ(rs.getInt("std_qq"));
+			student.setStdWechat(rs.getString("std_wechat"));
+			return student;
+		}
+		
+	}
 }
