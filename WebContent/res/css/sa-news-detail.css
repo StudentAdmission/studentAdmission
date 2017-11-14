@@ -1,0 +1,34 @@
+@charset "UTF-8";
+.sa-news-detail-main {
+    position: relative;
+    margin-bottom: -100px;
+    background-color: #fff;
+    padding: 50px;
+}
+
+.sa-news-detail-main .news-content > p {
+    text-indent: 2em;
+}
+
+.sa-news-detail-main .location {
+    font-size: 1.5rem;
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+}
+
+.sa-news-detail-main .news-title {
+    text-align: center;
+    font-size: 3rem;
+    margin: 50px 0;
+}
+
+.sa-news-detail-main .news-time {
+    text-align: right;
+    font-size: 1.4rem;
+}
+
+.sa-news-detail-main .news-content {
+    font-size: 2rem;
+    line-height: 2em;
+    padding: 0 50px;
+}
