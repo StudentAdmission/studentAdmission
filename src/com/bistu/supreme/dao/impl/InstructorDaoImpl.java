@@ -17,6 +17,7 @@ import org.springframework.jdbc.core.RowMapper;
 import com.bistu.supreme.dao.IInstructorDao;
 import com.bistu.supreme.dao.IStudentDao;
 import com.bistu.supreme.domain.ClassMaster;
+import com.bistu.supreme.domain.Instructor;
 import com.bistu.supreme.domain.Student;
 
 /**
@@ -83,7 +84,7 @@ public class InstructorDaoImpl implements IInstructorDao {
 		public ClassMaster mapRow(ResultSet rs, int row) throws SQLException {
 			// TODO Auto-generated method stub
 			ClassMaster classMaster = new ClassMaster();
-			classMaster.setMasterClassNum(rs.getString("master_num"));
+			classMaster.setMasterNum(rs.getString("master_num"));
 			classMaster.setMasterName(rs.getString("master_name"));
 			classMaster.setMasterGender(rs.getString("master_gender"));
 			classMaster.setMasterCollege(rs.getString("master_college"));
@@ -95,4 +96,40 @@ public class InstructorDaoImpl implements IInstructorDao {
 		
 	}
 
+	@Override
+	public Instructor getInstructorByStudent(String studentNum) {
+		// TODO Auto-generated method stub
+		String queryInstructorByStudent = "select * from sa_instructor where itr_grade = (select std_grade from sa_student where std_num = ?) and itr_college = (select std_college from sa_student where std_num = ?)";
+		Instructor instructor = new Instructor();
+		try {
+			instructor = jdbcTemplate.queryForObject(queryInstructorByStudent, new Object[]{studentNum,studentNum},new InstructorMapper());
+			if(instructor!=null) {
+				return instructor;
+			}
+			else
+				return null;
+		}catch(Exception e) {
+			instructor.setItrNum("-1");
+			return instructor;
+		}
+		
+	}
+
+	protected class InstructorMapper implements RowMapper<Instructor>{
+
+		@Override
+		public Instructor mapRow(ResultSet rs, int row) throws SQLException {
+			// TODO Auto-generated method stub
+			Instructor instructor = new Instructor();
+			instructor.setItrNum(rs.getString("itr_num"));
+			instructor.setItrName(rs.getString("itr_name"));
+			instructor.setItrGender(rs.getString("itr_gender"));
+			instructor.setItrCollege(rs.getString("itr_college"));
+			instructor.setItrGrade(rs.getInt("itr_grade"));
+			instructor.setItrTele(rs.getInt("itr_tele"));
+			instructor.setItrEmail(rs.getString("itr_email"));
+			return instructor;
+		}
+		
+	}
 }

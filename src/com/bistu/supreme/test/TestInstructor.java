@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bistu.supreme.dao.IInstructorDao;
 import com.bistu.supreme.domain.ClassMaster;
+import com.bistu.supreme.domain.Instructor;
 import com.bistu.supreme.domain.Student;
 
 /**
@@ -25,7 +26,7 @@ public class TestInstructor {
 	private IInstructorDao instructorDao;
 
 	@Test
-	public void getAllClassStudentAndClassMasterInfo() {
+	public void testGetAllClassStudentAndClassMasterInfo() {
 		List<Object> allList = instructorDao.getAllClassStudentAndClassMasterInfo();
 		if (allList != null) {
 			for (int i = 0; i < allList.size(); i++) {
@@ -45,4 +46,11 @@ public class TestInstructor {
 			System.out.println("连接数据库失败");
 	}
 
+	@Test
+	public void getInstructorByStudent() {
+		String studentNum = "201701490";
+		Instructor instructor = instructorDao.getInstructorByStudent(studentNum);
+		System.out.println("辅导员NUM：" + instructor.getItrNum() + "   辅导员所属年级：" + instructor.getItrGrade() + "   辅导员所属学院：" + instructor.getItrCollege());
+		
+	}
 }
