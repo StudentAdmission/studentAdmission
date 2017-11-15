@@ -28,12 +28,14 @@ public class LoginController {
 		Response response = new Response();
 		String login_num = login.getLoginNum();
 		String login_pwd = login.getLoginPwd();
-		Map<String, Integer> map = loginDao.findLogin(login_num, login_pwd);
-		if(map.get("login_id") == -1)
+		Map<String, Object> map = loginDao.findLogin(login_num, login_pwd);
+		if((int)map.get("login_id") == -1)
 			return response.failure("information_incorrect");
 		else {
 			Map<String,Object> login_new = new HashMap<String,Object>();
 			login_new.put("loginNum", login_num);
+			login_new.put("loginPortrait", map.get("login_portrait"));
+			login_new.put("loginNickname", map.get("login_nickname"));
 			login_new.put("loginTag", map.get("login_tag"));
 			return response.success(login_new);
 		}

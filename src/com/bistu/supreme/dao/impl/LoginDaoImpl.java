@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 import com.bistu.supreme.dao.ILoginDao;
 import com.bistu.supreme.domain.Login;
 /**
+ * @author LiDafei
  * 登录验证接口的实现类 
  * */
 @Repository
@@ -31,17 +32,18 @@ public class LoginDaoImpl implements ILoginDao{
 	}
 
 	@Override
-	public Map<String, Integer> findLogin(String login_num, String login_pwd) {
+	public Map<String, Object> findLogin(String login_num, String login_pwd) {
 		// TODO Auto-generated method stub
-		String qurey_sql = "select login_tag,login_id from sa_login where login_pwd=? and login_num=?";
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		String qurey_sql = "select login_tag,login_id,login_nickname,login_portrait from sa_login where login_pwd=? and login_num=?";
+		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			System.out.println("****************************");
 			Login login = (Login)jdbcTemplate.queryForObject(qurey_sql, 
 					new Object[] {login_pwd, login_num}, new LoginMapper());
 			System.out.println(login.getLoginId() + "    " + login.getLoginTag());
 			map.put("login_id", login.getLoginId());
 			map.put("login_tag", login.getLoginTag());
+			map.put("login_nickname", login.getLoginNickname());
+			map.put("login_portrait", login.getLoginPortrait());
 		}
 		catch(Exception e) {
 			map.put("login_id", -1);
@@ -60,6 +62,8 @@ public class LoginDaoImpl implements ILoginDao{
 //			login.setLoginPwd(rs.getString("login_pwd"));
 			login.setLoginId(rs.getInt("login_id"));
 			login.setLoginTag(rs.getInt("login_tag"));
+			login.setLoginNickname(rs.getString("login_nickname"));
+			login.setLoginPortrait(rs.getString("login_portrait"));
 			return login;
 		}}
 
