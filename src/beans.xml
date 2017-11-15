@@ -67,6 +67,14 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
         <property name="dataSource" ref="ds"></property>
     </bean>
     
+    <bean id="teacherDao" class="com.bistu.supreme.dao.impl.TeacherDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
+    <bean id="classDao" class="com.bistu.supreme.dao.impl.ClassDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
     <!-- 通知有关的相关配置 -->
     <bean id="noticeDao" class="com.bistu.supreme.dao.impl.NoticeDaoImpl">
     	<property name="dataSource" ref="ds"></property>
@@ -82,7 +90,7 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 	<!-- 辅导员相关的配置 -->
 	<bean id="InstructorDao" class="com.bistu.supreme.dao.impl.InstructorDaoImpl">
     	<property name="dataSource" ref="ds"></property>
-    </bean>
+    </bean> 
     <!-- 新闻公告的相关配置 -->
     <bean id="NewsItemDao" class="com.bistu.supreme.dao.impl.NewsItemDaoImpl">
     	<property name="dataSource" ref="ds"></property>

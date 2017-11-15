@@ -44,4 +44,12 @@ public interface IStudentDao {
 	 * 通过学生的学号获取同班同学到信息
 	 * */
 	public List<Student> getClassMateInfo(String studentNum);
+	/**
+	 * 修改一个学生的信息
+	 * */
+	public boolean setStudentbyNum(Student student);
+	/**
+	 * 删除一个学生的信息
+	 * */
+	public boolean deleteStudentbyNum(String num);
 }

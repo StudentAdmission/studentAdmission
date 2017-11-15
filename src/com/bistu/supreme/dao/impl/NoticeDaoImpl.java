@@ -35,7 +35,7 @@ public class NoticeDaoImpl implements INoticeDao {
 		// TODO Auto-generated method stub
 		String querySqlGetClassNum = "select std_class_num from sa_student where std_num=?";
 		String classNum="";
-		String querySqlGetAllAllNoticeOfStudent = "select notice_id,notice_title,notice_announcer_name,notice_content,notice_file_c_name,notice_file_e_name from sa_notice where notice_receive_class_num = ?";
+		String querySqlGetAllAllNoticeOfStudent = "select notice_id,notice_title,notice_content,notice_file_c_name,notice_file_e_name from sa_notice where notice_receive_class_num = ?";
 		List<Notice> getAllNotice = new ArrayList<Notice>();
 		try{
 			/*获取学生的班级号*/
@@ -63,7 +63,6 @@ public class NoticeDaoImpl implements INoticeDao {
 			Notice notice = new Notice();
 			notice.setNoticeId(rs.getInt("notice_id"));
 			notice.setNoticeTitle(rs.getString("notice_title"));
-			notice.setNoticeAnnouncerName(rs.getString("notice_announcer_name"));
 			notice.setNoticeContent(rs.getString("notice_content"));
 			notice.setNoticeFileCName(rs.getString("notice_file_c_name"));
 			notice.setNoticeFileEName(rs.getString("notice_file_e_name"));
@@ -78,7 +77,6 @@ public class NoticeDaoImpl implements INoticeDao {
 			Notice notice = new Notice();
 			notice.setNoticeId(rs.getInt("notice_id"));
 			notice.setNoticeTitle(rs.getString("notice_title"));
-			notice.setNoticeAnnouncerName(rs.getString("notice_announcer_name"));
 			notice.setNoticeContent(rs.getString("notice_content"));
 			notice.setNoticeFileCName(rs.getString("notice_file_c_name"));
 			notice.setNoticePushTheNumber(rs.getInt("notice_push_the_number"));
@@ -96,8 +94,8 @@ public class NoticeDaoImpl implements INoticeDao {
 		// TODO Auto-generated method stub
 		String insert_sql = "insert into sa_notice("
 				+ "notice_title,notice_content,notice_push_the_number,"
-				+ "notice_announcer_num,notice_announcer_name,notice_file_c_name,"
-				+ "notice_file_e_name,notice_receive_class_num) values(?,?,?,?,?,?,?,?)";
+				+ "notice_announcer_num,notice_file_c_name,"
+				+ "notice_file_e_name,notice_receive_class_num) values(?,?,?,?,?,?,?)";
 		
 		try {
 			jdbcTemplate.update(insert_sql, 
@@ -110,10 +108,9 @@ public class NoticeDaoImpl implements INoticeDao {
 							ps.setString(2, notice.getNoticeContent());
 							ps.setInt(3, notice.getNoticePushTheNumber());
 							ps.setString(4, notice.getNoticeAnnouncerNum());
-							ps.setString(5, notice.getNoticeAnnouncerName());
-							ps.setString(6, notice.getNoticeFileCName());
-							ps.setString(7, notice.getNoticeFileEName());
-							ps.setString(8, notice.getNoticeReceiveClassNum());
+							ps.setString(5, notice.getNoticeFileCName());
+							ps.setString(6, notice.getNoticeFileEName());
+							ps.setString(7, notice.getNoticeReceiveClassNum());
 						}
 				
 			});

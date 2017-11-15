@@ -15,6 +15,25 @@ app.controller('reportingCtrl', ['$http', '$scope', 'reportingService', function
     $scope.setTele = function (campus) {
         $scope.campusTele = campus;
     };
+
+    $http.post('schoolPhone.do').then(function (response) {
+        console.log(response);
+        var content = '';
+        if (response.status !== 200) {
+            content += '<div class="connect-error">网络异常，请检查网络连接</div>';
+        } else {
+            var phoneData = response.data;
+            if (phoneData.status !== 1) {
+                content += '<div class="connect-error">数据库连接失败，请联系管理员</div>';
+            } else {
+                $.each(phoneData.data, function (index, item) {
+                    content += '<div class="tele-table-title">' + item.spCollegeName + '</div><div class="tele-table-content">' + item.spCollegePhone + '</div>';
+                });
+            }
+        }
+        $('.reporting-tele-table').empty().append(content);
+    });
+
     $(function () {
 
 
@@ -40,10 +59,10 @@ app.controller('reportingCtrl', ['$http', '$scope', 'reportingService', function
         setDefaultPage($scope.currentPage);
 
         $('#reporting-submenu').jqueryAccordionMenu();
-        $('#reporting-submenu-list li').click(function () {
+        $('#reporting-submenu-list>li').click(function () {
             //添加判断方法，当前点击项是当前显示项时，跳过该方法
 
-            if ($("#reporting-submenu-list li.active").data('show-page') !== $(this).data('show-page')) {
+            if ($("#reporting-submenu-list>li.active").data('show-page') !== $(this).data('show-page')) {
                 hidePage($("#reporting-submenu-list li.active").data('show-page'));
                 $("#reporting-submenu-list li.active").removeClass("active");
                 $(this).addClass("active");

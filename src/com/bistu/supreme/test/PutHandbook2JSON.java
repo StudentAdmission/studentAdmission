@@ -8,11 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.alibaba.fastjson.JSONObject;
 import com.bistu.supreme.dao.IHandbookDao;
 import com.bistu.supreme.domain.Handbook;
 import com.bistu.supreme.util.ConvertMethod;
-import com.bistu.supreme.util.Write2JSON;
 /**
  * Spring测试框架
  * */
@@ -31,7 +29,7 @@ public class PutHandbook2JSON {
 		String str = "";
 		if(list != null) {
 			str = ConvertMethod.ConvertHandBookList2JSON(list);
-			Write2JSON.write2Json(str);
+			System.out.println(str);
 		}
 	}
 	

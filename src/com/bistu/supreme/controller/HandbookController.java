@@ -2,6 +2,8 @@ package com.bistu.supreme.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,13 +26,13 @@ public class HandbookController {
 	@RequestMapping(value="/handbook",method=RequestMethod.POST,
 			produces= {"application/json;charset=UTF-8"})
 	@ResponseBody
-	public Response getHandbookInfo() {
+	public Response getHandbookInfo(HttpServletRequest request) {
 		Response response = new Response();
 		List<Handbook> list = handbookDao.getAll();
 		String str = "";
 		if(list != null) {
 			str = ConvertMethod.ConvertHandBookList2JSON(list);
-			Write2JSON.write2Json(str);
+			Write2JSON.write2Json(request, str, "manualData.json");
 			return response.success();
 		}
 		else {

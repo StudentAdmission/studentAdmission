@@ -4,35 +4,11 @@
         <div class="sa-news-main">
             <div class="sa-news-item">
                 <div class="col-sm-12 sa-col">
-                    <div class="item-content">
-                        <a href="news/detail" ng-click="setNewsDetail(1);">
-                            <div class="news-title">校级理论学习中心组集体学习党的十九大报告</div>
+                    <div class="item-content" ng-repeat="item in news" ng-click="setNews(item)">
+                        <a href="news/detail">
+                            <div class="news-title">{{item.itemTitle}}</div>
                         </a>
-                        <div class="news-time">2017/10/26</div>
-                    </div>
-                    <div class="item-content">
-                        <a href="news/detail" ng-click="setNewsDetail(1);">
-                            <div class="news-title">校级理论学习中心组集体学习党的十九大报告</div>
-                        </a>
-                        <div class="news-time">2017/10/26</div>
-                    </div>
-                    <div class="item-content">
-                        <a href="news/detail" ng-click="setNewsDetail(1);">
-                            <div class="news-title">校级理论学习中心组集体学习党的十九大报告</div>
-                        </a>
-                        <div class="news-time">2017/10/26</div>
-                    </div>
-                    <div class="item-content">
-                        <a href="news/detail" ng-click="setNewsDetail(1);">
-                            <div class="news-title">校级理论学习中心组集体学习党的十九大报告</div>
-                        </a>
-                        <div class="news-time">2017/10/26</div>
-                    </div>
-                    <div class="item-content">
-                        <a href="news/detail" ng-click="setNewsDetail(1);">
-                            <div class="news-title">校级理论学习中心组集体学习党的十九大报告</div>
-                        </a>
-                        <div class="news-time">2017/10/26</div>
+                        <div class="news-time">{{item.itemTime}}</div>
                     </div>
                 </div>
             </div>

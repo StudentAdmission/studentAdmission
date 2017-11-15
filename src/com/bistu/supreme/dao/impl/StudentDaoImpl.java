@@ -1,5 +1,6 @@
 package com.bistu.supreme.dao.impl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -105,7 +106,7 @@ public class StudentDaoImpl implements IStudentDao {
 			student.setStdIdPhoto(rs.getString("std_id_photo"));
 			student.setStdEducation(rs.getString("std_education"));
 			student.setStdTicketNumber(rs.getInt("std_ticket_number"));
-			student.setStdSourceOfHealth(rs.getString("std_source_of_ealth"));
+			student.setStdSourceOfHealth(rs.getString("std_source_of_health"));
 			return student;
 		}
 		
@@ -144,6 +145,7 @@ public class StudentDaoImpl implements IStudentDao {
 			return null;
 		}
 		catch(Exception e) {
+			System.out.println(e.getMessage());
 			student = new Student();
 			student.setStdNum("-1");
 			return student;
@@ -251,5 +253,71 @@ public class StudentDaoImpl implements IStudentDao {
 			return student;
 		}
 		
+	}
+
+	@Override
+	public boolean setStudentbyNum(Student student) {
+		// TODO Auto-generated method stub
+		String update_sql = "update sa_student set std_name=?,std_gender=?,std_major=?,"
+				+ "std_class_num=?,std_dorm_num=?,std_college=?,std_tele=?,std_nation=?,"
+				+ "std_address=?,std_post_code=?,std_identification=?,std_email=?,"
+				+ "std_grade=?,std_native_place=?,std_father_name=?,std_father_tele=?,"
+				+ "std_mother_name=?,std_mother_tele=?,std_political_status=?,std_birth=?,"
+				+ "std_qq=?,std_wechat=?,std_account_migration=?,std_id_photo=?,std_education=?,"
+				+ "std_ticket_number=?,std_source_of_health=? where std_num=?";
+		try {
+			jdbcTemplate.update(update_sql, 
+					new PreparedStatementSetter() {
+
+						@Override
+						public void setValues(PreparedStatement ps) throws SQLException {
+							// TODO Auto-generated method stub
+							ps.setString(1,student.getStdName());
+							ps.setString(2,student.getStdGender());
+							ps.setString(3,student.getStdMajor());
+							ps.setString(4,student.getStdClassNum());
+							ps.setString(5,student.getStdDormNum());
+							ps.setString(6,student.getStdCollege());
+							ps.setInt(7,student.getStdTele());
+							ps.setString(8,student.getStdNation());
+							ps.setString(9,student.getStdAddress());
+							ps.setInt(10,student.getStdPostCode());
+							ps.setString(11,student.getStdIdentification());
+							ps.setString(12,student.getStdEmail());
+							ps.setInt(13,student.getStdGrade());
+							ps.setString(14,student.getStdNativePlace());
+							ps.setString(15,student.getStdFatherName());
+							ps.setInt(16,student.getStdFatherTele());
+							ps.setString(17,student.getStdMotherName());
+							ps.setInt(18,student.getStdMotherTele());
+							ps.setString(19,student.getStdPoliticalStatus());
+							ps.setString(20,student.getStdBirth());
+							ps.setInt(21,student.getStdQQ());
+							ps.setString(22,student.getStdWechat());
+							ps.setString(23,student.getStdAccountMigration());
+							ps.setString(24,student.getStdIdPhoto());
+							ps.setString(25,student.getStdEducation());
+							ps.setInt(26,student.getStdTicketNumber());
+							ps.setString(27,student.getStdSourceOfHealth());
+							ps.setString(28,student.getStdNum());
+						}});
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteStudentbyNum(String num) {
+		// TODO Auto-generated method stub
+		String delete_sql = "delete from sa_student where std_num=?";
+		try {
+			jdbcTemplate.update(delete_sql, new Object[] {num});
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
 	}
 }
