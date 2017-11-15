@@ -73,4 +73,21 @@ public class NewsItemDaoImpl implements INewsItemDao {
 		
 	}
 
+	@Override
+	public NewsItem getOneNewsItem(int newsItemID) {
+		// TODO Auto-generated method stub
+		NewsItem newsItem = new NewsItem();
+		String queryOneNewsItem = "select * from sa_news_item WHERE item_id = ?";
+		try {
+			newsItem = jdbcTemplate.queryForObject(queryOneNewsItem, new Object[]{newsItemID},new NewsItemMapper());
+			if(newsItem!=null)
+				return newsItem;
+			else
+				return null;
+		}catch(Exception e) {
+			newsItem.setItemId(-1);
+			return newsItem;
+		}
+	}
+
 }

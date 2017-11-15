@@ -36,4 +36,12 @@ public class TestNewsItem {
 			System.out.println("连接数据库出错");
 	}
 
+	@Test
+	public void getOneNewsItem(){
+		int newsItemID = 1;
+		NewsItem newsItem = newsItemDao.getOneNewsItem(newsItemID);
+		if(newsItem!=null)
+			System.out.println("ID:" + newsItem.getItemId() + "\n内容:" + newsItem.getItemContent() + "\n时间:" + newsItem.getItemTime());
+		
+	}
 }
