@@ -21,5 +21,8 @@ public interface INewsItemDao {
 	 * 根据新闻公告的id获取新闻公告的详细信息
 	 * */
 	public NewsItem getOneNewsItem(int newsItemID);
-	
+	/**
+	 * 创建一条新闻
+	 * */
+	public boolean setNewsItem(NewsItem newsItem);
 }

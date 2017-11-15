@@ -3,6 +3,7 @@
  */
 package com.bistu.supreme.dao.impl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.bistu.supreme.dao.INewsItemDao;
@@ -87,6 +89,28 @@ public class NewsItemDaoImpl implements INewsItemDao {
 		}catch(Exception e) {
 			newsItem.setItemId(-1);
 			return newsItem;
+		}
+	}
+
+	@Override
+	public boolean setNewsItem(NewsItem newsItem) {
+		// TODO Auto-generated method stub
+		String insert_sql = "insert into sa_news_item(item_title,item_content,item_priority) values(?,?,?)";
+		try {
+			jdbcTemplate.update(insert_sql,
+					new PreparedStatementSetter() {
+
+						@Override
+						public void setValues(PreparedStatement ps) throws SQLException {
+							// TODO Auto-generated method stub
+							ps.setString(1, newsItem.getItemTitle());
+							ps.setString(2, newsItem.getItemContent());
+							ps.setInt(3, newsItem.getItemPriority());
+						}});
+			return true;
+		}
+		catch(Exception e) {
+			return false;
 		}
 	}
 

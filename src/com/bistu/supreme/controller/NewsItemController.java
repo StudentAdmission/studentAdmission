@@ -60,4 +60,17 @@ public class NewsItemController {
 			return response.success("没有匹配的新闻");
 		
 	}
+	
+	@RequestMapping(value="/setNewsItem",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response setNewsItem(@RequestBody NewsItem newsItem) {
+		Response response = new Response();
+		if(newsItemDao.setNewsItem(newsItem)) {
+			return response.success();
+		}
+		else {
+			return response.failure("create_fail");
+		}
+	}
 }
