@@ -95,4 +95,8 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
     <bean id="NewsItemDao" class="com.bistu.supreme.dao.impl.NewsItemDaoImpl">
     	<property name="dataSource" ref="ds"></property>
     </bean>
+    <!-- 学校简介相关的配置 -->
+    <bean id="SchoolProfileDao" class="com.bistu.supreme.dao.impl.SchoolProfileDaoImpl">
+    	<property name="dataSource" ref="ds"></property>
+    </bean>
 </beans>
