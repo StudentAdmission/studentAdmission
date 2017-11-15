@@ -153,4 +153,26 @@ public class LoginDaoImpl implements ILoginDao{
 			return false;
 		
 	}
+
+	@Override
+	public boolean forgetPwdRevise(Login login) {
+		// TODO Auto-generated method stub
+		String update_sql = "update sa_login set login_pwd=? where login_num=? and login_email=?";
+		try {
+			jdbcTemplate.update(update_sql, 
+					new PreparedStatementSetter() {
+
+						@Override
+						public void setValues(PreparedStatement ps) throws SQLException {
+							// TODO Auto-generated method stub
+							ps.setString(1, login.getLoginPwd());
+							ps.setString(2, login.getLoginNum());
+							ps.setString(3, login.getLoginEmail());
+						}});
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
 }

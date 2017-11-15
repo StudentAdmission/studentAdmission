@@ -2,6 +2,9 @@ package com.bistu.supreme.dao;
 
 import java.util.Map;
 
+import com.bistu.supreme.domain.Login;
+
+
 /**
  * 登录判定接口
  * */
@@ -27,4 +30,8 @@ public interface ILoginDao {
 	 * 根据ID，邮箱，密码，头像来修改密码
 	 * */
 	public boolean revisePwd(String loginNum,String loginEmail,String pwd,String loginPortrait);
+	/**
+	 * 忘记密码的修改密码
+	 * */
+	public boolean forgetPwdRevise(Login login);
 }

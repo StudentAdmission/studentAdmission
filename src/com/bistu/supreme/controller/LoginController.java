@@ -86,4 +86,17 @@ public class LoginController {
 		else
 			return 0;
 	}
+	
+	@RequestMapping(value="/forget/pwd",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response forgetPwdRevise(@RequestBody Login login) {
+		Response response = new Response();
+		if(loginDao.forgetPwdRevise(login)) {
+			return response.success();
+		}
+		else {
+			return response.failure("sql_exception");
+		}
+	}
 }
