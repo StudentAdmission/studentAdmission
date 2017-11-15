@@ -42,7 +42,7 @@ public class NewsItemController {
 		else
 			return response.success();
 	}
-	
+	 
 	@RequestMapping(value="/news/item/one",method=RequestMethod.POST,
 			produces= {"application/json;charset=UTF-8"})
 	@ResponseBody

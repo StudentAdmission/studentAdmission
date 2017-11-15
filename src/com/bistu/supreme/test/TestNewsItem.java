@@ -17,7 +17,7 @@ import com.bistu.supreme.domain.NewsItem;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 /**
- * 加载 beans配置文件
+ * 加载 beans配置文件 
  */
 @ContextConfiguration("/beans.xml")
 public class TestNewsItem {

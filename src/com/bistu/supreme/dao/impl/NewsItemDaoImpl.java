@@ -19,7 +19,7 @@ import com.bistu.supreme.domain.NewsItem;
 
 import com.bistu.supreme.util.Date2StringUtil;
 /**
- * @author LIZHIWEI
+ * @author LIZHIWEI 
  *
  */
 public class NewsItemDaoImpl implements INewsItemDao {

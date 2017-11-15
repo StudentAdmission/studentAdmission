@@ -9,7 +9,7 @@ import com.bistu.supreme.domain.NewsItem;
 
 /**
  * @author LIZHIWEI
- *对新闻公告的相关接口
+ *对新闻公告的相关接口 
  */
 public interface INewsItemDao {
 	/**
