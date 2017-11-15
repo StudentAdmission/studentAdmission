@@ -36,7 +36,7 @@ public class Student {
 	/**
 	 * 学生电话
 	 * */
-	private int stdTele;
+	private Long stdTele;
 	/**
 	 * 学生民族
 	 * */
@@ -72,7 +72,7 @@ public class Student {
 	/**
 	 * 学生父亲电话
 	 * */
-	private int stdFatherTele;
+	private long stdFatherTele;
 	/**
 	 * 学生母亲姓名
 	 * */
@@ -80,7 +80,7 @@ public class Student {
 	/**
 	 * 学生母亲电话
 	 * */
-	private int stdMotherTele;
+	private long stdMotherTele;
 	/**
 	 * 学生的政治面貌
 	 * */
@@ -92,7 +92,7 @@ public class Student {
 	/**
 	 * 学生的QQ
 	 * */
-	private int stdQQ;
+	private long stdQQ;
 	/**
 	 * 学生的微信
 	 * */
@@ -113,7 +113,7 @@ public class Student {
 	/**
 	 * 准考证号
 	 * */
-	private int stdTicketNumber;
+	private long stdTicketNumber;
 	/**
 	 * 生源地
 	 * */
@@ -124,10 +124,10 @@ public class Student {
 	public void setStdEducation(String stdEducation) {
 		this.stdEducation = stdEducation;
 	}
-	public int getStdTicketNumber() {
+	public long getStdTicketNumber() {
 		return stdTicketNumber;
 	}
-	public void setStdTicketNumber(int stdTicketNumber) {
+	public void setStdTicketNumber(long stdTicketNumber) {
 		this.stdTicketNumber = stdTicketNumber;
 	}
 	public String getStdSourceOfHealth() {
@@ -178,10 +178,10 @@ public class Student {
 	public void setStdCollege(String stdCollege) {
 		this.stdCollege = stdCollege;
 	}
-	public int getStdTele() {
+	public long getStdTele() {
 		return stdTele;
 	}
-	public void setStdTele(int stdTele) {
+	public void setStdTele(long stdTele) {
 		this.stdTele = stdTele;
 	}
 	public String getStdNation() {
@@ -232,10 +232,10 @@ public class Student {
 	public void setStdFatherName(String stdFatherName) {
 		this.stdFatherName = stdFatherName;
 	}
-	public int getStdFatherTele() {
+	public long getStdFatherTele() {
 		return stdFatherTele;
 	}
-	public void setStdFatherTele(int stdFatherTele) {
+	public void setStdFatherTele(long stdFatherTele) {
 		this.stdFatherTele = stdFatherTele;
 	}
 	public String getStdMotherName() {
@@ -244,10 +244,10 @@ public class Student {
 	public void setStdMotherName(String stdMotherName) {
 		this.stdMotherName = stdMotherName;
 	}
-	public int getStdMotherTele() {
+	public long getStdMotherTele() {
 		return stdMotherTele;
 	}
-	public void setStdMotherTele(int stdMotherTele) {
+	public void setStdMotherTele(long stdMotherTele) {
 		this.stdMotherTele = stdMotherTele;
 	}
 	public String getStdPoliticalStatus() {
@@ -262,10 +262,10 @@ public class Student {
 	public void setStdBirth(String stdBirth) {
 		this.stdBirth = stdBirth;
 	}
-	public int getStdQQ() {
+	public long getStdQQ() {
 		return stdQQ;
 	}
-	public void setStdQQ(int stdQQ) {
+	public void setStdQQ(long stdQQ) {
 		this.stdQQ = stdQQ;
 	}
 	public String getStdWechat() {

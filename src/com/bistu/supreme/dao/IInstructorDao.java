@@ -17,4 +17,17 @@ public interface IInstructorDao {
 	 * 通过学生的学号获取辅导员的详细信息
 	 * */
 	public Instructor getInstructorByStudent(String studentNum);
+	
+	/**
+	 * 添加一个辅导员的信息
+	 * */
+	public boolean setInstructorInfo(Instructor instructor);
+	/**
+	 * 删除一个辅导员的信息
+	 * */
+	public boolean deleteInstructorbyNum(String num);
+	/**
+	 * 修改一个学生的信息
+	 * */
+	public boolean updateInstructorbyNum(Instructor instructor);
 }

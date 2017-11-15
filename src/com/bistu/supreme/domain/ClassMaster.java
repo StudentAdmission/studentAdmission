@@ -26,7 +26,7 @@ public class ClassMaster {
 	/**
 	 * 班主任的联系电话
 	 * */
-	private int masterTele;
+	private long masterTele;
 	/**
 	 * 班主任邮箱
 	 * */
@@ -71,10 +71,10 @@ public class ClassMaster {
 	public void setMasterClassNum(String masterClassNum) {
 		this.masterClassNum = masterClassNum;
 	}
-	public int getMasterTele() {
+	public long getMasterTele() {
 		return masterTele;
 	}
-	public void setMasterTele(int masterTele) {
+	public void setMasterTele(long masterTele) {
 		this.masterTele = masterTele;
 	}
 	public String getMasterEmail() {

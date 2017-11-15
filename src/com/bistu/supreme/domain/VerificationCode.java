@@ -30,7 +30,7 @@ public class VerificationCode {
 				str += a;
 			}
 			else {
-				str += (char)('a' + a -10);
+				str += (char)('A' + a -10);
 			}
 		}
 		return str;

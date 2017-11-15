@@ -69,7 +69,7 @@ public class AliyunMailDaoImpl implements IMailDao{
         // 设置邮件标题
         message.setSubject("BISTU-学生管理系统-密码找回");
         // 设置邮件的内容体
-        message.setContent("您的验证码为：" + vCode, "text/html;charset=UTF-8");
+        message.setContent("您的验证码为：" + vCode + "，有效期为10分钟，请尽快完成验证。", "text/html;charset=UTF-8");
         // 发送邮件
         Transport.send(message);
         return true;

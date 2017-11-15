@@ -52,4 +52,8 @@ public interface IStudentDao {
 	 * 删除一个学生的信息
 	 * */
 	public boolean deleteStudentbyNum(String num);
+	/**
+	 * 添加一个学生
+	 * */
+	public boolean createStudent(Student student);
 }

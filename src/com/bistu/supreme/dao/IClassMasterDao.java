@@ -25,4 +25,16 @@ public interface IClassMasterDao {
 	 * 根据学生的学号返回班主任的详细信息
 	 * */
 	public ClassMaster getClassMasterByStudent(String studentNum);
+	/**
+	 * 修改一个班主任的信息
+	 * */
+	public boolean updateClassMasterbyNum(ClassMaster classMaster);
+	/**
+	 * 添加一个班主任的信息
+	 * */
+	public boolean setClassMasterInfo(ClassMaster classMaster);
+	/**
+	 * 删除一个班主任的信息
+	 * */
+	public boolean deleteClassMaster(String num);
 }

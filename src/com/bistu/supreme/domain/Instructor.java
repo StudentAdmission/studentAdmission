@@ -26,7 +26,7 @@ public class Instructor {
 	/**
 	 * 辅导员的电话
 	 * */
-	private int itrTele;
+	private long itrTele;
 	/**
 	 * 辅导员的邮箱
 	 * */
@@ -62,10 +62,10 @@ public class Instructor {
 	public void setItrGrade(int itrGrade) {
 		this.itrGrade = itrGrade;
 	}
-	public int getItrTele() {
+	public long getItrTele() {
 		return itrTele;
 	}
-	public void setItrTele(int itrTele) {
+	public void setItrTele(long itrTele) {
 		this.itrTele = itrTele;
 	}
 	public String getItrEmail() {

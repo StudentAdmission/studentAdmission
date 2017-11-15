@@ -80,7 +80,7 @@ public class StudentDaoImpl implements IStudentDao {
 			student.setStdClassNum(rs.getString("std_class_num"));
 			student.setStdDormNum(rs.getString("std_dorm_num"));
 			student.setStdCollege(rs.getString("std_college"));
-			student.setStdTele(rs.getInt("std_tele"));
+			student.setStdTele(rs.getLong("std_tele"));
 			student.setStdNation(rs.getString("std_nation"));
 			student.setStdAddress(rs.getString("std_address"));
 			student.setStdPostCode(rs.getInt("std_post_code"));
@@ -89,9 +89,9 @@ public class StudentDaoImpl implements IStudentDao {
 			student.setStdGrade(rs.getInt("std_grade"));
 			student.setStdNativePlace(rs.getString("std_native_place"));
 			student.setStdFatherName(rs.getString("std_father_name"));
-			student.setStdFatherTele(rs.getInt("std_father_tele"));
+			student.setStdFatherTele(rs.getLong("std_father_tele"));
 			student.setStdMotherName(rs.getString("std_mother_name"));
-			student.setStdMotherTele(rs.getInt("std_mother_tele"));
+			student.setStdMotherTele(rs.getLong("std_mother_tele"));
 			student.setStdPoliticalStatus(rs.getString("std_political_status"));
 			//测试日期类型的转化
 			try {
@@ -100,12 +100,12 @@ public class StudentDaoImpl implements IStudentDao {
 			catch(Exception  e) {
 				student.setStdBirth(null);
 			}
-			student.setStdQQ(rs.getInt("std_qq"));
+			student.setStdQQ(rs.getLong("std_qq"));
 			student.setStdWechat(rs.getString("std_wechat"));
 			student.setStdAccountMigration(rs.getString("std_account_migration"));
 			student.setStdIdPhoto(rs.getString("std_id_photo"));
 			student.setStdEducation(rs.getString("std_education"));
-			student.setStdTicketNumber(rs.getInt("std_ticket_number"));
+			student.setStdTicketNumber(rs.getLong("std_ticket_number"));
 			student.setStdSourceOfHealth(rs.getString("std_source_of_health"));
 			return student;
 		}
@@ -248,7 +248,7 @@ public class StudentDaoImpl implements IStudentDao {
 			student.setStdName(rs.getString("std_name"));
 			student.setStdGender(rs.getString("std_gender"));
 			student.setStdEmail(rs.getString("std_email"));
-			student.setStdQQ(rs.getInt("std_qq"));
+			student.setStdQQ(rs.getLong("std_qq"));
 			student.setStdWechat(rs.getString("std_wechat"));
 			return student;
 		}
@@ -278,7 +278,7 @@ public class StudentDaoImpl implements IStudentDao {
 							ps.setString(4,student.getStdClassNum());
 							ps.setString(5,student.getStdDormNum());
 							ps.setString(6,student.getStdCollege());
-							ps.setInt(7,student.getStdTele());
+							ps.setLong(7,student.getStdTele());
 							ps.setString(8,student.getStdNation());
 							ps.setString(9,student.getStdAddress());
 							ps.setInt(10,student.getStdPostCode());
@@ -287,17 +287,17 @@ public class StudentDaoImpl implements IStudentDao {
 							ps.setInt(13,student.getStdGrade());
 							ps.setString(14,student.getStdNativePlace());
 							ps.setString(15,student.getStdFatherName());
-							ps.setInt(16,student.getStdFatherTele());
+							ps.setLong(16,student.getStdFatherTele());
 							ps.setString(17,student.getStdMotherName());
-							ps.setInt(18,student.getStdMotherTele());
+							ps.setLong(18,student.getStdMotherTele());
 							ps.setString(19,student.getStdPoliticalStatus());
 							ps.setString(20,student.getStdBirth());
-							ps.setInt(21,student.getStdQQ());
+							ps.setLong(21,student.getStdQQ());
 							ps.setString(22,student.getStdWechat());
 							ps.setString(23,student.getStdAccountMigration());
 							ps.setString(24,student.getStdIdPhoto());
 							ps.setString(25,student.getStdEducation());
-							ps.setInt(26,student.getStdTicketNumber());
+							ps.setLong(26,student.getStdTicketNumber());
 							ps.setString(27,student.getStdSourceOfHealth());
 							ps.setString(28,student.getStdNum());
 						}});
@@ -317,6 +317,39 @@ public class StudentDaoImpl implements IStudentDao {
 			return true;
 		}
 		catch(Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean createStudent(Student student) {
+		// TODO Auto-generated method stub
+		String insert_sql = "insert into sa_student(std_num,std_name,std_college,"
+				+ "std_major,std_class_num,std_dorm_num,std_education,"
+				+ "std_ticket_number,std_source_of_health,std_grade) values(?,?,?,?,?,?,?,?,?,?)";
+		try {
+			jdbcTemplate.update(insert_sql, 
+					new PreparedStatementSetter() {
+
+						@Override
+						public void setValues(PreparedStatement rs) throws SQLException {
+							// TODO Auto-generated method stub
+							rs.setString(1, student.getStdNum());
+							rs.setString(2, student.getStdName());
+							rs.setString(3, student.getStdCollege());
+							rs.setString(4, student.getStdMajor());
+							rs.setString(5, student.getStdClassNum());
+							rs.setString(6, student.getStdDormNum());
+							rs.setString(7, student.getStdEducation());
+							rs.setLong(8, student.getStdTicketNumber());
+							rs.setString(9, student.getStdSourceOfHealth());
+							rs.setInt(10, student.getStdGrade());
+						}}
+			);
+			return true;
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}

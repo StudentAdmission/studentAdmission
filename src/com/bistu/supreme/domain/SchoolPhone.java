@@ -20,7 +20,7 @@ public class SchoolPhone {
 	 * 学院的电话
 	 * */
 	
-	private int spCollegePhone;
+	private long spCollegePhone;
 
 	public int getSpID() {
 		return spID;
@@ -38,11 +38,11 @@ public class SchoolPhone {
 		this.spCollegeName = spCollegeName;
 	}
 
-	public int getSpCollegePhone() {
+	public long getSpCollegePhone() {
 		return spCollegePhone;
 	}
 
-	public void setSpCollegePhone(int spCollegePhone) {
+	public void setSpCollegePhone(long spCollegePhone) {
 		this.spCollegePhone = spCollegePhone;
 	}
 	

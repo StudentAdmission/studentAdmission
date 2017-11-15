@@ -3,6 +3,7 @@
  */
 package com.bistu.supreme.dao.impl;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.bistu.supreme.dao.IInstructorDao;
@@ -89,7 +91,7 @@ public class InstructorDaoImpl implements IInstructorDao {
 			classMaster.setMasterGender(rs.getString("master_gender"));
 			classMaster.setMasterCollege(rs.getString("master_college"));
 			classMaster.setMasterClassNum(rs.getString("master_class_num"));
-			classMaster.setMasterTele(rs.getInt("master_tele"));
+			classMaster.setMasterTele(rs.getLong("master_tele"));
 			classMaster.setMasterEmail(rs.getString("master_email"));
 			return classMaster;
 		}
@@ -126,10 +128,56 @@ public class InstructorDaoImpl implements IInstructorDao {
 			instructor.setItrGender(rs.getString("itr_gender"));
 			instructor.setItrCollege(rs.getString("itr_college"));
 			instructor.setItrGrade(rs.getInt("itr_grade"));
-			instructor.setItrTele(rs.getInt("itr_tele"));
+			instructor.setItrTele(rs.getLong("itr_tele"));
 			instructor.setItrEmail(rs.getString("itr_email"));
 			return instructor;
 		}
 		
+	}
+
+	@Override
+	public boolean setInstructorInfo(Instructor instructor) {
+		// TODO Auto-generated method stub
+		String insert_sql = "insert into sa_instructor(itr_num,itr_name,itr_gender,itr_college,"
+				+ "itr_grade,itr_tele,itr_email) values(?,?,?,?,?,?,?)";
+		try {
+			jdbcTemplate.update(insert_sql, 
+					new PreparedStatementSetter() {
+
+						@Override
+						public void setValues(PreparedStatement ps) throws SQLException {
+							// TODO Auto-generated method stub
+							ps.setString(1, instructor.getItrNum());
+							ps.setString(2, instructor.getItrName());
+							ps.setString(3, instructor.getItrGender());
+							ps.setString(4, instructor.getItrCollege());
+							ps.setInt(5, instructor.getItrGrade());
+							ps.setLong(6, instructor.getItrTele());
+							ps.setString(7, instructor.getItrEmail());
+						}});
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteInstructorbyNum(String num) {
+		// TODO Auto-generated method stub
+		String delete_sql = "delete from sa_instructor where itr_num=?";
+		try {
+			jdbcTemplate.update(delete_sql, new Object[] {num});
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateInstructorbyNum(Instructor instructor) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

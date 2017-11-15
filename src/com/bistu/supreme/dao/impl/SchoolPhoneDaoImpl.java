@@ -52,7 +52,7 @@ public class SchoolPhoneDaoImpl implements ISchoolPhoneDao {
 			SchoolPhone schoolPhone = new SchoolPhone();
 			schoolPhone.setSpID(rs.getInt("sp_id"));
 			schoolPhone.setSpCollegeName(rs.getString("sp_college_name"));
-			schoolPhone.setSpCollegePhone(rs.getInt("sp_college_phone"));
+			schoolPhone.setSpCollegePhone(rs.getLong("sp_college_phone"));
 			return schoolPhone;
 		}
 		
