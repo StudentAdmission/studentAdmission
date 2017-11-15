@@ -30,13 +30,13 @@ public class TestNotice {
 	@Test
 	public void testGetAllNoticeOfStudent() {
 		//String studentId = "4";
-		String studentId = "student100";
+		String studentId = "201701986";
 		List<Notice> allNotice = classNoticeDao.getAllNoticeOfStudent(studentId);
 		try {
 			if (allNotice.get(0).getNoticeId() != -1) {
 				for (int i = 0; i < allNotice.size(); i++) {
 					Notice notice = allNotice.get(i);
-					System.out.println("消息名称：" + notice.getNoticeTitle() + "   发布者：" + notice.getNoticeAnnouncerName()
+					System.out.println("消息名称：" + notice.getNoticeTitle() + "   发布者："
 							+ "   消息内容：" + notice.getNoticeContent() + "   消息文件中文名:" + notice.getNoticeFileEName()
 							+ "   ：消息文件英文名：" + notice.getNoticeFileCName());
 				}
