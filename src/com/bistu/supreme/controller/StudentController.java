@@ -1,7 +1,8 @@
 package com.bistu.supreme.controller;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -74,21 +75,13 @@ public class StudentController {
 	@ResponseBody
 	public Response getClass(@RequestBody String studentNum) {
 		Response response = new Response();
-		List<Object> classAll = new ArrayList<Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		List<Student> studentList = studentDao.getClassMateInfo(studentNum);
 		ClassMaster classmaster = classmasterDao.getClassMasterByStudent(studentNum);
 		Instructor instructor = instructorDao.getInstructorByStudent(studentNum);
-		if(studentList!=null&&studentList.size()!=0) {
-			for(int i=0;i<studentList.size();i++) {
-				classAll.add(studentList.get(i));
-			}
-		}
-		if(classmaster!=null) {
-			classAll.add(classmaster);
-		}
-		if(instructor!=null) {
-			classAll.add(instructor);
-		}
-		return response.success(classAll);
+		map.put("classmate", studentList);
+		map.put("classmaster", classmaster);
+		map.put("instructor", instructor);
+		return response.success(map);
 	}
 }
