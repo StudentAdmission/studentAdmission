@@ -27,10 +27,10 @@ public class DormitoryController {
 	public Response getAllDormMessage(@RequestBody String studentId){
 		Response response = new Response();
 		List<Student> allDormMessageList = dormitoryDao.getAllDormMessage(studentId);
-		if(allDormMessageList!=null&&!allDormMessageList.get(0).getStdNum().equals("-1")){
+		if(allDormMessageList.size() != 0 && !allDormMessageList.get(0).getStdNum().equals("-1")){
 			return response.success(allDormMessageList);
 		}
-		else if(allDormMessageList.get(0).getStdNum().equals("-1")){
+		else if(allDormMessageList.size() == 0){
 			return response.success("The student hasn't roommates",allDormMessageList);
 		}
 		else
