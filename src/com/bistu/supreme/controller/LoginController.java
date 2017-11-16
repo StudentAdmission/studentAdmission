@@ -102,6 +102,9 @@ public class LoginController {
 	/**
 	 * 根据学号获得登录表中的信息
 	 * */
+	@RequestMapping(value="/getLogin",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
 	public Response getLoginInfo(@RequestBody String num) {
 		Response response = new Response();
 		Login login = new Login();
