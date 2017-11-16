@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.bistu.supreme.dao.ILoginDao;
+import com.bistu.supreme.domain.Login;
 
 /**
  * Spring测试框架
@@ -32,12 +33,9 @@ public class TestLogin {
 	public void testRevisePwd(){
 		String loginNum = "admin";
 		String loginEmail = "11111111";
-		String pwd = "11111111";
-		String loginPortrait = "11111111";
-		if(loginDao.revisePwd(loginNum, loginEmail, pwd, loginPortrait)){
-			System.out.println("修改密码成功");
-		}
-		else
-			System.out.println("修改密码失败");
+		String pwd = "222222";
+		String loginPortrait = "123";
+		String loginNickName = "123";
+		loginDao.revisePwd(loginNum, loginEmail, pwd, loginPortrait, loginNickName);
 	}
 }
