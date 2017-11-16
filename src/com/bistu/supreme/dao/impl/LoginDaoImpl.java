@@ -138,8 +138,8 @@ public class LoginDaoImpl implements ILoginDao{
 					ps.setString(1, loginEmail);
 					ps.setString(2, pwd);
 					ps.setString(3, loginPortrait);
-					ps.setString(4, loginNum);
-					ps.setString(5, loginNickName);
+					ps.setString(4, loginNickName);
+					ps.setString(5, loginNum);
 				}
 			});
 			System.out.println("result" + result);
