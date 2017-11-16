@@ -36,7 +36,7 @@ public class Student {
 	/**
 	 * 学生电话
 	 * */
-	private Long stdTele;
+	private long stdTele;
 	/**
 	 * 学生民族
 	 * */
