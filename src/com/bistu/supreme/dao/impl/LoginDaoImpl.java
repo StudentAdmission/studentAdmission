@@ -133,6 +133,18 @@ public class LoginDaoImpl implements ILoginDao{
 		int result;
 		try{
 			if(pwd == null || pwd.equals("")) {
+				result = jdbcTemplate.update(update_sql, new PreparedStatementSetter(){
+					public void setValues(PreparedStatement ps) throws SQLException {
+						// TODO Auto-generated method stub
+						System.out.println("开始给问号赋值");
+						ps.setString(1, loginEmail);
+						ps.setString(2, loginPortrait);
+						ps.setString(3, loginNickName);
+						ps.setString(4, loginNum);
+					}
+				});
+			}
+			else {
 				result = jdbcTemplate.update(updateSql, new PreparedStatementSetter(){
 					public void setValues(PreparedStatement ps) throws SQLException {
 						// TODO Auto-generated method stub
@@ -142,18 +154,6 @@ public class LoginDaoImpl implements ILoginDao{
 						ps.setString(3, loginPortrait);
 						ps.setString(4, loginNickName);
 						ps.setString(5, loginNum);
-					}
-				});
-			}
-			else {
-				result = jdbcTemplate.update(update_sql, new PreparedStatementSetter(){
-					public void setValues(PreparedStatement ps) throws SQLException {
-						// TODO Auto-generated method stub
-						System.out.println("开始给问号赋值");
-						ps.setString(1, loginEmail);
-						ps.setString(2, loginPortrait);
-						ps.setString(3, loginNickName);
-						ps.setString(4, loginNum);
 					}
 				});
 			}
