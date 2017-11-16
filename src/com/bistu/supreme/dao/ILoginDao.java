@@ -1,6 +1,5 @@
 package com.bistu.supreme.dao;
 
-import java.util.Map;
 
 import com.bistu.supreme.domain.Login;
 
@@ -12,7 +11,11 @@ public interface ILoginDao {
 	/**
 	 * 根据用户名密码判断是否可以登录
 	 * */
-	public Map<String, Object> findLogin(String login_num, String login_pwd);
+	public String findLogin(String login_num, String login_pwd);
+	/**
+	 * 通过学号获取登录表中的信息
+	 * */
+	public Login getLoginbyNum(String num);
 	/**
 	 * 从数据库获取登录20分钟后的时间
 	 * */

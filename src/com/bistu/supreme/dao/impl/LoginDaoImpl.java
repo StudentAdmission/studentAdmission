@@ -3,8 +3,6 @@ package com.bistu.supreme.dao.impl;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -32,24 +30,17 @@ public class LoginDaoImpl implements ILoginDao{
 	}
 
 	@Override
-	public Map<String, Object> findLogin(String login_num, String login_pwd) {
+	public String findLogin(String login_num, String login_pwd) {
 		// TODO Auto-generated method stub
-		String qurey_sql = "select login_tag,login_id,login_nickname,login_portrait from sa_login where login_pwd=? and login_num=?";
-		Map<String, Object> map = new HashMap<String, Object>();
+		String qurey_sql = "select login_num from sa_login where login_pwd=? and login_num=?";
 		try {
-			Login login = (Login)jdbcTemplate.queryForObject(qurey_sql, 
-					new Object[] {login_pwd, login_num}, new LoginMapper());
-			System.out.println(login.getLoginId() + "    " + login.getLoginTag());
-			map.put("login_id", login.getLoginId());
-			map.put("login_tag", login.getLoginTag());
-			map.put("login_nickname", login.getLoginNickname());
-			map.put("login_portrait", login.getLoginPortrait());
+			String num = jdbcTemplate.queryForObject(qurey_sql, 
+					new Object[] {login_pwd, login_num}, java.lang.String.class);
+			return num;
 		}
 		catch(Exception e) {
-			map.put("login_id", -1);
-			return map;
+			return "-1";
 		}
-		return map;
 	}
 	
 	protected class LoginMapper implements RowMapper<Login>{
@@ -58,9 +49,8 @@ public class LoginDaoImpl implements ILoginDao{
 		public Login mapRow(ResultSet rs, int row) throws SQLException {
 			// TODO Auto-generated method stub
 			Login login = new Login();
-//			login.setLoginNum(rs.getString("login_num"));
-//			login.setLoginPwd(rs.getString("login_pwd"));
-			login.setLoginId(rs.getInt("login_id"));
+			login.setLoginEmail(rs.getString("login_email"));
+			login.setLoginNum(rs.getString("login_num"));
 			login.setLoginTag(rs.getInt("login_tag"));
 			login.setLoginNickname(rs.getString("login_nickname"));
 			login.setLoginPortrait(rs.getString("login_portrait"));
@@ -189,6 +179,25 @@ public class LoginDaoImpl implements ILoginDao{
 		}
 		catch(Exception e) {
 			return false;
+		}
+	}
+
+	@Override
+	public Login getLoginbyNum(String num) {
+		// TODO Auto-generated method stub
+		String query_sql = "select login_num,login_tag,login_email,login_portrait,"
+				+ "login_nickname from sa_login where login_num = ?";
+		try {
+			Login login = (Login)jdbcTemplate.queryForObject(query_sql, new Object[] {num}, new LoginMapper());
+			return login;
+		}
+		catch(EmptyResultDataAccessException e) {
+			return null;
+		}
+		catch(Exception e) {
+			Login login = new Login();
+			login.setLoginNum("-1");
+			return login; 
 		}
 	}
 }

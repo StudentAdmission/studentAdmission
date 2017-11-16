@@ -28,16 +28,11 @@ public class LoginController {
 		Response response = new Response();
 		String login_num = login.getLoginNum();
 		String login_pwd = login.getLoginPwd();
-		Map<String, Object> map = loginDao.findLogin(login_num, login_pwd);
-		if((int)map.get("login_id") == -1)
+		String num = loginDao.findLogin(login_num, login_pwd);
+		if(num == null||num.equals("-1"))
 			return response.failure("information_incorrect");
 		else {
-			Map<String,Object> login_new = new HashMap<String,Object>();
-			login_new.put("loginNum", login_num);
-			login_new.put("loginPortrait", map.get("login_portrait"));
-			login_new.put("loginNickname", map.get("login_nickname"));
-			login_new.put("loginTag", map.get("login_tag"));
-			return response.success(login_new);
+			return response.success();
 		}
 	}
 	
@@ -102,6 +97,20 @@ public class LoginController {
 		}
 		else {
 			return response.failure("sql_exception");
+		}
+	}
+	/**
+	 * 根据学号获得登录表中的信息
+	 * */
+	public Response getLoginInfo(@RequestBody String num) {
+		Response response = new Response();
+		Login login = new Login();
+		loginDao.getLoginbyNum(num);
+		if(login == null||login.getLoginNum().equals("-1")) {
+			return response.failure("sql_exception");
+		}
+		else {
+			return response.success(login); 
 		}
 	}
 }
