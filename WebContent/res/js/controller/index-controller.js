@@ -69,6 +69,7 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
                             loginService.setLoginSession(responseData.data.loginNum);
                             loginService.setLoginSessionTag(responseData.data.loginTag);
                             loginService.setLoginSessionPortrait(responseData.data.loginPortrait);
+                            loginService.setLoginSessionNickname(responseData.data.loginSessionNickname);
                             toastr.success('登录成功');
                         }
                     }, function () {
