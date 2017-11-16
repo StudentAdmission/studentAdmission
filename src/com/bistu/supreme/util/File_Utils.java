@@ -9,7 +9,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,19 +26,19 @@ public final class File_Utils {
      * @param filePath      filePath example "/files/Upload"
      * @return
      */
-    public static String FilesUpload_stream(HttpServletRequest request,MultipartFile multipartFile,String filePath) {
+    public static String FilesUpload_stream(HttpServletRequest request,MultipartFile multipartFile,String filePath,String name) {
         if (multipartFile != null) {
             //获取文件的后缀
             String suffix = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf("."));
-            //获取文件的完整路径
-            String absolutePath = getAndSetAbsolutePath(request, filePath, suffix);
-            //获取文件的相对路径
-            String relativePath = getRelativePath(filePath, suffix);
+            String fileName = name + "_" + getDate() + suffix;
+            String absolutePath = getServerPath(request, filePath);
+            checkDir(absolutePath);
+            System.out.println(absolutePath + File.separator + fileName);
             try{
                 InputStream inputStream = multipartFile.getInputStream();
                 long size = multipartFile.getSize();
                 System.out.println("文件长度为：" + size);
-                FileOutputStream fileOutputStream = new FileOutputStream(absolutePath);
+                FileOutputStream fileOutputStream = new FileOutputStream(absolutePath + File.separator + fileName);
                 byte buffer[] = new byte[4096]; //create a buffer
                 long fileSize = multipartFile.getSize();
                 if(fileSize<=buffer.length){//if fileSize < buffer
@@ -52,13 +51,14 @@ public final class File_Utils {
                 }
                 fileOutputStream.close();
                 inputStream.close();
-                return relativePath;
+                return fileName;
             }catch (Exception e){
                 e.printStackTrace();
+                return null;
             }
-        } else
-            return null;
-        return null;
+        } else {
+        	return null;
+        }
     }
 	
     /**
@@ -68,9 +68,9 @@ public final class File_Utils {
      * @param filePath example "/filesOut/Download/mst.txt"
      * @return
      */
-    public static void FilesDownload_stream(HttpServletRequest request, HttpServletResponse response, String filePath) {
+    public static void FilesDownload_stream(HttpServletRequest request, HttpServletResponse response, String filePath, String fileName) {
         //get server path (real path)
-        String realPath = request.getSession().getServletContext().getRealPath(filePath);
+        String realPath = getServerPath(request, filePath) + "/" +fileName;
         File file = new File(realPath);
         String filenames = file.getName();
         InputStream inputStream;
@@ -94,16 +94,18 @@ public final class File_Utils {
     }
     
     /**
-     * 获取服务器中的路径
+     * 获取服务器路径
      * */
     public static String getServerPath(HttpServletRequest request, String filePath) {
-        return request.getSession().getServletContext().getRealPath(filePath);
+    	String fp = request.getSession().getServletContext().getRealPath("");
+    	System.out.println(fp);
+    	return fp.substring(0,fp.lastIndexOf("\\studentAdmission")) + filePath;
     }
 
     /**
      * 以“年月日”的形式获取当前时间
      * */
-    public static String getDataPath() {
+    public static String getDate() {
         return new SimpleDateFormat("yyyyMMdd").format(new Date());
     }
 
@@ -115,28 +117,5 @@ public final class File_Utils {
         if (!dir.exists() || !dir.isDirectory()) {
             dir.mkdirs();
         }
-    }
-
-    /**
-     * 获取文件的通用唯一识别码名称
-     * */
-    public static String getUUIDName(String suffix) {
-        return UUID.randomUUID().toString() + suffix;// 创建新的文件名
-    }
-
-    /**
-     * 获取文件的绝对路径
-     * */
-    public static String getAndSetAbsolutePath(HttpServletRequest request, String filePath, String suffix) {
-        String savePath = getServerPath(request, filePath) + File.separator + getDataPath() + File.separator;//example:F:/qixiao/files/Upload/20160912/
-        checkDir(savePath);
-        return savePath + getUUIDName(suffix);
-    }
-
-    /**
-     * 获取文件的相对路径
-     * */
-    public static String getRelativePath(String filePath, String suffix) {
-        return filePath + File.separator + getDataPath() + File.separator + getUUIDName(suffix);//example:/files/Upload/20160912/
     }
 }
