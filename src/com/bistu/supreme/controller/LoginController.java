@@ -108,7 +108,7 @@ public class LoginController {
 	public Response getLoginInfo(@RequestBody String num) {
 		Response response = new Response();
 		Login login = new Login();
-		loginDao.getLoginbyNum(num);
+		login = loginDao.getLoginbyNum(num);
 		if(login == null||login.getLoginNum().equals("-1")) {
 			return response.failure("sql_exception");
 		}
