@@ -55,28 +55,51 @@
                                 <div class="forgotten-dialogue vin-detail">
                                     <div class="content">
                                         <div class="row sa-row">
-                                            <input placeholder="请输入学号/工号" class="input-area form-control" title=""
+                                            <input id="forgottenNum"
+                                                   placeholder="请输入学号/工号"
+                                                   class="input-area form-control"
+                                                   title=""
                                                    ng-model="forgotten.num"/>
                                         </div>
                                         <div class="row sa-row">
-                                            <input placeholder="请输入密保邮箱" class="input-area form-control" title=""
+                                            <input id="forgottenEmail"
+                                                   placeholder="请输入密保邮箱"
+                                                   class="input-area form-control"
+                                                   title=""
                                                    ng-model="forgotten.email"/>
                                         </div>
                                         <div class="row sa-row">
-                                            <input placeholder="请输入验证码" class="input-area form-control validate"
+                                            <input id="forgottenCode"
+                                                   placeholder="请输入验证码"
+                                                   class="input-area form-control validate"
                                                    title="" ng-model="forgotten.validate"/>
-                                            <a href="javascript:" style="font-size: 1rem">点击获取验证码</a>
+                                            <button ng-click="getCode();"
+                                                    class="btn btn-link sa-btn"
+                                                    style="font-size: 1rem">获取验证码
+                                            </button>
                                         </div>
                                         <div class="row sa-row">
-                                            <input placeholder="请输入新密码" class="input-area form-control" title=""
+                                            <input type="password"
+                                                   id="forgottenPwd"
+                                                   placeholder="请输入新密码"
+                                                   class="input-area form-control sa-forgotten-pwd-input"
+                                                   title=""
                                                    ng-model="forgotten.pwd"/>
                                         </div>
                                         <div class="row sa-row">
-                                            <input placeholder="请再次输入新密码" class="input-area form-control" title=""
+                                            <input type="password"
+                                                   id="forgottenNewPwd"
+                                                   placeholder="请再次输入新密码"
+                                                   class="input-area form-control sa-forgotten-pwd-input"
+                                                   title=""
                                                    ng-model="forgotten.newPwd"/>
                                         </div>
                                         <div class="row sa-row">
-                                            <div class="btn btn-primary" ng-click="forgetPwd()">提交</div>
+                                            <button ng-click="submitNewPwd();"
+                                                    id="forgottenSubmit"
+                                                    class="btn btn-primary"
+                                                    ng-click="forgetPwd()">提交
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -85,9 +108,11 @@
                     </form>
                 </div>
                 <div ng-init="centerHover=false" ng-mouseover="centerHover=true" ng-mouseleave="centerHover=false">
-                    <div ng-class="getLoginSession()?'sa-show':'';" id="personalCenter"></div>
+                    <div ng-class="getLoginSession()?'sa-show':'';" id="personalCenter">
+                        <img src="" alt="">
+                    </div>
                     <div ng-class="centerHover?'sa-show':'';" class="personalCenter" style="display: none;">
-                        <div><a href="/personalCenter" target="_blank">个人中心</a></div>
+                        <div><a href="/personalCenter">个人中心</a></div>
                         <div><a href="question">常见问题</a></div>
                         <div><a href="">帐号设置</a></div>
                         <div ng-click="logout();centerHover=false;"><a href="javascript:">退出登录</a></div>
@@ -107,7 +132,8 @@
                     <li><a href="reporting" ng-click="setReportingPage('sa-reporting-route')">报道流程</a></li>
                     <li><a href="manual">学生手册</a></li>
                     <li><a href="question">常见问题</a></li>
-                    <li ng-class="getLoginSession()?'sa-show':'';" style="display: none;"><a href="/personalCenter" target="_blank">个人中心</a>
+                    <li ng-class="getLoginSession()?'sa-show':'';" style="display: none;"><a
+                            href="/personalCenter">个人中心</a>
                     </li>
                 </ul>
             </div>
