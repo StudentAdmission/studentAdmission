@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -30,6 +31,7 @@ public class FileController {
     /**
      * 文件上传
      * */
+    @RequestMapping(value = "/fileUpload", method=RequestMethod.POST)
     public Response fileUpload(HttpServletRequest request, @RequestParam("file_upload") MultipartFile file) {
     	Response response = new Response();
     	if(request instanceof MultipartHttpServletRequest) {
