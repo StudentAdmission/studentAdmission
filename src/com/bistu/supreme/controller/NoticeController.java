@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.bistu.supreme.dao.IClassDao;
 import com.bistu.supreme.dao.INoticeDao;
@@ -25,7 +22,6 @@ import com.bistu.supreme.dao.IStudentMessageBoxDao;
 import com.bistu.supreme.dao.ITeacherDao;
 import com.bistu.supreme.domain.Notice;
 import com.bistu.supreme.domain.Response;
-import com.bistu.supreme.util.File_Utils;
 
 @Controller
 public class NoticeController {
@@ -59,8 +55,7 @@ public class NoticeController {
 	 * */
 	@RequestMapping(value = "/setNotice",method=RequestMethod.POST)
     @ResponseBody
-	public Response setNotice(HttpServletRequest request,@RequestParam("notice_file") MultipartFile file,
-			@RequestParam("notice_title")String title, @RequestParam("notice_content")String content, @RequestParam("notice_num")String num) {
+	public Response setNotice(@RequestParam("notice_title")String title, @RequestParam("notice_content")String content, @RequestParam("notice_num")String num) {
 		Response response = new Response();
 		Notice notice = new Notice();
 		String file_c_name = "";
@@ -104,14 +99,7 @@ public class NoticeController {
 				return response.failure("sql_exception");
 			}
 		}
-		if(request instanceof MultipartHttpServletRequest) {
-			File_Utils.checkDir("/files/upload");
-        	String filePath= File_Utils.FilesUpload_stream(request,file,"/files/upload");
-        	return response.success(filePath);
-        }
-        else {
-        	return response.failure("bad_request");
-        }
+		return response.success();
 	}
 	
 	@SuppressWarnings("unchecked")
