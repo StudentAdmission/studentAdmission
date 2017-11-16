@@ -12,6 +12,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
@@ -179,5 +180,21 @@ public class InstructorDaoImpl implements IInstructorDao {
 	public boolean updateInstructorbyNum(Instructor instructor) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public String getInsNamebyNum(String num) {
+		// TODO Auto-generated method stub
+		String query_sql = "select itr_name from sa_instructor where itr_num=?";
+		try {
+			String identity = jdbcTemplate.queryForObject(query_sql, new Object[] {num}, java.lang.String.class);
+			return identity;
+		}
+		catch(EmptyResultDataAccessException e) {
+			return "empty";
+		}
+		catch(Exception e) {
+			return "exception";
+		}
 	}
 }

@@ -10,7 +10,7 @@ public class StudentMessageBox {
 	/**
 	 * 接收的消息ID
 	 * */
-	private String smbNoticeId;
+	private int smbNoticeId;
 	/**
 	 * 该学生是否已阅读该消息
 	 * */
@@ -22,10 +22,10 @@ public class StudentMessageBox {
 	public void setSmbStudentNum(String smbStudentNum) {
 		this.smbStudentNum = smbStudentNum;
 	}
-	public String getSmbNoticeId() {
+	public int getSmbNoticeId() {
 		return smbNoticeId;
 	}
-	public void setSmbNoticeId(String smbNoticeId) {
+	public void setSmbNoticeId(int smbNoticeId) {
 		this.smbNoticeId = smbNoticeId;
 	}
 	public int getSmbReadTag() {

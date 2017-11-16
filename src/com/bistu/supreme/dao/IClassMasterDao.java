@@ -37,4 +37,8 @@ public interface IClassMasterDao {
 	 * 删除一个班主任的信息
 	 * */
 	public boolean deleteClassMaster(String num);
+	/**
+	 * 通过工号获取班主任的姓名
+	 * */
+	public String getCMNamebyNum(String num);
 }

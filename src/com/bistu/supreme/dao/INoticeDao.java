@@ -8,9 +8,9 @@ import com.bistu.supreme.domain.Notice;
  */
 public interface INoticeDao {
 	/**
-	 * 获取一名学生的所有通知
+	 * 根据id获取消息详情
 	 * */
-	public List<Notice> getAllNoticeOfStudent(String studentId);
+	public Notice getAllNoticeOfStudent(int id);
 	/**
 	 * 添加一条新的通知
 	 * */

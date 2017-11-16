@@ -1,7 +1,9 @@
 package com.bistu.supreme.dao.impl;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,9 +13,11 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.bistu.supreme.dao.IStudentDao;
 import com.bistu.supreme.dao.IStudentMessageBoxDao;
+import com.bistu.supreme.domain.StudentMessageBox;
 
 public class StudentMessageDaoImpl implements IStudentMessageBoxDao{
 
@@ -113,5 +117,34 @@ public class StudentMessageDaoImpl implements IStudentMessageBoxDao{
 			}
 		}
 	}
+
+	@Override
+	public List<StudentMessageBox> getStudentNoticebyNum(String num) {
+		// TODO Auto-generated method stub
+		List<StudentMessageBox> list = new ArrayList<StudentMessageBox>();
+		String query_sql = "select smb_notice_id,smb_read_tag from sa_student_message_box "
+				+ "where smb_student_num=? order by smb_read_tag desc,smb_notice_id asc";
+		try {
+			list = (List<StudentMessageBox>)jdbcTemplate.query(query_sql, new Object[] {num}, new StudentMessageBoxMapper());
+		    return list;
+		}
+		catch(Exception e) {
+			StudentMessageBox smb = new StudentMessageBox();
+			smb.setSmbNoticeId(-1);
+			list.add(smb);
+			return list;
+		}
+	}
 	
+	protected class StudentMessageBoxMapper implements RowMapper<StudentMessageBox>{
+
+		@Override
+		public StudentMessageBox mapRow(ResultSet rs, int row) throws SQLException {
+			// TODO Auto-generated method stub
+		    StudentMessageBox smb = new StudentMessageBox();
+		    smb.setSmbNoticeId(rs.getInt("smb_notice_id"));
+		    smb.setSmbReadTag(rs.getInt("smb_read_tag"));
+		    return smb;
+		}
+	}
 }

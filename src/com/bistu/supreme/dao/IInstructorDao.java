@@ -30,4 +30,8 @@ public interface IInstructorDao {
 	 * 修改一个学生的信息
 	 * */
 	public boolean updateInstructorbyNum(Instructor instructor);
+	/**
+	 * 通过辅导员的工号获取辅导员的姓名
+	 * */
+	public String getInsNamebyNum(String num);
 }

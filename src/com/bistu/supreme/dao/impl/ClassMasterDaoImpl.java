@@ -198,4 +198,20 @@ public class ClassMasterDaoImpl implements IClassMasterDao {
 			return false;
 		}
 	}
+
+	@Override
+	public String getCMNamebyNum(String num) {
+		// TODO Auto-generated method stub
+		String query_sql = "select master_name from sa_classmaster where master_num=?";
+		try {
+			String identity = jdbcTemplate.queryForObject(query_sql, new Object[] {num}, java.lang.String.class);
+			return identity;
+		}
+		catch(EmptyResultDataAccessException e) {
+			return "empty";
+		}
+		catch(Exception e) {
+			return "exception";
+		}
+	}
 }

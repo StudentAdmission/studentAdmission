@@ -59,4 +59,20 @@ public class TeacherDaoImpl implements ITeacherDao {
 			teacher.setTecIdentity(rs.getString("tec_identity"));
 			return teacher;
 		}}
+
+	@Override
+	public String getTeacherIdentitybyNum(String num) {
+		// TODO Auto-generated method stub
+		String query_sql = "select tec_identity from sa_teacher where tec_num=?";
+		try {
+			String identity = jdbcTemplate.queryForObject(query_sql, new Object[] {num}, java.lang.String.class);
+			return identity;
+		}
+		catch(EmptyResultDataAccessException e) {
+			return "empty";
+		}
+		catch(Exception e) {
+			return "exception";
+		}
+	}
 }
