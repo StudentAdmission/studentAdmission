@@ -37,11 +37,17 @@ public class FileController {
      * */
     @RequestMapping(value = "/fileUpload", method=RequestMethod.POST)
     @ResponseBody
-    public Response fileUpload(HttpServletRequest request, @RequestParam("file_upload") MultipartFile file, @RequestParam("login_num") String num) {
+    public Response fileUpload(HttpServletRequest request, @RequestParam("file_upload") MultipartFile file, 
+    		@RequestParam("file_url") String filePath, @RequestParam("login_num") String num) {
     	Response response = new Response();
     	if(request instanceof MultipartHttpServletRequest) {
-        	String filePath= File_Utils.FilesUpload_stream(request,file,"/files/upload",num);
-        	return response.success(filePath);
+        	String fileName= File_Utils.FilesUpload_stream(request,file,filePath,num);
+        	if(fileName == null) {
+        		return response.failure("file_upload_fail");
+        	}
+        	else {
+        		return response.success(fileName);
+        	}
         }
         else {
         	return response.failure("bad_request");
