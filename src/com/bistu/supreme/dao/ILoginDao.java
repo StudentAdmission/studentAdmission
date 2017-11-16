@@ -29,7 +29,7 @@ public interface ILoginDao {
 	/**
 	 * 根据ID，邮箱，密码，头像来修改密码
 	 * */
-	public boolean revisePwd(String loginNum,String loginEmail,String pwd,String loginPortrait);
+	public boolean revisePwd(String loginNum,String loginEmail,String pwd,String loginPortrait,String loginNickName);
 	/**
 	 * 忘记密码的修改密码
 	 * */

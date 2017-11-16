@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -23,20 +24,23 @@ public class FileController {
      * @param response
      */
     @RequestMapping(value = "/fileDownload")
-    public void fileDownload_servlet(HttpServletRequest request, 
+    @ResponseBody
+    public Response fileDownload_servlet(HttpServletRequest request, 
     		HttpServletResponse response, @RequestBody String fileName) {
-        File_Utils.FilesDownload_stream(request,response,"/files/download/" + fileName);
+    	Response response_return  = new Response();
+        File_Utils.FilesDownload_stream(request,response,"/files/download" , fileName);
+        return response_return.success();
     }
     
     /**
      * 文件上传
      * */
     @RequestMapping(value = "/fileUpload", method=RequestMethod.POST)
-    public Response fileUpload(HttpServletRequest request, @RequestParam("file_upload") MultipartFile file) {
+    @ResponseBody
+    public Response fileUpload(HttpServletRequest request, @RequestParam("file_upload") MultipartFile file, @RequestParam("login_num") String num) {
     	Response response = new Response();
     	if(request instanceof MultipartHttpServletRequest) {
-			File_Utils.checkDir("/files/upload");
-        	String filePath= File_Utils.FilesUpload_stream(request,file,"/files/upload");
+        	String filePath= File_Utils.FilesUpload_stream(request,file,"/files/upload",num);
         	return response.success(filePath);
         }
         else {

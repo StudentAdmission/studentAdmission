@@ -79,8 +79,8 @@ public class LoginController {
 	@RequestMapping(value="/revisePwd",method=RequestMethod.POST,
 			produces= {"application/json;charset=UTF-8"})
 	@ResponseBody
-	public int revisePwd(@RequestBody String loginNum, String loginEmail, String pwd, String loginPortrait){
-		if(loginDao.revisePwd(loginNum, loginEmail, pwd, loginPortrait)){
+	public int revisePwd(@RequestBody String loginNum, String loginEmail, String loginNickName, String pwd, String loginPortrait){
+		if(loginDao.revisePwd(loginNum, loginEmail, pwd, loginPortrait, loginNickName)){
 			return 1;
 		}
 		else

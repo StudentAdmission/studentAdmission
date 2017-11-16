@@ -126,9 +126,9 @@ public class LoginDaoImpl implements ILoginDao{
 	 * 修改密码
 	 * */
 	@Override
-	public boolean revisePwd(String loginNum, String loginEmail, String pwd, String loginPortrait) {
+	public boolean revisePwd(String loginNum, String loginEmail, String pwd, String loginPortrait, String loginNickName) {
 		// TODO Auto-generated method stub
-		String updateSql = "update sa_login set login_email = ?,login_pwd = ?,login_portrait = ? where login_num = ?";
+		String updateSql = "update sa_login set login_email = ?,login_pwd = ?,login_portrait = ?,login_nickname=? where login_num = ?";
 		int result;
 		try{
 			result = jdbcTemplate.update(updateSql, new PreparedStatementSetter(){
@@ -139,6 +139,7 @@ public class LoginDaoImpl implements ILoginDao{
 					ps.setString(2, pwd);
 					ps.setString(3, loginPortrait);
 					ps.setString(4, loginNum);
+					ps.setString(5, loginNickName);
 				}
 			});
 			System.out.println("result" + result);
