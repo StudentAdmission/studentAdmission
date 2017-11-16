@@ -20,6 +20,11 @@
                     <p class="sa-content sa-homepage-news-content">
                         <a href="news">新闻公告</a>
                     </p>
+                    <div class="sa-list" ng-click="setNewsItem(item)" ng-repeat="item in homepageNews">
+                        <div class="sa-item">
+                            <p><a href="news/detail">{{item.homepageNewsTitle}}</a>{{item.homepageNewsTime}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
