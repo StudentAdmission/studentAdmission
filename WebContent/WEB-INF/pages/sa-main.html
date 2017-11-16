@@ -20,6 +20,11 @@
                     <p class="sa-content sa-homepage-news-content">
                         <a href="news">新闻公告</a>
                     </p>
+                    <div class="sa-list" ng-click="setNewsItem(item)" ng-repeat="item in homepageNews">
+                        <div class="sa-item">
+                            <p><a href="news/detail">{{item.homepageNewsTitle}}</a>{{item.homepageNewsTime}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -29,6 +34,11 @@
                     <p class="sa-content sa-homepage-reporting-content">
                         报道流程
                     </p>
+                    <div class="sa-list" ng-click="setReportingPage(item.processLink)" ng-repeat="item in homepageReporting">
+                        <div class="sa-item">
+                            <p><a href="reporting">{{item.processItem}}</a>{{item.processTime}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
