@@ -75,6 +75,10 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
         <property name="dataSource" ref="ds"></property>
     </bean>
     
+    <bean id="schoolAssociationsDao" class="com.bistu.supreme.dao.impl.SchoolAssociationsDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
     <!-- 通知有关的相关配置 -->
     <bean id="noticeDao" class="com.bistu.supreme.dao.impl.NoticeDaoImpl">
     	<property name="dataSource" ref="ds"></property>
