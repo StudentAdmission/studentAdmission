@@ -17,14 +17,13 @@ app.controller('reportingCtrl', ['$http', '$scope', 'reportingService', function
     };
 
     $http.post('schoolPhone.do').then(function (response) {
-        console.log(response);
         var content = '';
         if (response.status !== 200) {
-            content += '<div class="connect-error">网络异常，请检查网络连接</div>';
+            content += NETWORK_ERROR;
         } else {
             var phoneData = response.data;
             if (phoneData.status !== 1) {
-                content += '<div class="connect-error">数据库连接失败，请联系管理员</div>';
+                content += SERVER_ERROR;
             } else {
                 $.each(phoneData.data, function (index, item) {
                     content += '<div class="tele-table-title">' + item.spCollegeName + '</div><div class="tele-table-content">' + item.spCollegePhone + '</div>';

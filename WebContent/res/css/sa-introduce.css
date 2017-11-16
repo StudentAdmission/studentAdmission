@@ -76,12 +76,19 @@
 .view-group .sa-view:last-child {
     margin-right: 0;
 }
-.sa-conmmunity-item{
+
+.sa-conmmunity-item {
     float: left;
     padding-bottom: 20px;
     margin-bottom: 20px;
     border-bottom: 1px dashed;
 }
+
+.sa-conmmunity-item img {
+    width: 200px;
+    height: 133px;
+}
+
 .sa-conmmunity-item .item-title {
     font-weight: bold;
     font-size: 2rem;

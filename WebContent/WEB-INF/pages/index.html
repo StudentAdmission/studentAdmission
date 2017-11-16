@@ -114,7 +114,7 @@
                     <div ng-class="centerHover?'sa-show':'';" class="personalCenter" style="display: none;">
                         <div><a href="/personalCenter">个人中心</a></div>
                         <div><a href="question">常见问题</a></div>
-                        <div><a href="">帐号设置</a></div>
+                        <div><a href="/personalCenter/setting">帐号设置</a></div>
                         <div ng-click="logout();centerHover=false;"><a href="javascript:">退出登录</a></div>
                     </div>
                 </div>
@@ -158,7 +158,6 @@
             <div class="go-top">
                 <i class="fa fa-chevron-up fa-3x"></i>
             </div>
-            <!--<a href="introduce" ng-click="setIntroducePage('sa-school-map');">click</a>-->
         </div>
     </div>
 </div>
@@ -178,11 +177,14 @@
 <!--高德地图api-->
 <script src="http://webapi.amap.com/maps?v=1.4.0&key=86d7e9b2838a66942d8e3665a5049028&plugin=AMap.Transfer"></script>
 
+<script src="res/js/config.js"></script>
+
 <script src="res/js/app.js"></script>
 <script src="res/js/route.js"></script>
 <script src="res/js/vin-showdetail.js"></script>
 
 <!--Service-->
+<script src="res/js/service/validate-service.js"></script>
 <script src="res/js/service/login-service.js"></script>
 <script src="res/js/service/introduce-service.js"></script>
 <script src="res/js/service/reporting-service.js"></script>

@@ -1,5 +1,12 @@
 app.controller('introduceCtrl', ['$scope', '$http', 'introduceService', function ($scope, $http, introduceService) {
 
+    $http.post('getSchoolProfile.do').then(function (response) {
+        $scope.profileContent = response.data.data.profileContent.split("\n");
+    });
+
+    $http.post('getAssociationsInfo.do').then(function (response) {
+        $scope.association = response.data.data;
+    });
 
     $(function () {
 
