@@ -1,4 +1,4 @@
-app.controller('mainCtrl', ['$http', '$scope', function ($http, $scope) {
+app.controller('mainCtrl', ['$http', '$scope', 'reportingService', function ($http, $scope, reportingService) {
     $scope.setNewsItem = function (item) {
         $http.post('news/item/one.do', item.homepageNewsId).then(function (response) {
             console.log(response);
@@ -35,16 +35,10 @@ app.controller('mainCtrl', ['$http', '$scope', function ($http, $scope) {
             if (homepageReportingProcess.status !== 1) {
                 content += '<div class="connect-error">数据库连接失败，请联系管理员</div>';
             } else {
-                $.each(homepageReportingProcess.data, function (index, item) {
-                    content +=
-                        '<div class="sa-list">' +
-                        '<div class="sa-item">' +
-                        '<p><a href=' + item.processLink + '>' + item.processItem + '</a>' + item.processTime + '</p>' +
-                        '</div></div>';
-                })
+                $scope.homepageReporting = homepageReportingProcess.data;
             }
         }
-        $('.sa-home-info .sa-homepage-reporting-content').after(content);
+        //$('.sa-home-info .sa-homepage-reporting-content').after(content);
     });
 
     $(function () {
