@@ -102,4 +102,20 @@ public class StudentController {
 			return response.failure();
 		}
 	}
+	
+	/**
+	 * 根据传过来的参数修改学生信息
+	 * */
+	@RequestMapping(value="/setStudent",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response setStudent(Student student) {
+		Response response = new Response();
+		if(studentDao.setStudentbyNum(student)) {
+			return response.success();
+		}
+		else {
+			return response.failure("sql_exception");
+		}
+	}
 }

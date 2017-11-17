@@ -192,11 +192,9 @@ public class StudentDaoImpl implements IStudentDao {
 	@Override
 	public List<String> getStudentNumbyClassNum(String classNum) {
 		// TODO Auto-generated method stub
-		System.out.println("++++++++"+classNum);
 		String query_sql = "select std_num from sa_student where std_class_num=?";
 		try {
 			List<String> list = jdbcTemplate.queryForList(query_sql, new Object[] {classNum}, java.lang.String.class);
-			System.out.println("++++++++");
 			return list;
 		}
 		catch(Exception e) {
@@ -263,52 +261,149 @@ public class StudentDaoImpl implements IStudentDao {
 	@Override
 	public boolean setStudentbyNum(Student student) {
 		// TODO Auto-generated method stub
-		String update_sql = "update sa_student set std_name=?,std_gender=?,std_major=?,"
-				+ "std_class_num=?,std_dorm_num=?,std_college=?,std_tele=?,std_nation=?,"
-				+ "std_address=?,std_post_code=?,std_identification=?,std_email=?,"
-				+ "std_grade=?,std_native_place=?,std_father_name=?,std_father_tele=?,"
-				+ "std_mother_name=?,std_mother_tele=?,std_political_status=?,std_birth=?,"
-				+ "std_qq=?,std_wechat=?,std_account_migration=?,std_id_photo=?,std_education=?,"
-				+ "std_ticket_number=?,std_source_of_health=? where std_num=?";
+		boolean[] flag = {true, true, true, true, 
+				          true, true, true, true, 
+				          true, true, true, true, 
+				          true, true, true, true};
+		String update_sql = "update sa_student set std_num=?";
+		String update_sql_e = " where std_num=?";
+		String[] params = {",std_name=?",
+				          ",std_gender=?",
+				          ",std_tele=?",
+				          ",std_nation=?",
+				          ",std_email=?",
+				          ",std_identification=?",
+				          ",std_birth=?",
+				          ",std_father_name=?",
+				          ",std_father_tele=?",
+				          ",std_mother_name=?",
+				          ",std_mother_tele=?",
+				          ",std_native_place=?",
+				          ",std_address=?",
+				          ",std_post_code=?",
+				          ",std_qq=?",
+				          ",std_wechat=?"};
+		if(student.getStdName() == null||student.getStdName().equals("")) {
+			flag[0] = false;
+		}
+        if(student.getStdGender() == null||student.getStdGender().equals("")) {
+        	flag[1] = false;
+		}
+        if(student.getStdTele()==0) {
+        	flag[2] = false;
+		}
+        if(student.getStdNation() == null||student.getStdNation().equals("")) {
+        	flag[3] = false;
+		}
+        if(student.getStdEmail() == null||student.getStdEmail().equals("")) {
+        	flag[4] = false;
+		}
+        if(student.getStdIdentification() == null||student.getStdIdentification().equals("")) {
+        	flag[5] = false;
+		}
+        if(student.getStdBirth() == null||student.getStdBirth().equals("")) {
+        	flag[6] = false;
+		}
+        if(student.getStdFatherName() == null||student.getStdFatherName().equals("")) {
+        	flag[7] = false;
+		}
+        if(student.getStdFatherTele() == 0) {
+        	flag[8] = false;
+		}
+        if(student.getStdMotherName() == null||student.getStdMotherName().equals("")) {
+        	flag[9] = false;
+		}
+        if(student.getStdMotherTele() == 0) {
+        	flag[10] = false;
+		}
+        if(student.getStdNativePlace() == null||student.getStdNativePlace().equals("")) {
+        	flag[11] = false;
+		}
+        if(student.getStdAddress() == null||student.getStdAddress().equals("")) {
+        	flag[12] = false;
+		}
+        if(student.getStdPostCode() == 0) {
+        	flag[13] = false;
+		}
+        if(student.getStdQQ() == 0) {
+        	flag[14] = false;
+		}
+        if(student.getStdWechat() == null||student.getStdWechat().equals("")) {
+        	flag[15] = false;
+		}
+        
+        for(int i=0;i<flag.length;i++) {
+        	if(flag[i]) {
+        		update_sql += params[i];
+        	}
+        }
+        
+        update_sql += update_sql_e;
+        
 		try {
 			jdbcTemplate.update(update_sql, 
 					new PreparedStatementSetter() {
+				        
+				        int index = 1;
 
 						@Override
 						public void setValues(PreparedStatement ps) throws SQLException {
 							// TODO Auto-generated method stub
-							ps.setString(1,student.getStdName());
-							ps.setString(2,student.getStdGender());
-							ps.setString(3,student.getStdMajor());
-							ps.setString(4,student.getStdClassNum());
-							ps.setString(5,student.getStdDormNum());
-							ps.setString(6,student.getStdCollege());
-							ps.setLong(7,student.getStdTele());
-							ps.setString(8,student.getStdNation());
-							ps.setString(9,student.getStdAddress());
-							ps.setInt(10,student.getStdPostCode());
-							ps.setString(11,student.getStdIdentification());
-							ps.setString(12,student.getStdEmail());
-							ps.setInt(13,student.getStdGrade());
-							ps.setString(14,student.getStdNativePlace());
-							ps.setString(15,student.getStdFatherName());
-							ps.setLong(16,student.getStdFatherTele());
-							ps.setString(17,student.getStdMotherName());
-							ps.setLong(18,student.getStdMotherTele());
-							ps.setString(19,student.getStdPoliticalStatus());
-							ps.setString(20,student.getStdBirth());
-							ps.setLong(21,student.getStdQQ());
-							ps.setString(22,student.getStdWechat());
-							ps.setString(23,student.getStdAccountMigration());
-							ps.setString(24,student.getStdIdPhoto());
-							ps.setString(25,student.getStdEducation());
-							ps.setLong(26,student.getStdTicketNumber());
-							ps.setString(27,student.getStdSourceOfHealth());
-							ps.setString(28,student.getStdNum());
+							ps.setString(index++,student.getStdNum());
+							if(flag[0]) {
+								ps.setString(index++,student.getStdName());
+							}
+							if(flag[1]) {
+								ps.setString(index++,student.getStdGender());
+							}
+							if(flag[2]) {
+								ps.setLong(index++,student.getStdTele());
+							}
+							if(flag[3]) {
+								ps.setString(index++,student.getStdNation());
+							}
+							if(flag[4]) {
+								ps.setString(index++,student.getStdEmail());
+							}
+							if(flag[5]) {
+								ps.setString(index++,student.getStdIdentification());
+							}
+							if(flag[6]) {
+								ps.setString(index++,student.getStdBirth());
+							}
+							if(flag[7]) {
+								ps.setString(index++,student.getStdFatherName());
+							}
+							if(flag[8]) {
+								ps.setLong(index++,student.getStdFatherTele());
+							}
+							if(flag[9]) {
+								ps.setString(index++,student.getStdMotherName());
+							}
+							if(flag[10]) {
+								ps.setLong(index++,student.getStdMotherTele());
+							}
+							if(flag[11]) {
+								ps.setString(index++,student.getStdNativePlace());
+							}
+							if(flag[12]) {
+								ps.setString(index++,student.getStdAddress());
+							}
+							if(flag[13]) {
+								ps.setInt(index++,student.getStdPostCode());
+							}
+							if(flag[14]) {
+								ps.setLong(index++,student.getStdQQ());
+							}
+							if(flag[15]) {
+								ps.setString(index++,student.getStdWechat());
+							}
+							ps.setString(index++,student.getStdNum());
 						}});
 			return true;
 		}
 		catch(Exception e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}

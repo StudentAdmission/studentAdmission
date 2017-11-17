@@ -97,6 +97,10 @@ public final class File_Utils {
      * 获取服务器路径
      * */
     public static String getServerPath(HttpServletRequest request, String filePath) {
+    	if(System.getProperty("os.name").equals("Linux")) {
+    		String path = System.getProperty("user.dir");
+    		return path.substring(0,path.lastIndexOf(File.separator)) + "/webapps" + filePath;
+    	}
     	String fp = request.getSession().getServletContext().getRealPath("");
     	System.out.println(fp);
     	return fp.substring(0,fp.lastIndexOf("\\studentAdmission")) + filePath;
