@@ -1,10 +1,14 @@
-app.controller('mainCtrl', ['$http', '$scope', 'reportingService', function ($http, $scope, reportingService) {
+app.controller('mainCtrl', ['$http', '$scope', function ($http, $scope) {
     $scope.setNewsItem = function (item) {
-        $http.post('news/item/one.do', item.homepageNewsId).then(function (response) {
-            console.log(response);
+        $http.post('news/item/one.do', item.homepageNewsLink).then(function (response) {
             sessionStorage.newsTitle = response.data.data.itemTitle;
             sessionStorage.newsTime = response.data.data.itemTime;
             sessionStorage.newsContent = response.data.data.itemContent;
+            setTimeout(function () {
+                var $a=$("<a></a>").attr('href','news/detail');
+                $('body').append($a);
+                $($a).click();
+            },200);
         });
     };
 
