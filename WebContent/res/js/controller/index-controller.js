@@ -89,37 +89,41 @@ app.controller('indexCtrl', ['$http', '$scope', 'loginService', 'introduceServic
 
         //获取验证码模块
         $scope.getCode = function () {
-            if (!$scope.forgetTag.loginEmail || $scope.forgotten.email !== '') {
-                $('#forgottenEmail').addClass('forgetError');
-                toastr.remove();
-                toastr.error('请输入正确邮箱');
-            } else {
-                var validateTime = 30;
-                $('#forgottenCode').parent().addClass('gettingValidate');
-                var interval = setInterval(function () {
-                    $('#forgottenCode').siblings('button').attr('disabled', 'disabled').html(validateTime + 's后重试');
-                    validateTime--;
-                }, 1000);
-                setTimeout(function () {
-                    clearInterval(interval);
-                    $('#forgottenCode').siblings('button').removeAttr('disabled').html('获取验证码');
-                    $('#forgottenCode').parent().removeClass('gettingValidate');
-                }, 31000);
+            if ($scope.forgotten.email !== '') {
+                if (!$scope.forgetTag.loginEmail) {
+                    console.log($scope.forgetTag.loginEmail);
+                    console.log($scope.forgotten.email);
+                    $('#forgottenEmail').addClass('forgetError');
+                    toastr.remove();
+                    toastr.error('请输入正确邮箱');
+                } else {
+                    var validateTime = 30;
+                    $('#forgottenCode').parent().addClass('gettingValidate');
+                    var interval = setInterval(function () {
+                        $('#forgottenCode').siblings('button').attr('disabled', 'disabled').html(validateTime + 's后重试');
+                        validateTime--;
+                    }, 1000);
+                    setTimeout(function () {
+                        clearInterval(interval);
+                        $('#forgottenCode').siblings('button').removeAttr('disabled').html('获取验证码');
+                        $('#forgottenCode').parent().removeClass('gettingValidate');
+                    }, 31000);
 
-                $http.post('mail.do', "'" + $scope.forgotten.email + "'").then(function (response) {
-                    if (response.status !== 200) {
-                        toastr.remove();
-                        toastr.error('网络连接失败');
-                    } else {
-                        var codeData = response.data;
-                        if (codeData.status !== 1) {
+                    $http.post('mail.do', "'" + $scope.forgotten.email + "'").then(function (response) {
+                        if (response.status !== 200) {
                             toastr.remove();
-                            toastr.error('服务器异常，请联系管理员');
+                            toastr.error('网络连接失败');
                         } else {
-                            $scope.personalCode = codeData.data.code;
+                            var codeData = response.data;
+                            if (codeData.status !== 1) {
+                                toastr.remove();
+                                toastr.error('服务器异常，请联系管理员');
+                            } else {
+                                $scope.personalCode = codeData.data.code;
+                            }
                         }
-                    }
-                })
+                    })
+                }
             }
         };
 

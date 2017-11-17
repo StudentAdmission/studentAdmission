@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .sa-news-detail-main {
     position: relative;
-    margin-bottom: -100px;
+    margin-bottom: 100px;
     background-color: #fff;
     padding: 50px;
 }
