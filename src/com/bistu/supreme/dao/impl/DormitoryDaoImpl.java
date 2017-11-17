@@ -58,7 +58,7 @@ public class DormitoryDaoImpl implements IDormitoryDao {
 			student.setStdDormNum(rs.getString("std_dorm_num"));
 			student.setStdName(rs.getString("std_name"));
 			student.setStdNum(rs.getString("std_num"));
-			student.setStdTele(rs.getInt("std_tele"));
+			student.setStdTele(rs.getLong("std_tele"));
 			student.setStdNativePlace(rs.getString("std_native_place"));
 			System.out.println("宿舍名：" + student.getStdDormNum() + "   姓名：" + student.getStdName() + "   学号：" + student.getStdNum() + "   电话：" + student.getStdTele() + "   籍贯：" + student.getStdNativePlace());
 			return student;
