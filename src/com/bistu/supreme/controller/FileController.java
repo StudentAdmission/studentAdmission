@@ -1,5 +1,8 @@
 package com.bistu.supreme.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -61,7 +64,9 @@ public class FileController {
     @ResponseBody
     public Response getFilePath(HttpServletRequest request) {
     	Response response = new Response();
-    	String path = File_Utils.getServerPath(request, "\\abc\\name.txt");
-    	return response.success(path);
+    	Map<String, String> map = new HashMap<String, String>();
+    	map.put("os_name", System.getProperty("os.name"));
+    	map.put("user_dir", System.getProperty("user.dir"));
+    	return response.success(map);
     }
 }
