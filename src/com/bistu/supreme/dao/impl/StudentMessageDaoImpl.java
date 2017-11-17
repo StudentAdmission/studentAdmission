@@ -123,7 +123,7 @@ public class StudentMessageDaoImpl implements IStudentMessageBoxDao{
 		// TODO Auto-generated method stub
 		List<StudentMessageBox> list = new ArrayList<StudentMessageBox>();
 		String query_sql = "select smb_notice_id,smb_read_tag from sa_student_message_box "
-				+ "where smb_student_num=? order by smb_read_tag desc,smb_notice_id asc";
+				+ "where smb_student_num=? order by smb_read_tag asc,smb_notice_id desc";
 		try {
 			list = (List<StudentMessageBox>)jdbcTemplate.query(query_sql, new Object[] {num}, new StudentMessageBoxMapper());
 		    return list;
