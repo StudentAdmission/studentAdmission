@@ -53,4 +53,15 @@ public class FileController {
         	return response.failure("bad_request");
         }
     }
+    
+    /**
+     * 测试文件路径
+     * */
+    @RequestMapping(value = "/filePath", method=RequestMethod.POST)
+    @ResponseBody
+    public Response getFilePath(HttpServletRequest request) {
+    	Response response = new Response();
+    	String path = File_Utils.getServerPath(request, "\\abc\\name.txt");
+    	return response.success(path);
+    }
 }
