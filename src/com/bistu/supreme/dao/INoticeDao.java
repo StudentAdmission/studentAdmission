@@ -19,4 +19,8 @@ public interface INoticeDao {
 	 * 通过教师的工号获取教师的相关通知
 	 * */
 	public List<Notice> getNoticesbyNum(String num);
+	/**
+	 * 获取最新插入的通知的id
+	 * */
+	public int getNoticeidbyNum(String num);
 }

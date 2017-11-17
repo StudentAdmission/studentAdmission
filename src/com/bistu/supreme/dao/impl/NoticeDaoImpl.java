@@ -91,10 +91,16 @@ public class NoticeDaoImpl implements INoticeDao {
 	@Override
 	public boolean setNewNotice(Notice notice) {
 		// TODO Auto-generated method stub
+		if(notice.getNoticeFileCName() == null||notice.getNoticeFileCName().equals("")) {
+			notice.setNoticeFileCName("");
+		}
+		if(notice.getNoticeFileEName() == null||notice.getNoticeFileEName().equals("")) {
+			notice.setNoticeFileEName("");
+		}
 		String insert_sql = "insert into sa_notice("
-				+ "notice_title,notice_content,notice_push_the_number,"
+				+ "notice_title,notice_content,"
 				+ "notice_announcer_num,notice_file_c_name,"
-				+ "notice_file_e_name,notice_receive_class_num) values(?,?,?,?,?,?,?)";
+				+ "notice_file_e_name,notice_receive_class_num) values(?,?,?,?,?,?)";
 		
 		try {
 			jdbcTemplate.update(insert_sql, 
@@ -105,17 +111,17 @@ public class NoticeDaoImpl implements INoticeDao {
 							// TODO Auto-generated method stub
 							ps.setString(1, notice.getNoticeTitle());
 							ps.setString(2, notice.getNoticeContent());
-							ps.setInt(3, notice.getNoticePushTheNumber());
-							ps.setString(4, notice.getNoticeAnnouncerNum());
-							ps.setString(5, notice.getNoticeFileCName());
-							ps.setString(6, notice.getNoticeFileEName());
-							ps.setString(7, notice.getNoticeReceiveClassNum());
+							ps.setString(3, notice.getNoticeAnnouncerNum());
+							ps.setString(4, notice.getNoticeFileCName());
+							ps.setString(5, notice.getNoticeFileEName());
+							ps.setString(6, notice.getNoticeReceiveClassNum());
 						}
 				
 			});
 			return true;
 		}
 		catch(Exception e) {
+			System.out.println(e.getMessage());
 			return false;
 		}
 	}
@@ -134,5 +140,17 @@ public class NoticeDaoImpl implements INoticeDao {
 			return getAllNotice;
 		}
 		return getAllNotice;
+	}
+	@Override
+	public int getNoticeidbyNum(String num) {
+		// TODO Auto-generated method stub
+		String query_sql = "select max(notice_id) from sa_notice where notice_announcer_num=?";
+		try {
+			int i = jdbcTemplate.queryForObject(query_sql, new Object[] {num}, java.lang.Integer.class);
+			return i;
+		}
+		catch(Exception e) {
+			return -1;
+		}
 	}
 }

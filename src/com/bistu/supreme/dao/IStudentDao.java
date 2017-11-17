@@ -27,7 +27,7 @@ public interface IStudentDao {
 	/**
 	 * 更改学生消息盒子的标志为已读
 	 * */
-	public boolean updateReadTag(String num);
+	public boolean updateReadTag(String num, int id);
 	/**
 	 * 计算班级人数
 	 * */

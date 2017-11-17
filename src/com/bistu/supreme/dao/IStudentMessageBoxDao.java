@@ -20,9 +20,13 @@ public interface IStudentMessageBoxDao {
 	/**
 	 * 为班级的所有学生添加消息盒子
 	 * */
-	public int createStudentMessagebyClassNum(int noticeId, String classNum);
+	public int createStudentMessagebyClassNum(int noticeId, List<String> list);
 	/**
 	 * 通过学号获得学生的个人通知
 	 * */
 	public List<StudentMessageBox> getStudentNoticebyNum(String num);
+	/**
+	 * 通过学号判断学生未读的通知数
+	 * */
+	public boolean hasUnread(String num);
 }

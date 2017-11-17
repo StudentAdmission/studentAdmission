@@ -154,9 +154,10 @@ public class StudentDaoImpl implements IStudentDao {
 	}
 
 	@Override
-	public boolean updateReadTag(String num) {
+	public boolean updateReadTag(String num, int id) {
 		// TODO Auto-generated method stub
-		String update_sql = "update sa_student_massege_box set smb_read_tag=1 where smb_student_num=?";
+		String update_sql = "update sa_student_message_box "
+				+ "set smb_read_tag=1 where smb_student_num=? and smb_notice_id=?";
 		try {
 			jdbcTemplate.update(update_sql,
 					new PreparedStatementSetter() {
@@ -164,6 +165,7 @@ public class StudentDaoImpl implements IStudentDao {
 						public void setValues(java.sql.PreparedStatement ps) throws SQLException {
 							// TODO Auto-generated method stub
 							ps.setString(1, num);
+							ps.setInt(2, id);
 						}
 
 			});
@@ -190,9 +192,11 @@ public class StudentDaoImpl implements IStudentDao {
 	@Override
 	public List<String> getStudentNumbyClassNum(String classNum) {
 		// TODO Auto-generated method stub
+		System.out.println("++++++++"+classNum);
 		String query_sql = "select std_num from sa_student where std_class_num=?";
 		try {
 			List<String> list = jdbcTemplate.queryForList(query_sql, new Object[] {classNum}, java.lang.String.class);
+			System.out.println("++++++++");
 			return list;
 		}
 		catch(Exception e) {
@@ -249,6 +253,7 @@ public class StudentDaoImpl implements IStudentDao {
 			student.setStdGender(rs.getString("std_gender"));
 			student.setStdEmail(rs.getString("std_email"));
 			student.setStdQQ(rs.getLong("std_qq"));
+			student.setStdTele(rs.getLong("std_tele"));
 			student.setStdWechat(rs.getString("std_wechat"));
 			return student;
 		}

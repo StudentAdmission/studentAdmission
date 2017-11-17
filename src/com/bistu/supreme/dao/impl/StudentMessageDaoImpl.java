@@ -21,8 +21,6 @@ import com.bistu.supreme.domain.StudentMessageBox;
 
 public class StudentMessageDaoImpl implements IStudentMessageBoxDao{
 
-	@Autowired
-	private IStudentDao studentDao;
 	private JdbcTemplate jdbcTemplate;
 	
 	public void setDataSource(DataSource ds) {
@@ -79,9 +77,9 @@ public class StudentMessageDaoImpl implements IStudentMessageBoxDao{
 	}
 
 	@Override
-	public int createStudentMessagebyClassNum(int noticeId, String classNum) {
+	public int createStudentMessagebyClassNum(int noticeId, List<String> list) {
 		// TODO Auto-generated method stub
-		List<String> list = studentDao.getStudentNumbyClassNum(classNum);
+		System.out.println("///////////////");
 		String insert_sql = "insert into sa_student_message_box (smb_student_num,smb_notice_id) values(?,?)";
 		if(list == null || list.size() == 0) {
 			return 0;
@@ -104,7 +102,9 @@ public class StudentMessageDaoImpl implements IStudentMessageBoxDao{
 								@Override
 								public void setValues(PreparedStatement ps, int i) throws SQLException {
 									// TODO Auto-generated method stub
+									System.out.println(list.get(i));
 									ps.setString(1, list.get(i));
+									System.out.println(noticeId);
 									ps.setInt(2, noticeId);
 								}
 						
@@ -145,6 +145,23 @@ public class StudentMessageDaoImpl implements IStudentMessageBoxDao{
 		    smb.setSmbNoticeId(rs.getInt("smb_notice_id"));
 		    smb.setSmbReadTag(rs.getInt("smb_read_tag"));
 		    return smb;
+		}
+	}
+
+	@Override
+	public boolean hasUnread(String num) {
+		// TODO Auto-generated method stub
+		String query_sql = "select count(*) from sa_student_message_box "
+				+ "where smb_student_num=? and smb_read_tag=0";
+		try {
+			int t = jdbcTemplate.queryForObject(query_sql, new Object[] {num}, java.lang.Integer.class);
+			if(t == 0) {
+				return false;
+			}
+			return true;
+		}
+		catch(Exception e) {
+			return false;
 		}
 	}
 }

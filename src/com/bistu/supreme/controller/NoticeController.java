@@ -14,13 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bistu.supreme.dao.IClassDao;
 import com.bistu.supreme.dao.IClassMasterDao;
 import com.bistu.supreme.dao.IInstructorDao;
 import com.bistu.supreme.dao.INoticeDao;
+import com.bistu.supreme.dao.IStudentDao;
 import com.bistu.supreme.dao.IStudentMessageBoxDao;
 import com.bistu.supreme.dao.ITeacherDao;
 import com.bistu.supreme.domain.Notice;
@@ -31,6 +31,8 @@ import com.bistu.supreme.domain.StudentMessageBox;
 public class NoticeController {
 	@Autowired
 	private INoticeDao noticeDao;
+	@Autowired
+	private IStudentDao studentDao;
 	@Autowired
 	private IStudentMessageBoxDao sMBoxDao;
 	@Autowired
@@ -101,34 +103,26 @@ public class NoticeController {
 			}
 	}
 	/**
-	 * 添加通知信息及附件
+	 * 添加通知信息
 	 * */
 	@RequestMapping(value = "/setNotice",method=RequestMethod.POST)
     @ResponseBody
-	public Response setNotice(@RequestParam("notice_title")String title, @RequestParam("notice_content")String content, @RequestParam("notice_num")String num) {
+	public Response setNotice(@RequestBody Notice notice) {
 		Response response = new Response();
-		Notice notice = new Notice();
-		String file_c_name = "";
-		String file_e_name = "";
-		notice.setNoticeAnnouncerNum(num);
-		notice.setNoticeContent(content);
-		notice.setNoticeTitle(title);
-		notice.setNoticeFileCName(file_c_name);
-		notice.setNoticeFileEName(file_e_name);
 		List<String> class_num = new ArrayList<String>();
-		Map<String, Object> map = teacherDao.getTeacherInfobyNum(num);
+		Map<String, Object> map = teacherDao.getTeacherInfobyNum(notice.getNoticeAnnouncerNum());
 		if((int)map.get("grade") == 0) {
 			response.failure("teacher_not_found");
 		}
 		else
 			if((int)map.get("grade")==-1) {
-				response.failure("sql_exception");
+				response.failure("sql_exception_1");
 			}
 			else {
 				switch((String)map.get("identity")) {
 				//班主任
 				case "1":
-					class_num.add(classDao.getClassNumbyNum(num));
+					class_num.add(classDao.getClassNumbyNum(notice.getNoticeAnnouncerNum()));
 					break;
 				//辅导员
 				case "2":
@@ -140,13 +134,15 @@ public class NoticeController {
 				}
 			}
 		for(int i=0;i<class_num.size();i++) {
+			System.out.println("班级共"+class_num.size()+"个，"+"班级为：" + class_num.get(i));
 			notice.setNoticeReceiveClassNum(class_num.get(i));
 			if(noticeDao.setNewNotice(notice)) {
-				sMBoxDao.createStudentMessagebyClassNum(notice.getNoticeId(), 
-						notice.getNoticeReceiveClassNum());
+				notice.setNoticeId(noticeDao.getNoticeidbyNum(notice.getNoticeAnnouncerNum()));
+				List<String> std_nums = studentDao.getStudentNumbyClassNum(notice.getNoticeReceiveClassNum());
+				sMBoxDao.createStudentMessagebyClassNum(notice.getNoticeId(), std_nums);
 			}
 			else {
-				return response.failure("sql_exception");
+				return response.failure("sql_exception_2");
 			}
 		}
 		return response.success();
