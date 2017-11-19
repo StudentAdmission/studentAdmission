@@ -1,6 +1,5 @@
 package com.bistu.supreme.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +33,7 @@ public class DormitoryController {
 			return response.success("The student hasn't roommates",allDormMessageList);
 		}
 		else
-			return response.failure();
+			return response.failure("");
 		
 	}
 }

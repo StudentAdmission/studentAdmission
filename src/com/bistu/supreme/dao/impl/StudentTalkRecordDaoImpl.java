@@ -5,19 +5,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.test.context.ContextConfiguration;
 
-import com.bistu.supreme.dao.IClassMasterDao;
-import com.bistu.supreme.dao.IStudentDao;
 import com.bistu.supreme.dao.IStudentTalkRecordDao;
 import com.bistu.supreme.domain.StudentTalkRecord;
 
@@ -72,7 +67,12 @@ public class StudentTalkRecordDaoImpl implements IStudentTalkRecordDao{
 							ps.setString(1, str.getStrTeacherNum());
 							ps.setString(2, str.getStrStudentName());
 							ps.setString(3, str.getStrStudentNum());
-							ps.setString(4, str.getStrTime());
+							try {
+								ps.setString(4, str.getStrTime());
+							}
+							catch(Exception e) {
+								ps.setString(4, null);
+							}
 							ps.setString(5, str.getStrLocation());
 							ps.setString(6, str.getStrMainContent());
 							ps.setString(7, str.getStrSolution());

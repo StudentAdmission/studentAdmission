@@ -79,6 +79,26 @@ http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
         <property name="dataSource" ref="ds"></property>
     </bean>
     
+    <bean id="classWillRecordDao" class="com.bistu.supreme.dao.impl.ClassWillRecordDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
+    <bean id="classActivityRecordDao" class="com.bistu.supreme.dao.impl.ClassActivityRecordDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
+    <bean id="classStudentAwardRecordDao" class="com.bistu.supreme.dao.impl.ClassStudentAwardRecordDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
+    <bean id="classMasterAttendanceRecordDao" class="com.bistu.supreme.dao.impl.ClassMasterAttendanceRecordDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
+    <bean id="checkDormitoryRecordDao" class="com.bistu.supreme.dao.impl.CheckDormitoryRecordDaoImpl">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    
     <!-- 通知有关的相关配置 -->
     <bean id="noticeDao" class="com.bistu.supreme.dao.impl.NoticeDaoImpl">
     	<property name="dataSource" ref="ds"></property>

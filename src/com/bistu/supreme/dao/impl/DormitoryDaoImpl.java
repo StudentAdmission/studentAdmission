@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -62,6 +63,23 @@ public class DormitoryDaoImpl implements IDormitoryDao {
 			student.setStdNativePlace(rs.getString("std_native_place"));
 			System.out.println("宿舍名：" + student.getStdDormNum() + "   姓名：" + student.getStdName() + "   学号：" + student.getStdNum() + "   电话：" + student.getStdTele() + "   籍贯：" + student.getStdNativePlace());
 			return student;
+		}
+	}
+
+	@Override
+	public String getClassNumbyDormNum(String dormNum) {
+		// TODO Auto-generated method stub
+		String query_sql = "select dorm_class_num from sa_dormitory where dorm_num=?";
+		try {
+			String classNum = jdbcTemplate.queryForObject(query_sql, new Object[] {dormNum}, 
+					java.lang.String.class);
+			return classNum;
+		}
+		catch(EmptyResultDataAccessException e) {
+			return "empty";
+		}
+		catch(Exception e) {
+			return "exception";
 		}
 	}
 }

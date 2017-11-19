@@ -22,7 +22,9 @@ public class ClassMasterController {
 	private IStudentDao studentDao;
 	@Autowired
 	private IClassMasterDao classMasterDao;
-	
+	/**
+	 * 获取班级所有学生的所有信息
+	 * */
 	@RequestMapping(value="/getAllClassmates",method=RequestMethod.POST,
 			produces= {"application/json;charset=UTF-8"})
 	@ResponseBody
