@@ -7,7 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -197,4 +199,38 @@ public class InstructorDaoImpl implements IInstructorDao {
 			return "exception";
 		}
 	}
+
+	@Override
+	public Map<String, Object> getInstructorInfobyNum(String num) {
+		// TODO Auto-generated method stub
+		Map<String, Object> map = new HashMap<String, Object>();
+		String query_sql = "select itr_college,itr_grade from sa_instructor where itr_num=?";
+		try {
+			Instructor instructor = new Instructor();
+			instructor = jdbcTemplate.queryForObject(query_sql, new Object[] {num}, 
+					new InstructorInfoMapper());
+			map.put("grade", instructor.getItrGrade());
+			map.put("college", instructor.getItrCollege());
+			return map;
+		}
+		catch(EmptyResultDataAccessException e) {
+			map.put("grade", 0);
+			return map;
+		}
+		catch(Exception e) {
+			map.put("grade", -1);
+			return map;
+		}
+	}
+	
+	protected class InstructorInfoMapper implements RowMapper<Instructor>{
+
+		@Override
+		public Instructor mapRow(ResultSet rs, int row) throws SQLException {
+			// TODO Auto-generated method stub
+			Instructor ins = new Instructor();
+			ins.setItrCollege(rs.getString("itr_college"));
+			ins.setItrGrade(rs.getInt("itr_grade"));
+			return ins;
+		}}
 }

@@ -150,4 +150,28 @@ public class StudentController {
 			return response.failure("sql_exception");
 		}
 	}
+	
+	/**
+	 * 辅导员获取年级专业的学生信息
+	 * */
+	@RequestMapping(value="/getCollegeStudents",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response getCollegeStudents(@RequestBody String num) {
+		Response response = new Response();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = instructorDao.getInstructorInfobyNum(num);
+		List<Student> list = studentDao.getStudentsbyCollegeandGrade((String)map.get("college"), 
+				(int)map.get("grade"));
+		if(list == null||list.size() == 0) {
+			return response.success("no_students");
+		}
+		else
+			if(list.get(0).getStdNum().equals("-1")) {
+				return response.failure("sql_exception");
+			}
+			else {
+				return response.success(list);
+			}
+	}
 }

@@ -1,6 +1,7 @@
 package com.bistu.supreme.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.bistu.supreme.domain.Instructor;
 
@@ -34,4 +35,8 @@ public interface IInstructorDao {
 	 * 通过辅导员的工号获取辅导员的姓名
 	 * */
 	public String getInsNamebyNum(String num);
+	/**
+	 * 通过辅导员的工号获取的辅导员的院系和年级
+	 * */
+	public Map<String, Object> getInstructorInfobyNum(String num);
 }

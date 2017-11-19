@@ -36,7 +36,7 @@ public class ClassMasterController {
 		}
 		else
 			if(classNum.equals("-1")) {
-				return response.failure("sql_exception");
+				return response.failure("sql_exception_classNum");
 			}
 			else {
 				List<Student> list = studentDao.getStudentsbyClassNum(classNum);

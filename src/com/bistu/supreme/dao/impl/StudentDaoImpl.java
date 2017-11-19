@@ -474,7 +474,19 @@ public class StudentDaoImpl implements IStudentDao {
 	@Override
 	public List<Student> getStudentsbyCollegeandGrade(String college, int grade) {
 		// TODO Auto-generated method stub
-		return null;
+		List<Student> list = new ArrayList<Student>();
+		String query_sql = "select * from sa_student where std_college=? and std_grade=?";
+		try {
+			list = jdbcTemplate.query(query_sql, new Object[] {college, grade}, 
+					new StudentMapper());
+			return list;
+		}
+		catch(Exception e) {
+			Student student = new Student();
+			student.setStdNum("-1");
+			list.add(student);
+			return list;
+		}
 	}
 
 	@Override
