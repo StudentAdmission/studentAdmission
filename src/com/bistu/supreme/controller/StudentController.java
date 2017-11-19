@@ -109,7 +109,7 @@ public class StudentController {
 	@RequestMapping(value="/setStudent",method=RequestMethod.POST,
 			produces= {"application/json;charset=UTF-8"})
 	@ResponseBody
-	public Response setStudent(Student student) {
+	public Response setStudent(@RequestBody Student student) {
 		Response response = new Response();
 		if(studentDao.setStudentbyNum(student)) {
 			return response.success();
@@ -133,5 +133,21 @@ public class StudentController {
 		}
 		else
 			return response.failure();
+	}
+	
+	/**
+	 * 将学生的重置标志置为1
+	 * */
+	@RequestMapping(value="/setStudentTag",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response setStudentTag(@RequestBody String num) {
+		Response response = new Response();
+		if(studentDao.setStudentTag(num)) {
+			return response.success();
+		}
+		else {
+			return response.failure("sql_exception");
+		}
 	}
 }

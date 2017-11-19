@@ -61,4 +61,13 @@ public interface IStudentDao {
 	 * 根据学生id判断学生是否填写过信息
 	 * */
 	public int getStudentTag(String studentNum);
+	
+	/**
+	 * 将学生的ResetTag置为1
+	 * */
+	public boolean setStudentTag(String num);
+	/**
+	 * 通过年级和学院获得对应的学生的全部信息
+	 * */
+	public List<Student> getStudentsbyCollegeandGrade(String college, int grade);
 }

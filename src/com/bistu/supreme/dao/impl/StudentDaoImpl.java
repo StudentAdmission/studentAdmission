@@ -340,6 +340,8 @@ public class StudentDaoImpl implements IStudentDao {
         
         update_sql += update_sql_e;
         
+        System.out.println(update_sql);
+        
 		try {
 			jdbcTemplate.update(update_sql, 
 					new PreparedStatementSetter() {
@@ -466,6 +468,32 @@ public class StudentDaoImpl implements IStudentDao {
 		}catch(Exception e) {
 			System.out.println(e.getClass());
 			return -1;
+		}
+	}
+
+	@Override
+	public List<Student> getStudentsbyCollegeandGrade(String college, int grade) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean setStudentTag(String num) {
+		// TODO Auto-generated method stub
+		String update_sql = "update sa_student set std_reset=1 where std_num=?";
+		try {
+			jdbcTemplate.update(update_sql, 
+					new PreparedStatementSetter() {
+
+						@Override
+						public void setValues(PreparedStatement ps) throws SQLException {
+							// TODO Auto-generated method stub
+							ps.setString(1, num);
+						}});
+			return true;
+		}
+		catch(Exception e) {
+			return false;
 		}
 	}
 }
