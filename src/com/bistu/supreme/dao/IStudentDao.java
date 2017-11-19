@@ -56,4 +56,9 @@ public interface IStudentDao {
 	 * 添加一个学生
 	 * */
 	public boolean createStudent(Student student);
+	
+	/**
+	 * 根据学生id判断学生是否填写过信息
+	 * */
+	public int getStudentTag(String studentNum);
 }

@@ -453,4 +453,19 @@ public class StudentDaoImpl implements IStudentDao {
 			return false;
 		}
 	}
+
+	@Override
+	public int getStudentTag(String studentNum) {
+		// TODO Auto-generated method stub
+		String queryTag = "select std_reset from sa_student where std_num = ?";
+		int result = 0;
+		try {
+			result = jdbcTemplate.queryForObject(queryTag, new Object[] {studentNum},java.lang.Integer.class);
+			System.out.println("result:" + result);
+			return result;
+		}catch(Exception e) {
+			System.out.println(e.getClass());
+			return -1;
+		}
+	}
 }

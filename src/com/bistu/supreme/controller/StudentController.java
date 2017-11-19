@@ -118,4 +118,20 @@ public class StudentController {
 			return response.failure("sql_exception");
 		}
 	}
+	
+	/**
+	 * 判断学生是否填写过个人信息
+	 * */
+	@RequestMapping(value="/getStudentTag",method=RequestMethod.POST,
+			produces= {"application/json;charset=UTF-8"})
+	@ResponseBody
+	public Response getStudentTag(@RequestBody String studentNum){
+		Response response = new Response();
+		int result = studentDao.getStudentTag(studentNum);
+		if(result==1||result==0) {
+			return response.success(result);
+		}
+		else
+			return response.failure();
+	}
 }

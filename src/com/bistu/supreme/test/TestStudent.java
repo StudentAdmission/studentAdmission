@@ -45,4 +45,19 @@ public class TestStudent {
 		else
 			System.out.println("没有同班同学");
 	}
+	
+	@Test
+	public void getStudentTag(){
+		int result = 0;
+		//201701496，201702698
+		String studentNum = "201702698";
+		result = studentDao.getStudentTag(studentNum);
+		if(result==1) {
+			System.out.println("填写过了");
+		}
+		else if(result==0)
+			System.out.println("没填写过了");
+		else
+			System.out.println("数据库连接失败");
+	}
 }
